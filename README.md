@@ -48,3 +48,10 @@ times: 144122
     msg: '低于最佳成绩',
 }
 ```
+
+---
+
+### 2.jssdk分享
+```
+http://coach.samesamechina.com/api/v1/js/{jssdkid}/wechat
+```

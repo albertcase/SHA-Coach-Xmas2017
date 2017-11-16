@@ -1,6 +1,6 @@
 <?php
 
-define("BASE_URL", '');
+define("BASE_URL", 'http://127.0.0.1:9123/');
 define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template');
 define("VENDOR_ROOT", dirname(__FILE__) . '/../vendor');
 
@@ -14,7 +14,7 @@ define("USER_STORAGE", 'COOKIE');
 define("WECHAT_CAMPAIGN", true);
 
 //Wechat Vendor
-define("WECHAT_VENDOR", 'curio'); // default | curio | same
+define("WECHAT_VENDOR", 'coach'); // default | coach | same
 
 //Wechat config info
 define("TOKEN", '');
@@ -24,7 +24,9 @@ define("NOWTIME", date('Y-m-d H:i:s'));
 define("AHEADTIME", '1000');
 
 define("NONCESTR", '?????');
-define("COACH_AUTH_URL", '???');
+define("COACH_AUTH_URL", 'http://coach.samesamechina.com/api/wechat/oauth/auth/e7a33b9c-c26e-41d0-88ec-14bf1a8ca4da');
+define("COACH_TOKEN", 'zcBpBLWyAFy6xs3e7HeMPL9zWrd7Xy');
+
 define("SAME_OAUTH_URL", '');
 
 //Redis config info

@@ -11,7 +11,7 @@ class CoachWechatAPI {
   	}
 
   	public function getUserInfo($openid) {
-	  	$api_url = "http://coach.samesamechina.com/v2/wx/users/no_cache/" . $openid . "?access_token=" . CURIO_TOKEN;
+	  	$api_url = "http://coach.samesamechina.com/v2/wx/users/no_cache/" . $openid . "?access_token=" . COACH_TOKEN;
 	    $ch = curl_init();
 	    // print_r($ch);
 	    curl_setopt ($ch, CURLOPT_URL, $api_url);
