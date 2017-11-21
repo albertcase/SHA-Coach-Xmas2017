@@ -17,10 +17,9 @@ class CoachController extends Controller
 			$request->validation($fields);
 			$userAPI = new UserAPI();
 			$openid = $request->query->get('openid');
-			$user = $userAPI->userLogin($openid);
+			$user = $userAPI->userLoad($openid);
 			if(!$user) {
 				$this->statusPrint('error');
-				$userAPI->userRegister($openid);
 			}
 			$this->redirect($url);
 		} else {

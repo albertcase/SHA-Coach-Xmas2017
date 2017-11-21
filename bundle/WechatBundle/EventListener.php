@@ -46,7 +46,7 @@ class EventListener
 	{
 		$request->setSourceUrl($current_url);
 		$WechatAPI = new CoachWechatAPI();
-		$WechatAPI->wechatAuthorize(BASE_URL.'wechat/curio/callback');
+		$WechatAPI->wechatAuthorize();
 	}
 
 	// kenzo same oauth

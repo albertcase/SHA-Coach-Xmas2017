@@ -7,7 +7,7 @@ class CoachWechatAPI {
 	
 	public function wechatAuthorize($callback) {
     	$response = new Response();
-    	$response->redirect(COACH_AUTH_URL.'?callback='.$callback);  
+    	$response->redirect(COACH_AUTH_URL); 
   	}
 
   	public function getUserInfo($openid) {
