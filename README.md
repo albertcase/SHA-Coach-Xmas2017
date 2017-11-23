@@ -5,7 +5,7 @@
 1.domain/home.html ：入口文件
 2.domain/game ：游戏 
 	- /template/play.tpl.php : 第一玩的模版
-	- /template/repaly.tpl.php : 非第一次玩的模版
+	- /template/replay.tpl.php : 非第一次玩的模版
 3.domain/share : 分享页面
 	- /template/share.tpl.php : 分享模版
 4.API list
@@ -29,7 +29,7 @@ domian/api/record
 ```
 ##### Get Parameter
 
-records: 144122(时间戳)
+records: 144.122
 
 ```javascript
 {
@@ -59,7 +59,7 @@ records: 144122(时间戳)
 
 ---
 
-### 2.未授权下拉取排行榜
+### 2.未授权下拉取排行榜API
 
 Method: POST ／ GET
 
@@ -97,7 +97,7 @@ null
 
 ---
 
-### 3.授权下拉取排行榜
+### 3.授权下拉取排行榜API
 
 Method: POST / GET
 
