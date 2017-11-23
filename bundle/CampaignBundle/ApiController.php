@@ -8,6 +8,7 @@ use Lib\PDO;
 use Lib\UserAPI;
 use Lib\WechatAPI;
 use Lib\Redis;
+use CampaignBundle\OpenApiController;
 
 class ApiController extends Controller
 {
@@ -16,7 +17,6 @@ class ApiController extends Controller
    	global $user;
 
         parent::__construct();
-        $user->uid = 2;
         if(!$user->uid) {
             $this->statusPrint('100', 'access deny!');
         }
@@ -27,8 +27,15 @@ class ApiController extends Controller
     public function toptenAction()
     {
         global $user;
-
-        $result = $this->saveRecord($recordInfo); 
+        $openApi = new OpenApiController();
+        $topten = $openApi->getTopten();
+        $userRecords = $this->findRecordByUid($user->uid);
+        $userNum = $this->findUserRecordNum((float)$userRecords['records']);
+        $result = array(
+            'topten' => $topten,
+            'myRecord' => $openApi->recordsFormat($userRecords['records']),
+            'myNum' => $userNum,
+            );
         $this->dataPrint($result);
     }
 
@@ -94,29 +101,17 @@ class ApiController extends Controller
     	return $result;
     }
 
-    public function findToptenRecord()
+    public function findUserRecordNum($records)
     {
-        $sql = "SELECT u.`nickname`, r.`records` FROM `user` u, `record` r WHERE u.`uid` = r.`uid` ORDER BY r.`records` DESC LIMIT 0, 10";
+        $sql = "SELECT COUNT(id) AS `sum` FROM `record` WHERE `records` < :records";
         $query = $this->_pdo->prepare($sql);
+        $query->execute(array(':records' => $records));
         $row = $query->fetchAll(\PDO::FETCH_ASSOC);
-        var_dump($row);
-        var_dump(get_class_methods($query));exit;
         if($row) {
-            return $row;
+            return $row[0]['sum'];
         }
         return false;
     }
-
-    // public function findUserRecord($uid)
-    // {
-    //     $sql = "SELECT COUNT(id) FROM `record` ORDER BY `records` limit 0, 10";
-    //     $query = $this->_pdo->prepare($sql);
-    //     $row = $query->fetchAll(\PDO::FETCH_ASSOC);
-    //     if($row) {
-    //         return $row;
-    //     }
-    //     return false;
-    // }
 
     public function findMaxRecord($recordInfo)
     {
@@ -156,12 +151,12 @@ class ApiController extends Controller
 
     public function findRecordByUid($uid)
     {
-        $sql = "SELECT `id` FROM `record` WHERE `uid` = :uid";
+        $sql = "SELECT `id`, `records` FROM `record` WHERE `uid` = :uid";
         $query = $this->_pdo->prepare($sql);
         $query->execute(array(':uid' => $uid));
         $row = $query->fetch(\PDO::FETCH_ASSOC);
         if($row) {
-            return true;
+            return $row;
         }
         return false;
     }

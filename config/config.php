@@ -46,7 +46,8 @@ define("SCOPE", 'snsapi_base');
 
 //Wechat Authorize Page
 define("AUTHORIZE_URL", '[
-	"/"
+	"/game",
+	"/share"
 ]');
 
 //Account Access
@@ -62,3 +63,7 @@ define("ENCRYPT_KEY", '29FB77CB8E94B358');
 define("ENCRYPT_IV", '6E4CAB2EAAF32E90');
 
 define("WECHAT_TOKEN_PREFIX", 'wechat:token:');
+
+//topten cache
+define("OPEN_CACHE", true);
+define("CACHE_TIME", 60);

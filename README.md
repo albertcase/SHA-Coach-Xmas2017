@@ -33,7 +33,7 @@ records: 144122(时间戳)
 
 ```javascript
 {
-	records: 144122
+	records: 144.122
 }
 ```
 
@@ -61,7 +61,7 @@ records: 144122(时间戳)
 
 ### 2.未授权下拉取排行榜
 
-Method: POST
+Method: POST ／ GET
 
 ##### API URL:
 
@@ -83,21 +83,56 @@ null
 ##### status 1
 
 ```javascript
-{
-    status: '1',
-    msg: '成绩保存成功！',
-}
-```
-
-#####  status 0
-
-```javascript
-{
-    status: '0',
-    msg: '成绩保存失败！',
-}
+[
+  {
+    "nickname": "a",
+    "records": "2分3秒38毫秒"
+  },
+  {
+    "nickname": "b",
+    "records": "2分6秒34毫秒"
+  }
+]
 ```
 
 ---
 
-### 3.模拟登陆
+### 3.授权下拉取排行榜
+
+Method: POST / GET
+
+##### API URL:
+
+```html
+domian/api/topten
+```
+##### Get Parameter
+
+null
+
+```javascript
+{
+	
+}
+```
+
+##### Response
+
+##### status 1
+
+```javascript
+{
+  "topten": [
+    {
+      "nickname": "a",
+      "records": "2分3秒28毫秒"
+    },
+    {
+      "nickname": "b",
+      "records": "2分6秒34毫秒"
+    }
+  ],
+  "myRecord": "2分3秒28毫秒",
+  "myNum": "0"
+}
+```
