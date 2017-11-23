@@ -1,3 +1,6 @@
 .DS_Store
 .git
 .vagrant
+/build/node_modules/
+/build/package-lock.json
+/build/package.json
