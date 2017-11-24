@@ -5,7 +5,7 @@ define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template');
 define("VENDOR_ROOT", dirname(__FILE__) . '/../vendor');
 
 //ENV
-define("ENV", 'dev');
+define("ENV", 'prod');
 
 //User
 define("USER_STORAGE", 'COOKIE');
@@ -46,7 +46,8 @@ define("SCOPE", 'snsapi_base');
 
 //Wechat Authorize Page
 define("AUTHORIZE_URL", '[
-	"/game"
+	"/game",
+	"share"
 ]');
 
 //Account Access
