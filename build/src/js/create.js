@@ -104,7 +104,7 @@
 
 	var timer = null, count = 0, paused = 0, countInit = 0;
 	var scene = document.getElementById('scene');
-	var gemeTime = document.getElementById('gemeTime');
+	var gemeTime = document.querySelector('.gtContext');
 	var sceneWidth = parseInt(window.getComputedStyle(scene).width, 10);
 	var sceneHeight = parseInt(window.getComputedStyle(scene).height, 10);
 
@@ -408,6 +408,7 @@
 		this.isEat = 0;
 		// this.c = '';
 		this.writeArr = [];
+		this.eatScores = 0;
 	}
 
 	Star.prototype.init = function(elStyle){ // 创建元素
@@ -454,7 +455,9 @@
 		if((elLeft + 50/2) > pos.x && elLeft < (pos.x + 80/2) && (hero.y - pos.y) < me.y){
 
 			if(!me.isEat){
-				count -= 20; 
+				me.eatScores++;
+				console.log(me.eatScores);
+				// count -= 20; 
 				// console.log('isEat');
 			};
 			me.isEat = 1;
@@ -487,19 +490,19 @@
 			this.update();
 		}
 		this.update = function(c){
-			c ? c : 0;
+			var curCountNum = c ? c : 0;
 
 			// if(paused){
 			// 	count += 10;
 			// 	c += 10;
 			// }
-			if(c % 100 === 0 || paused || star.isEat){
-				this.minutes = Math.floor(c / 100);
+			if(curCountNum % 100 === 0 || paused || star.isEat){
+				this.minutes = Math.floor(curCountNum / 100);
 			}
-			this.second = c % 100;
+			this.second = curCountNum % 100;
 			// console.log(this.minutes, this.second);
 			this.element.innerHTML = `
-				<div class="minutes">${this.minutes < 10 ? '0' + this.minutes : this.minutes}: </div><div class="second">${this.second}</div>
+				<span class="minutes">${this.minutes < 10 ? '0' + this.minutes : this.minutes}: </span><span class="second">${this.second < 10 ? '0' + this.second : this.second}</span>
 			`;
 		}
 	}
@@ -546,7 +549,7 @@
 		timer = window.requestAnimationFrame(start); 
 		 
 	}
-	start();
+	
 
 	
 	// document.querySelector('.start').onclick = function(){
@@ -587,9 +590,16 @@
 		// });
 		
 	}
-	sceneBgChange('.scene1');
+	
+	
 
 
+
+	$(".gameTips a").on('click', function(){
+		start();
+		sceneBgChange('.scene1');
+		$('.gameTips').hide();
+	})
 
 
 

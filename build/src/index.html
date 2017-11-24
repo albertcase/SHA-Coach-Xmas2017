@@ -20,6 +20,13 @@
     <meta name="Keywords" content="">
     <meta name="Description" content="...">
     <link rel="stylesheet" type="text/css" href="css/bundle.min.css">
+    <script type="text/javascript" src="js/bundle-vendor.min.js"></script>
+    <style type="text/css">
+        #orientLayer { display: none; }
+        @media screen and (min-aspect-ratio: 13/9) { 
+            #orientLayer { display: block; } 
+        }
+    </style>
 </head>
 <body>
 <div class="loading">
@@ -35,52 +42,61 @@
     </div>
 </div>
 
-<!-- 横屏代码 -->
 <div id="orientLayer" class="mod-orient-layer">
     <div class="mod-orient-layer__content">
         <i class="icon mod-orient-layer__icon-orient"></i>
-        <div class="mod-orient-layer__desc">为了更好的体验，请解锁横屏浏览<br><em>建议全程在wifi环境下观看</em></div>
+        <div class="mod-orient-layer__desc">为了更好的体验，请解锁竖屏浏览<br><em>建议全程在wifi环境下观看</em></div>
     </div>
 </div>
 
 <div id="dreambox">
-    <div class="section show" id="scene">
+    <div class="section show" id="index">
+        <div class="slogan"></div>
+        <div class="jue-se--chose">
+            <div class="jue-se--large">
+               <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="jue-se--item kl"></div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="jue-se--item qw"></div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="jue-se--item mhl"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination" id="jue-se-small">
+                <div class="jue-se--item kl"></div>
+                <div class="jue-se--item qw"></div>
+                <div class="jue-se--item mhl"></div>
+            </div>
 
-        <div class="element">
-            <div class="el el-1">
-                <img src="img/scene-1/el-1.png" width="100%">
-            </div>
-            <div class="el el-2">
-                <img src="img/scene-1/el-2.png" width="100%">
-            </div>
-            <div class="el el-3">
-                <img src="img/scene-1/el-3.png" width="100%">
-            </div>
-            <div class="el el-4">
-                <img src="img/scene-1/el-4.png" width="100%">
-            </div>
-            <div class="el el-5">
-                <img src="img/scene-1/el-5.png" width="100%">
-            </div>
-            <div class="el el-6">
-                <img src="img/scene-1/el-6.png" width="100%">
-            </div>
-        </div>
 
-        <div id="result"></div>
-        <div class="gameover">GAME OVER</div>
-        <div id="gemeTime"></div>
-        <div id="hero" class="hero"></div>
-        <div class="bg">
-            <div class="scene-bg scene1"></div>
-            <div class="scene-bg scene2"></div>
-            <div class="scene-bg scene3"></div>
-            <div class="scene-bg scene4"></div>
         </div>
+        <div class="start-btn"></div>
     </div>
 </div>
 
+<script>
+    var jueSeItem = ['kl', 'qw', 'mhl'];
+    var swiper = new Swiper('.swiper-container',{
+        effect : 'coverflow',
+        slidesPerView: 1,
+        centeredSlides: true,
+        pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+          return `<div class="${className} jue-se--item ${jueSeItem[index]}"></div>`;
+          // return '<div class="' + className + '">' + (index + 1) + '</div>';
+        },
+      },
+    });
+</script>
 
-<script type="text/javascript" src="js/bundle.min.js"></script>
 </body>
 </html>

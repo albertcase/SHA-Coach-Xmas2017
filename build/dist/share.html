@@ -50,53 +50,18 @@
 </div>
 
 <div id="dreambox">
-    <div class="section show" id="index">
-        <div class="slogan"></div>
-        <div class="jue-se--chose">
-            <div class="jue-se--large">
-               <!-- Swiper -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <div class="jue-se--item kl"></div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="jue-se--item qw"></div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="jue-se--item mhl"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-pagination" id="jue-se-small">
-                <div class="jue-se--item kl"></div>
-                <div class="jue-se--item qw"></div>
-                <div class="jue-se--item mhl"></div>
-            </div>
-
-
+    <div class="section show" id="share">
+        <div class="head-star"></div>
+        <div class="xmasVideo"></div>
+        <div class="share-btn-area">
+            <a href="javascript:void(0);" class="replay-btn"></a>
+            <a href="javascript:void(0);" class="list-btn"></a>
+            <a href="javascript:void(0);" class="chose-buy-btn"></a>
         </div>
-        <div class="start-btn"></div>
     </div>
 </div>
 
-<script>
-    var jueSeItem = ['kl', 'qw', 'mhl'];
-    var swiper = new Swiper('.swiper-container',{
-        effect : 'coverflow',
-        slidesPerView: 1,
-        centeredSlides: true,
-        pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        renderBullet: function (index, className) {
-          return `<div class="${className} jue-se--item ${jueSeItem[index]}"></div>`;
-          // return '<div class="' + className + '">' + (index + 1) + '</div>';
-        },
-      },
-    });
-</script>
+
 
 </body>
 </html>

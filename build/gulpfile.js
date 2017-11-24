@@ -44,7 +44,8 @@ const nmsrc = 'node_modules/';
 let paths = {
     pages: ['src/*.html'],
     css: ['src/css/*.scss'],
-    js: ['src/js/vendor/*.js', 'src/js/*.js'],
+    js: ['src/js/*.js'],
+    vendor: ['src/js/vendor/*.js'],
     img: ['src/img/*.{png,jpg,gif,ico}', 'src/img/*/*.{png,jpg,gif,ico}']
 };
 
@@ -84,6 +85,18 @@ gulp.task('miniImg-tiny', function(){
 gulp.task('miniJs', function(){
     return gulp.src(paths.js)
         .pipe(concat('bundle.js'))                  //合并所有js到main.js
+        .pipe(gulpif(
+            condition, 
+            uglify(),
+            rename({suffix: '.min'})
+        ))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(browserSync.stream());
+});
+
+gulp.task('miniVendorJs', function(){
+    return gulp.src(paths.vendor)
+        .pipe(concat('bundle-vendor.js'))                  //合并所有js到main.js
         .pipe(gulpif(
             condition, 
             uglify(),
@@ -147,7 +160,7 @@ gulp.task("default", function(){
         }
     })
     
-	gulp.start(['miniHtml', 'miniCss', 'miniImg', 'miniJs']);
+	gulp.start(['miniHtml', 'miniCss', 'miniImg', 'miniJs', 'miniVendorJs']);
 	gulp.watch(paths.pages, ['miniHtml']);
     gulp.watch(paths.css, ['miniCss']);
     gulp.watch(paths.img, ['miniImg']);

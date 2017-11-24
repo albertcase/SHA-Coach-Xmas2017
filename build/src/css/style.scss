@@ -210,14 +210,243 @@
 }
 
 
+#gemeTime{
+  width: 22%;
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  margin: 0 0 0 -10%;
+  z-index: 15;
+  .gtContext{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 22%;
+    text-align: center;
+    color: #fff;
+    font-size: 0.3rem;
+    .span{
+      display: inline-block;
+    }
+  }
+}
+
+
+.gameTips{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: url('../img/tips.png') center no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  a{
+    width: 40%;
+    height: 15%;
+    margin: 42% 0 0 0;
+    display: inline-block;
+  }
+}
+
+
+
+
+/*****************************
+* index
+*****************************/
+.section{
+  background: url('../img/index-bg.jpg') center no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.slogan{
+  width: 5.64rem;
+  height: 2.66rem;
+  background: url('../img/slogan.png') center no-repeat;
+  background-size: cover;
+  display: inline-block;
+  margin: 0.5rem 0 0 0;
+}
+
+.jue-se--chose{
+  width: 6.25rem;
+  height: 7.4rem;
+  margin: 0 0 0.2rem 0;
+  display: inline-block;
+  #jue-se-small{
+    height: 2.3rem;
+    text-align: center;
+  }
+  .jue-se--item{
+    width: 2.0rem;
+    height: 100%;
+    display: inline-block;
+    &.swiper-pagination-bullet{
+      border-radius: 0;
+      opacity: 0.6;
+    }
+    &.swiper-pagination-bullet-active {
+      border-radius: 0;
+      opacity: 1;
+    }
+    &.kl{
+      background: url('../img/juese/kl.png') center no-repeat;
+      background-size: cover;
+    }
+    &.qw{
+      background: url('../img/juese/qw.png') center no-repeat;
+      background-size: cover;
+    }
+    &.mhl{
+      background: url('../img/juese/mhl.png') center no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+
+.jue-se--large{
+  width: 4.99rem;
+  height: 5.0rem;
+  overflow: hidden;
+  display: inline-block;
+  .jue-se--item{
+    width: 100%;
+    height: 100%;
+    &.kl{
+      background: url('../img/juese/kl-large.png') center no-repeat;
+      background-size: cover;
+    }
+    &.qw{
+      background: url('../img/juese/qw-large.png') center no-repeat;
+      background-size: cover;
+    }
+    &.mhl{
+      background: url('../img/juese/mhl-large.png') center no-repeat;
+      background-size: cover;
+    }
+  }
+}
+
+
+.start-btn{
+  width: 4.45rem;
+  height: 1.27rem;
+  background: url('../img/start-btn.png') center no-repeat;
+  background-size: auto 100%;
+  display: inline-block;
+}
 
 
 
 
 
 
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
 
 
+
+
+
+/*****************************
+* share
+*****************************/
+
+#share{
+  .head-star{
+    width: 100%;
+    height: 1.14rem;
+    background: url('../img/share-head-star.png') center no-repeat;
+    background-size: cover;
+    margin: 0.5rem 0 0 0;
+    display: inline-block;
+  }
+  .xmasVideo{
+    width: 100%;
+    height: 4.25rem;
+    background: #333;
+    margin: 0.3rem 0;
+    display: inline-block;
+  }
+  .share-btn-area{
+    width: 100%;
+    margin: .2rem 0 0 0;
+    text-align: center;
+    .replay-btn, .list-btn{
+      width: 5.18rem;
+      height: 1.2rem;
+      display: inline-block;
+    }
+    .replay-btn{
+      background: url('../img/replay-btn.png') center no-repeat;
+      background-size: auto 100%;
+    }
+    .list-btn{
+      background: url('../img/list-btn.png') center no-repeat;
+      background-size: auto 100%;
+    }
+    .chose-buy-btn{
+      width: 5.18rem;
+      height: 1.72rem;
+      background: url('../img/chose-buy-btn.png') center no-repeat;
+      background-size: auto 100%;
+      margin: 0.2rem 0 0 0;
+      display: inline-block;
+    }
+  }
+  
+}
+
+
+
+
+
+/*****************************
+* shareTips
+*****************************/
+.shareTips{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.9) url('../img/share-tips.png') 76% 20% no-repeat;
+  background-size: 6.4rem auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  .close{
+    width: 0.4rem;
+    height: 0.4rem;
+    background: url('../img/close.png') 76% 20% no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 8%;
+    top: 8%;
+  }
+}
 
 
 

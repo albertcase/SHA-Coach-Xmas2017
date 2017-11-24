@@ -73,7 +73,10 @@ body{
     transform: rotate(90deg); -webkit-transform: rotate(90deg); -webkit-animation: rotation infinite 1.5s ease-in-out; animation: rotation infinite 1.5s ease-in-out; -webkit-background-size: 67px; background-size: 67px }
 .mod-orient-layer__desc { margin-top: 20px; font-size: 15px; color: #fff }
 
-
+*{
+  margin: 0;
+  padding: 0;
+}
 
 
 /*****************************
