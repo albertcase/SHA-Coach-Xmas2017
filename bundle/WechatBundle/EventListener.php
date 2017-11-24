@@ -44,6 +44,7 @@ class EventListener
 
 	private function coachWechatAuthoize($request, $current_url)
 	{
+		var_dump($current_url);
 		$request->setSourceUrl($current_url);
 		$WechatAPI = new CoachWechatAPI();
 		$WechatAPI->wechatAuthorize();

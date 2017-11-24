@@ -11,7 +11,6 @@ class CoachController extends Controller
 	{
 		$request = $this->request;
 		$url = $request->getSourcetUrl();
-		var_dump($url);exit;
 		if ($url = $request->getSourcetUrl()) {
 			$fields = array(
 				'openid' => array('notnull', '120'),
