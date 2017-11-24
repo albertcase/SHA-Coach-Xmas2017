@@ -33,7 +33,7 @@ class PageController extends Controller
         $config = array();
 
         if($isPlay) {
-            return $this->render('isPlay', array('config' => $config));
+            return $this->render('replay', array('config' => $config));
         } else {
             return $this->render('play', array('config' => $config));
         }
