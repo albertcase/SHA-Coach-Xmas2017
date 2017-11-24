@@ -24,7 +24,7 @@ define("NOWTIME", date('Y-m-d H:i:s'));
 define("AHEADTIME", '1000');
 
 define("NONCESTR", '?????');
-define("COACH_AUTH_URL", 'http://coach.samesamechina.com/api/wechat/oauth/auth/e7a33b9c-c26e-41d0-88ec-14bf1a8ca4da');
+define("COACH_AUTH_URL", 'http://coach.samesamechina.com/api/wechat/oauth/auth/5148101f-6911-4c24-9ad5-c12d4cbe86fd');
 define("COACH_TOKEN", 'zcBpBLWyAFy6xs3e7HeMPL9zWrd7Xy');
 
 define("SAME_OAUTH_URL", '');

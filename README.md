@@ -13,7 +13,7 @@
 	- 2.domain/api/omg/topten :未授权下拉取排行榜（仅有前十名数据）
 	- 3.domian/api/topten :授权下拉取排行榜（前十名+自己的成绩）
 5.JSSDK 
-	- http://coach.samesamechina.com/api/v1/js/{jssdkid}/wechat
+	- http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat
 6.模拟登陆
 	- http://127.0.0.1:9123/wechat/curio/callback?openid=123
 ```
