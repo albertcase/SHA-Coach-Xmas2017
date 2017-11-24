@@ -15,6 +15,7 @@ $routers['/clear'] = array('CampaignBundle\Page', 'clearCookie');
 $routers['/ajax/post'] = array('CampaignBundle\Api', 'form');
 $routers['/'] = array('CampaignBundle\Page', 'index');
 $routers['/game'] = array('CampaignBundle\Page', 'game');
+$routers['/share'] = array('CampaignBundle\Page', 'share');
 
 //API
 $routers['/api/record'] = array('CampaignBundle\Api', 'record');
