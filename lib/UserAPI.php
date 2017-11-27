@@ -76,11 +76,11 @@ class UserAPI extends Base {
     $callback = $router->generateUrl(CALLBACK, $param, true);
     $url = $wechatAPI->getAuthorizeUrl($callback);
     $response = new Response();
-    $response->redirect($url);
+    $response->redirect($url);  
   }
 
   public function encodeUser($data) {
-    $helper = new Helper();
+    $helper = new helper();
     $data = base64_encode($helper->aes128_cbc_encrypt(ENCRYPT_KEY, json_encode($data), ENCRYPT_IV));
     return $data;
   }
@@ -95,7 +95,7 @@ class UserAPI extends Base {
 
   /**
   * Save user in database
-  */
+  */ 
   public function userSave($userinfo) {
     $userinfo = $this->userNormailize($userinfo);
     $helper = new Helper();
@@ -126,7 +126,7 @@ class UserAPI extends Base {
 
   /**
    * Update user in database
-   */
+   */  
   public function updateUserByOpenid($userinfo) {
     $userinfo = $this->userNormailize($userinfo);
     $helper = new Helper();
@@ -139,22 +139,22 @@ class UserAPI extends Base {
 
   public function userNormailize($userinfo) {
     $user = new \stdClass();
-    if(isset($userinfo->openid))
+    if(isset($userinfo->openid)) 
       $user->openid = $userinfo->openid;
-    if(isset($userinfo->nickname))
+    if(isset($userinfo->nickname)) 
       $user->nickname = $userinfo->nickname;
-    if(isset($userinfo->sex))
-      $user->sex = $userinfo->sex;
-    if(isset($userinfo->city))
-      $user->city = $userinfo->city;
-    if(isset($userinfo->province))
-      $user->province = $userinfo->province;
-    if(isset($userinfo->country))
-      $user->country = $userinfo->country;
-    if(isset($userinfo->headimgurl))
-      $user->headimgurl = $userinfo->headimgurl;
-    if(isset($userinfo->unionid))
-      $user->unionid = $userinfo->unionid;
+    if(isset($userinfo->sex)) 
+      $user->sex = $userinfo->sex; 
+    if(isset($userinfo->city)) 
+      $user->city = $userinfo->city; 
+    if(isset($userinfo->province)) 
+      $user->province = $userinfo->province; 
+    if(isset($userinfo->country)) 
+      $user->country = $userinfo->country; 
+    if(isset($userinfo->headimgurl)) 
+      $user->headimgurl = $userinfo->headimgurl; 
+    if(isset($userinfo->unionid)) 
+      $user->unionid = $userinfo->unionid; 
     return $user;
   }
 
@@ -163,7 +163,7 @@ class UserAPI extends Base {
    */
   public function findUserByOpenid($openid){
     $sql = "SELECT `uid`, `openid`, `nickname`, `sex`, `city`, `province`, `headimgurl`, `country` FROM `user` WHERE `openid` = :openid";
-    $query = $this->_pdo->prepare($sql);
+    $query = $this->_pdo->prepare($sql);    
     $query->execute(array(':openid' => $openid));
     $row = $query->fetch(\PDO::FETCH_ASSOC);
     if($row) {
@@ -177,7 +177,7 @@ class UserAPI extends Base {
    */
   public function findUserByUid($uid){
     $sql = "SELECT `uid`, `openid`, `nickname`, `sex`, `city`, `province`, `headimgurl`, `country` FROM `user` WHERE `uid` = :uid";
-    $query = $this->_pdo->prepare($sql);
+    $query = $this->_pdo->prepare($sql);    
     $query->execute(array(':uid' => $uid));
     $row = $query->fetch(\PDO::FETCH_ASSOC);
     if($row) {
