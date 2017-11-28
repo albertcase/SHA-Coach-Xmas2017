@@ -5,13 +5,13 @@ use Core\Response;
 
 class CoachWechatAPI {
 	
-	public function wechatAuthorize($callback) {
+	public function wechatAuthorize() {
     	$response = new Response();
-    	$response->redirect(COACH_AUTH_URL); 
+    	$response->redirect(COACH_AUTH_URL);  
   	}
 
   	public function getUserInfo($openid) {
-	  	$api_url = "http://coach.samesamechina.com/v2/wx/users/no_cache/" . $openid . "?access_token=" . COACH_TOKEN;
+	  	$api_url = "http://coach.samesamechina.com/v2/wx/users/no_cache/" . $openid . "?access_token=" . CURIO_TOKEN;
 	    $ch = curl_init();
 	    // print_r($ch);
 	    curl_setopt ($ch, CURLOPT_URL, $api_url);

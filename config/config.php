@@ -5,7 +5,7 @@ define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template');
 define("VENDOR_ROOT", dirname(__FILE__) . '/../vendor');
 
 //ENV
-define("ENV", 'dev');
+define("ENV", 'prod');
 
 //User
 define("USER_STORAGE", 'COOKIE');
@@ -24,7 +24,7 @@ define("NOWTIME", date('Y-m-d H:i:s'));
 define("AHEADTIME", '1000');
 
 define("NONCESTR", '?????');
-define("COACH_AUTH_URL", 'http://coach.samesamechina.com/api/wechat/oauth/auth/5148101f-6911-4c24-9ad5-c12d4cbe86fd');
+define("COACH_AUTH_URL", 'http://coach.samesamechina.com/api/wechat/oauth/auth/a09f8a9a-64d7-429b-944f-1062060583fa');
 define("COACH_TOKEN", 'zcBpBLWyAFy6xs3e7HeMPL9zWrd7Xy');
 
 define("SAME_OAUTH_URL", '');
@@ -47,7 +47,7 @@ define("SCOPE", 'snsapi_base');
 //Wechat Authorize Page
 define("AUTHORIZE_URL", '[
 	"/game",
-	"/share"
+	"share"
 ]');
 
 //Account Access

@@ -24,6 +24,12 @@ class PageController extends Controller
         return $this->render('index', array('config' => $config));
     }
 
+    public function shareAction()
+    {
+        $config = array();
+        return $this->render('share', array('config' => $config));
+    }
+
     public function gameAction()
     {
         global $user;

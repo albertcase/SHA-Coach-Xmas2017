@@ -3,32 +3,21 @@ namespace Lib;
 
 class Redis {
 
-    private $_redis;
+  protected static $instance = NULL;
 
-    public function __construct() {
-        $redis = new \Redis();
-        $redis->connect(REDIS_HOST, REDIS_PORT);
-        $this->_redis = $redis;
-    }
+  protected function __construct() {}
 
-    public function setPhoneCode($key, $value, $expires_in) {
-        $this->_redis->set($key, serialize($value));
-        $this->_redis->setTimeout($key, $expires_in);
-    }
-
-    public function get($key) {
-        $key_value = $this->_redis->get($key);
-        return unserialize($key_value);
-    }
-
-    public function set($key, $value)
-    {
-        $this->_redis->set($key, serialize($value));
-    }
-
-    public function setTimeout($key, $expires_in)
-    {
-        $this->_redis->setTimeout($key, $expires_in);
-    }
+  public static function getInstance() {
     
+    if (!isset(static::$instance)) {
+      $redis = new \Redis();
+      $redis->connect(REDIS_HOST);
+      //$redis->auth(variable_get('redis_client_password'));
+      $redis->select(REDIS_DBNAME);
+      // if (!empty(variable_get('cache_prefix')))
+      //   $redis->setOption(\Redis::OPT_PREFIX, variable_get('cache_prefix'));
+      static::$instance = $redis;
+    }
+    return static::$instance;
+  }
 }

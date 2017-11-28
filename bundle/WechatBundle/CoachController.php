@@ -10,6 +10,7 @@ class CoachController extends Controller
 	public function callbackAction()
 	{
 		$request = $this->request;
+		$url = $request->getSourcetUrl();
 		if ($url = $request->getSourcetUrl()) {
 			$fields = array(
 				'openid' => array('notnull', '120'),
@@ -17,7 +18,7 @@ class CoachController extends Controller
 			$request->validation($fields);
 			$userAPI = new UserAPI();
 			$openid = $request->query->get('openid');
-			$user = $userAPI->userLoad($openid);
+			$user = $userAPI->userLogin($openid);
 			if(!$user) {
 				$this->statusPrint('error');
 			}

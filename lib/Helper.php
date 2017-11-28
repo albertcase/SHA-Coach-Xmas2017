@@ -25,7 +25,7 @@ class Helper {
 
     if(isset($data->{$index})) {
       $sql = "SELECT 1 FROM `{$table}` WHERE `{$index}` = :index";
-      $query = $pdo->prepare($sql);
+      $query = $pdo->prepare($sql);    
       $query->execute(array(':index' => $data->{$index}));
       if($query->fetch(\PDO::FETCH_ASSOC)){
         if(isset($data->created))
@@ -53,7 +53,7 @@ class Helper {
     $fields_set = substr($fields_set, 0, -2);
     $sql = "INSERT INTO `{$table}` SET {$fields_set}";
 
-    $query = $pdo->prepare($sql);
+    $query = $pdo->prepare($sql);   
     $res = $query->execute($params);
     if($res) {
       return $pdo->lastinsertid();
@@ -83,7 +83,7 @@ class Helper {
     }
     $sql = "UPDATE `{$table}` SET {$fields_set}";
     //var_dump($sql, $params);exit;
-    $query = $pdo->prepare($sql);
+    $query = $pdo->prepare($sql);   
     $res = $query->execute($params);
     if($res) {
       return true;
@@ -92,12 +92,12 @@ class Helper {
   }
 
   public function uuidGenerator() {
-    $str = md5(uniqid(mt_rand(), true));
-    $uuid  = substr($str,0,8) . '-';
-    $uuid .= substr($str,8,4) . '-';
-    $uuid .= substr($str,12,4) . '-';
-    $uuid .= substr($str,16,4) . '-';
-    $uuid .= substr($str,20,12);
+    $str = md5(uniqid(mt_rand(), true)); 
+    $uuid  = substr($str,0,8) . '-';   
+    $uuid .= substr($str,8,4) . '-';   
+    $uuid .= substr($str,12,4) . '-';   
+    $uuid .= substr($str,16,4) . '-';   
+    $uuid .= substr($str,20,12); 
     return $uuid;
   }
 }
