@@ -104,7 +104,7 @@
 
 	var timer = null, count = 0, paused = 0, countInit = 0;
 	var scene = document.getElementById('scene');
-	var gemeTime = document.querySelector('.gtContext');
+	var gemeTime = document.querySelector('.timeArea');
 	var sceneWidth = parseInt(window.getComputedStyle(scene).width, 10);
 	var sceneHeight = parseInt(window.getComputedStyle(scene).height, 10);
 
@@ -456,7 +456,7 @@
 
 			if(!me.isEat){
 				me.eatScores++;
-				console.log(me.eatScores);
+				// console.log(me.eatScores);
 				// count -= 20; 
 				// console.log('isEat');
 			};
@@ -485,7 +485,7 @@
 		this.element = el;
 		this.minutes = 0;   // 分
 		this.second = 0;    // 秒
-		this.time = null;
+		this.time = [];
 		this.init = function(){
 			this.update();
 		}
@@ -497,12 +497,19 @@
 			// 	c += 10;
 			// }
 			if(curCountNum % 100 === 0 || paused || star.isEat){
-				this.minutes = Math.floor(curCountNum / 100);
+				this.minutes = Math.floor(curCountNum / 100) + '';
 			}
-			this.second = curCountNum % 100;
+			this.second = curCountNum % 100 + '';
 			// console.log(this.minutes, this.second);
+			// this.time = [(this.minutes < 10 ? '0' + this.minutes : this.minutes)+'', ':', (this.second < 10 ? '0' + this.second : this.second)+''];
+			// console.log(this.time);
+
 			this.element.innerHTML = `
-				<span class="minutes">${this.minutes < 10 ? '0' + this.minutes : this.minutes}: </span><span class="second">${this.second < 10 ? '0' + this.second : this.second}</span>
+				<div class="timePos n${this.minutes < 10 ? '0' : this.minutes[0]}"></div>
+                <div class="timePos n${this.minutes < 10 ? this.minutes[0] : this.minutes[1]}"></div>
+                <div class="timePos n10"></div>
+                <div class="timePos n${this.second < 10 ? '0' : this.second[0]}"></div>
+                <div class="timePos n${this.second < 10 ? this.second[0] : this.second[1]}"></div>
 			`;
 		}
 	}
@@ -516,12 +523,12 @@
 	gt.init();
 
 	function start(){
-		// console.log(countInit);
-		if(countInit === 300){
+		console.log(countInit);
+		if(countInit === 200){
 			sceneBgChange('.scene2');
-		}else if(countInit === 600){
+		}else if(countInit === 400){
 			sceneBgChange('.scene3');
-		}else if(countInit === 900){
+		}else if(countInit === 600){
 			sceneBgChange('.scene4');
 		}else if(countInit === 1){
 			sceneBgChange('.scene1');
@@ -560,9 +567,6 @@
 	// 背景更换
 	function sceneBgChange(el){
 
-		// $(".scene-bg").animate({'opacity': "0"}, 1000, 'swing', function(){
-		// 	$(this).css({'visibility': 'hidden'});
-		// });
 		var prvHover = $(".scene-bg.hover");
 		
 		/* Use a custom bezier curve. */
@@ -584,18 +588,13 @@
 
 		  }
 		});
-		// $(el).velocity({ opacity: 1 }, [ 0.17, 0.67, 0.83, 0.67 ]);
-		// $(el).animate({'opacity': "1"}, 1000, 'linear', function(){
-		// 	$(this).css({'visibility': 'visible'});
-		// });
-		
 	}
 	
 	
 
 
 
-	$(".gameTips a").on('click', function(){
+	$(".gameTips a.iknow-btn").on('click', function(){
 		start();
 		sceneBgChange('.scene1');
 		$('.gameTips').hide();
