@@ -1,0 +1,175 @@
+// you
+;(function(w){
+	function Hero(){
+		this.el = null;
+		this.width = null;
+		this.height = null;
+		this.x = 0;
+		this.y = 55;
+		this.latex = 0;
+		this.latey = 0;
+		this.parentEl = document.getElementById('scene');
+		this.speed = 20;
+		this.keyCode = ['37', '38', '39', '40', '32'];
+		this.animators = new AnimationQueue();
+		this.status = 'paused';
+		this.jump = {
+			'count': 0,
+			'first': 0,
+			'end': 0
+		};
+		//this.star = null;
+		this.common = new Common();
+		this.elClassName = null;
+
+		this.isEat = 0;
+	}
+
+	Hero.prototype = {
+		init: function(){
+			this.create();
+			this.render();
+
+			this.el.style = `left: ${this.x}px; top: ${this.y}%;`;
+			this.bind();
+		},
+		render: function(){
+			var scenew = parseInt(w.getComputedStyle(this.parentEl).width, 10);
+			this.el = document.getElementById('hero');
+			this.x = Math.floor(scenew * 0.1);
+			//this.star = star;
+			this.width = parseInt(w.getComputedStyle(this.el).width, 10);
+			this.height = parseInt(w.getComputedStyle(this.el).height, 10);
+			// console.log(this.width, this.height);
+		},
+		create: function(){
+			this.elClassName = (!this.common.GetQueryString('id') ? 0 : this.common.GetQueryString('id'));
+			var classArray = ['kl', 'mhl', 'qw'];
+			var el = document.createElement('div');
+				el.id = 'hero';
+				el.className = 'hero ' + classArray[this.elClassName];
+			this.parentEl.appendChild(el);
+		},
+		left: function(){
+			this.latex -= this.speed;
+			this.update();
+		},
+		right: function(){
+			this.latex += this.speed;
+			this.update();
+		},
+		update: function(){
+			this.el.style.transform = 'translate('+ this.latex +'px, ' + this.latey + 'px)';
+		},
+		anim: function(){
+			if(this.status === 'play') return;
+			this.status = 'play';
+			magicFun.paused = 0;
+			var me = this;
+			var a1 = new Animator(300, function(p){
+			    var tx = 160 - 160 * (1-p);
+			    me.latey = -tx;
+			    // me.latex = -tx;;
+			    me.update();
+			})
+
+			var a2 = new Animator(400, function(p){
+			    var tx = -160 * (1-p);
+			    me.latey = tx;
+			    me.update();
+			})
+
+
+			me.animators.append(a1, a2, function repeat(){
+		        // console.log('complate!');
+		        me.status = 'paused';
+		        me.isEat = 0;
+		    });
+		    me.animators.flush();
+		},
+		jumpMobile: function(b){
+			var me = this;
+			me.jump.count++;
+			if(me.jump.count > 6) {
+				if(hero.status === 'paused' && (me.jump.first - me.jump.end) >= 4 && (me.jump.first > me.jump.end)){
+					hero.anim();
+				};
+				me.jump.count = 0;
+			};
+			
+			if(me.jump.count == 1){
+				me.jump.first = b;
+			}
+			if(me.jump.count == 6){
+				me.jump.end = b;
+			}
+		},
+		handleOrientation: function(orientData){
+			var me = this;
+			var absolute = orientData.absolute;
+			var alpha = orientData.alpha;
+			var beta = orientData.beta;
+			var gamma = Math.floor(orientData.gamma);
+				me.jumpMobile(gamma);
+		},
+		bind: function(){
+			var me = this;
+			// PC 跳跃事件
+			document.onkeyup = function(evt){
+				if(hero.status === 'play') return;
+
+			    evt = (evt) ? evt : w.event;
+			    if (evt.keyCode) {
+			        
+				    if(evt.keyCode == me.keyCode['0']){
+				       if(magicFun.paused)return;
+				       me.left();
+				       console.log('左')
+				    }else if(evt.keyCode == me.keyCode['2']){
+				       if(magicFun.paused)return;
+				   	   console.log('右')
+				   	   me.right();
+				    }else if(evt.keyCode == me.keyCode['3']){
+				   	   console.log('下')
+				    }else if(evt.keyCode == me.keyCode['1'] || evt.keyCode == me.keyCode['4']){
+			    		me.anim();
+				    }else{
+
+				    }
+				}
+			}
+
+
+
+			// MOBILE 跳跃事件
+			w.addEventListener("deviceorientation", me.handleOrientation.bind(me), true);
+
+		}
+	}
+
+	w.hero = new Hero();
+	hero.init();
+})(window);
+
+
+// w.addEventListener("deviceorientation", handleOrientation, true);
+// var timeA = 0,
+// 	nowB = 0;;
+// function handleOrientation(orientData){
+// 	nowB = new Date().getTime();
+// 	document.getElementById('result').innerHTML = (nowB - timeA);
+// 	if((nowB - timeA) > 1000){
+
+// 		timeA = nowB;
+
+// 		var absolute = orientData.absolute;
+// 		var alpha = orientData.alpha;
+// 		var beta = orientData.beta;
+// 		var gamma = Math.floor(orientData.gamma);
+// 		//document.getElementById('result').innerHTML =  (nowB - timeA) + ':' +gamma;
+// 	};
+	
+// 	// if(hero.status === 'paused' && (gamma > 5 && gamma < 18)){
+// 	// 	hero.anim();
+// 	// };
+// }

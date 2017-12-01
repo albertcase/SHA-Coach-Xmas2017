@@ -49,32 +49,20 @@
 </div>
 
 <div id="dreambox">
-    <div class="section" id="scene">
+    <div class="section show" id="scene">
         
         <div class="gameTips">
             <a href="javascript:void(0);" class="iknow-btn"></a>
         </div>
-        <div class="element">
-<!--             <div class="el el-1"></div>
-            <div class="el el-2"></div>
-            <div class="el el-3"></div>
-            <div class="el el-4"></div>
-            <div class="el el-5"></div>
-            <div class="el el-6"></div> -->
-        </div>
+        <div class="element"></div>
 
         <div class="gameover">GAME OVER</div>
         <div id="gemeTime">
             <div class="timeArea">
-                <div class="timePos n0"></div>
-                <div class="timePos n1"></div>
-                <div class="timePos n10"></div>
-                <div class="timePos n2"></div>
-                <div class="timePos n3"></div>
+                <!-- 正在加载... -->
             </div>
             <!-- <div class="gtContext"></div> -->
         </div>
-        <div id="hero" class="hero"></div>
         <div class="bg">
             <div class="scene-bg scene1"></div>
             <div class="scene-bg scene2"></div>
@@ -97,11 +85,10 @@
     </div>
 
     <!-- 游戏榜单 -->
-    <div class="section show" id="toplist">
+    <div class="section" id="toplist">
         <div class="toplist-l">
-            <div class="toplist-userinfo">
-                <div class="socurs">01 分 23 秒</div>
-                <div class="ranking">121名</div>
+            <div class="toplist-userinfo waiting">
+                正在加载...
             </div>
             <div class="qrcode">
                 <img src="img/qrcode.png" width="100%;">
@@ -110,14 +97,22 @@
         </div>
         <div class="toplist-r">
             <div class="toplist-table">
-                <ul>
-                    <li><span>xyz</span><span>1分20秒</span></li>
-                    <li><span>xyz</span><span>1分20秒</span></li>
-                    <li><span>xyz</span><span>1分20秒</span></li>
-                    <li><span>xyz</span><span>1分20秒</span></li>
-                    <li><span>xyz</span><span>1分20秒</span></li>
-                    <li><span>xyz</span><span>1分20秒</span></li>
+                <ul class="waiting">
+                    正在加载...
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分享 -->
+    <div class="section" id="share">
+        <div class="share-con">
+            <div class="head-star"></div>
+            <div class="xmasVideo"></div>
+            <div class="share-btn-area">
+                <a href="javascript:void(0);" class="replay-btn"></a>
+                <a href="javascript:void(0);" class="list-btn"></a>
+                <a href="javascript:void(0);" class="chose-buy-btn"></a>
             </div>
         </div>
     </div>
@@ -127,5 +122,139 @@
 
 
 <script type="text/javascript" src="js/bundle.min.js"></script>
+<script type="text/javascript">
+
+    // ?id =1
+    function GetQueryString(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return unescape(r[2]); return null;
+    }
+
+    // 视频
+    function XmasVideo(el){
+        return {
+            datas: {
+                parentEl: document.querySelector(el),
+                path: 'media/test.mp4',
+                poster: 'media/poster.jpg',
+                posterEl: null,
+                el: null,
+                videoWidth: 0
+            },
+            init: function(){
+                var me  = this;
+                me.render();
+            },
+            render: function(){
+                var me = this;
+                me.datas.videoWidth = parseInt(window.getComputedStyle(me.datas.parentEl).width, 10);
+                me.create();
+            },
+            create: function(){
+                var me = this;
+
+                var posterEl = document.createElement('div');
+                posterEl.className = 'posterEl';
+                me.datas.posterEl = posterEl;
+                me.datas.parentEl.appendChild(posterEl);
+
+                var el = document.createElement('video');
+                el.id = 'xmas-video';
+                el.src = me.datas.path;
+                el.poster = me.datas.poster;
+                el.width = me.datas.videoWidth;
+                el.innerHTML = '您的浏览器不支持 video 标签。';
+                me.datas.el = el;
+                me.datas.parentEl.appendChild(el);
+                
+
+                me.bind();
+            },
+            bind: function(){
+                var me = this;
+                me.datas.posterEl.onclick = function(){
+                    me.datas.el.play();
+                    me.datas.posterEl.style.visibility = 'hidden';
+                }
+            }
+        }
+    }
+
+    var xmasVideo = new XmasVideo('.xmasVideo');
+    xmasVideo.init();
+
+
+    // 成绩榜
+    var toplistJson = {
+        'list': [
+            {
+                'name': 'a',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'b',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'c',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'd',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'e',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'f',
+                'socurs': '1分20秒'
+            }
+        ],
+        'userinfo': {
+            'socurs': '1分23秒',
+            'ranking': '121'
+        }
+    };
+
+    function Toplist(listEl, userinfoEl){
+        this.setting = {
+            'data': toplistJson,
+            'listEl': document.querySelector(listEl),
+            'userinfoEl': document.querySelector(userinfoEl)
+        }
+        this.init = function(){
+            this.update();
+        }
+    }
+
+    Toplist.prototype.update = function(){
+        var me = this;
+        var userinfo = me.setting.data.userinfo;
+        var list = me.setting.data.list;
+
+        var listArray = [], userinfoHTML = '';
+        for(let i = 0; i < list.length; i++){
+            listArray.push(`<li><span>${list[i].name}</span><span>${list[i].socurs}</span></li>`);
+        }
+
+        userinfoHTML = `
+            <div class="socurs">${userinfo.socurs}</div>
+            <div class="ranking">${userinfo.ranking}名</div>
+        `;
+
+        me.setting.listEl.innerHTML = listArray.join('');
+        me.setting.userinfoEl.innerHTML = userinfoHTML;
+    }
+
+    var toplist = new Toplist('.toplist-table ul', '.toplist-userinfo');
+    toplist.init();
+
+
+
+
+</script>
 </body>
 </html>

@@ -44,7 +44,15 @@ const nmsrc = 'node_modules/';
 let paths = {
     pages: ['src/*.html'],
     css: ['src/css/*.scss'],
-    js: ['src/js/*.js'],
+    js: [
+        'src/js/animate.js',
+        'src/js/hero.js',
+        'src/js/barriers.js',
+        'src/js/element.js',
+        'src/js/star.js',
+        'src/js/create.js',
+        'src/js/main.js'
+    ],
     vendor: ['src/js/vendor/*.js'],
     img: ['src/img/*.{png,jpg,gif,ico}', 'src/img/*/*.{png,jpg,gif,ico}']
 };
@@ -165,6 +173,7 @@ gulp.task("default", function(){
     gulp.watch(paths.css, ['miniCss']);
     gulp.watch(paths.img, ['miniImg']);
     gulp.watch(paths.js, ['miniJs']);
+    gulp.watch(paths.vendor, ['miniVendorJs']);
     // gulp.watch(paths.js, ['miniJs', 'miniBaseJs']);
 });
 

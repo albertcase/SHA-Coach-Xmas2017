@@ -1,16 +1,32 @@
-;(function($){
+;(function(w, $){
 
-	var timer = null;
-	var scene = document.getElementById('scene');
-	var sceneWidth = parseInt($(scene).css('width'), 10);
-	var sceneHeight = parseInt($(scene).css('height'), 10);
-	// 金币类;
+	var elementsDataJson = [
+		{
+			'className': ['el-4', 'el-5', 'el-6', 'el-3', 'el-1', 'el-2'],
+			'rate': ['0', '90', '80', '180', '50', '100', '167']
+		},
+		{
+			'className': ['el2-1', 'el2-2', 'el2-3', 'el2-4', 'el2-5', 'el2-6'],
+			'rate': ['0', '90', '80', '180', '50', '100', '167'],
+		},
+		{
+			'className': ['el3-1', 'el3-2', 'el3-3', 'el3-4', 'el3-5', 'el3-6'],
+			'rate': ['0', '90', '80', '180', '150', '30', '167']
+		},
+		{
+			'className': ['el4-1', 'el4-2', 'el4-3', 'el4-4', 'el4-5', 'el4-6'],
+			'rate': ['0', '90', '80', '180', '90', '60', '167']
+		}
+	]
+
+	// 类;
 	function Money(x, speed, cn){
 		// 没次循环增加的像素数
 		this.speed = (speed === 0 ? 6 : speed);
 		this.x = x;
 		this.className = cn;
 	}
+
 	Money.prototype = {
 		draw:function(parentEl){
 			var el = document.createElement('div');
@@ -25,20 +41,46 @@
 	}
 
 
-	var App = {
+	var elements_obj = {
+		scene: document.getElementById('scene'),
+		sceneWidth: 0,
+		sceneHeight: 0,
+		timer: null,
 		count: 0,
 		elements: [],
 		parentEl: document.querySelector('.element'),
 		abc: 0,
-		rate: 15,
+		elDataArrayIndex: 0,
+		elDataArray: null,
+		speed: 1,
+		setTime: 5,
+		waitCount: 0,
+		initX: -160,
+		init: function(){
+			this.render();
+		},
+		render: function(){
+			this.sceneWidth = parseInt(w.getComputedStyle(this.scene).width, 10);
+			this.sceneHeight = parseInt(w.getComputedStyle(this.scene).height, 10);
+			this.update();
+		},
+		update: function(){
+			var me = this;
+			me.timer = setInterval(me.loop, me.setTime);
+		},
+		paused: function(){
+			var me = this;
+			clearInterval(me.timer);
+			me.timer = null;
+		},
 		draw: function(){
-			var me = App;
+			var me = elements_obj;
 			me.parentEl.innerHTML = '';
 			for(var i=0;i<me.elements.length;i++){
 				var o = me.elements[i];
 
 				// 清理屏幕外的对象
-				if(o.x > sceneWidth + 180 || o.x < -180){
+				if(o.x > me.sceneWidth + 180 || o.x < -180){
 					me.elements.splice(i,1);
 				}else{
 					o.draw(me.parentEl);
@@ -46,56 +88,50 @@
 			}
 		},
 		loop: function(){
-			var me = App;
-			var elClassArr = ['el-4', 'el-5', 'el-6', 'el-3', 'el-1', 'el-2'];
+			var me = elements_obj;
+			// if(magicFun.paused) return false;
+			me.elDataArray = elementsDataJson[me.elDataArrayIndex];
 			
-			for(var i=0;i<me.elements.length;i++){
-				me.elements[i].move();
-			}
-
-			//var chance = Math.floor(Math.random() * 1000);
-
-			var x = -180;
-			var speed = 5;
-
-
-			if(me.abc === 0){
-				me.rate = 16;
-			}else if(me.abc === 1){
-				me.rate = 22;
-			}else if(me.abc === 2){
-				me.rate = 40;
-			}else if(me.abc === 3){
-				me.rate = 84;
-			}else if(me.abc === 4){
-				me.rate = 34;
-			}else if(me.abc === 5){
-				me.rate = 42;
-			}else{
-
-			};
-
-
+			var x = me.initX;
+			var rate = (!me.elDataArray['rate'][me.abc] ? 15 : me.elDataArray['rate'][me.abc]);
 			// 1/10的对象添加概率
-			if(me.count%me.rate === 0){
-				if(me.abc >= 6){
+
+			me.wait(rate, function(){
+				if(me.abc > 6){
 					me.abc = 0;
 					me.count = 0;
 				}
-				var money = new Money(x, speed, elClassArr[me.abc]);
-				if(me.elements.length < 7){
-					me.elements.push(money);
-				};
+				var money = new Money(x, me.speed, me.elDataArray['className'][me.abc]);
+
+				me.elements.push(money);
+
 				me.abc ++;
+
+			});
+
+			for(var i = 0; i < me.elements.length; i++){
+				me.elements[i].move();
 			}
 			
 			me.draw();
 			
 			me.count ++;
+		},
+		wait: function(v, callback){
+			var me = this;
+			me.waitCount++;
+			if(me.waitCount >= v){
+				me.waitCount = 0;
+				callback();
+			}
 		}
 	}
 
-	timer = setInterval(App.loop, 70);
+
+	w.elementsObj = elements_obj;
+	// 暂停 paused
+	// 更新 update
+	elements_obj.init();
 
 
-})(jQuery)
+})(window, jQuery)
