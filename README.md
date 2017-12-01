@@ -29,11 +29,17 @@ domian/api/record
 ```
 ##### Get Parameter
 
-records: 144.122
+records:游戏成绩
+animal:动物
+bar:跳过几个障碍物
+
+records=144.122&animal=konglong&bar=4
 
 ```javascript
 {
-	records: 144.122
+  records: 144.122,
+  animal: konglong,
+  bar: 4  
 }
 ```
 

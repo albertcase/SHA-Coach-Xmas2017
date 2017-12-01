@@ -49,12 +49,16 @@ class ApiController extends Controller
         $request = $this->request;
         $fields = array(
             'records' => array('notnull', '120'),
+            'animal' => array('notnull', '120'),
+            'bar' => array('notnull', '120'),
         );
         $request->validation($fields);
 
         $recordInfo = new \stdClass();
         $recordInfo->uid = $user->uid;
         $recordInfo->records = $request->request->get('records');
+        $recordInfo->animal = $request->request->get('animal');
+        $recordInfo->bar = $request->request->get('bar');
 
   		$result = $this->saveRecord($recordInfo); 
   		$this->dataPrint($result);
