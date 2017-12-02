@@ -275,10 +275,11 @@
 
 
     function PageController(){
-        this.common = 
+        this.common = new Common();
         this.container = {
             'homePlayBtn': null,
-            'startGo': null
+            'startGo': null,
+            'swiper': null
         }
 
         this.init = function(){
@@ -293,14 +294,19 @@
         }
 
         this.bind = function(){
-
+            var me = this;
             // 包你好玩按钮
-            this.container.homePlayBtn.addEventListener('click', function(){
+            me.container.homePlayBtn.addEventListener('click', function(){
                 common.PageRouter('chose', function(){
-                    if(swiper) return false;
+                    if(me.swiper) return false;
                     var jueSeItem = ['kl', 'qw', 'mhl'];
-                    var swiper = new Swiper('.swiper-container',{
-                        effect : 'coverflow',
+                    me.swiper = new Swiper('.swiper-container',{
+                        // effect : 'fade',  // coverflow
+                        effect : 'flip',
+                        flip: {
+                            slideShadows : true,
+                            limitRotation : true,
+                        },
                         slidesPerView: 1,
                         centeredSlides: true,
                         pagination: {
@@ -316,8 +322,8 @@
             })
 
             // 出发
-            this.container.startGo.addEventListener('click', function(){
-                location.href = 'game.html';
+            me.container.startGo.addEventListener('click', function(){
+                location.href = 'game.html?id=' + me.swiper.activeIndex;
             })
         }
     }

@@ -36,7 +36,7 @@
 		render: function(){
 			var scenew = parseInt(w.getComputedStyle(this.parentEl).width, 10);
 			this.el = document.getElementById('hero');
-			this.x = Math.floor(scenew * 0.1);
+			this.x = Math.floor(scenew * 0.2);
 			//this.star = star;
 			this.width = parseInt(w.getComputedStyle(this.el).width, 10);
 			this.height = parseInt(w.getComputedStyle(this.el).height, 10);
@@ -44,7 +44,7 @@
 		},
 		create: function(){
 			this.elClassName = (!this.common.GetQueryString('id') ? 0 : this.common.GetQueryString('id'));
-			var classArray = ['kl', 'mhl', 'qw'];
+			var classArray = ['kl', 'qw', 'mhl'];
 			var el = document.createElement('div');
 				el.id = 'hero';
 				el.className = 'hero ' + classArray[this.elClassName];

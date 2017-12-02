@@ -72,29 +72,37 @@
 
 
 .coachPro{
+  width: 1.2rem;
+  height: 1.2rem;
 	background: url('../img/scene-1/bag.png') center no-repeat;
   background-size: auto 100%;
 	position: absolute;
   z-index: 10;
   &.style1{
+    left: 10%;
     background: url('../img/scene-1/bag.png') center no-repeat;
     background-size: auto 100%;
   }
   &.style2{
+    left: 30%;
     background: url('../img/scene-2/bag.png') center no-repeat;
     background-size: auto 100%;
   }
   &.style3{
+    left: 60%;
     background: url('../img/scene-3/bag.png') center no-repeat;
     background-size: auto 100%;
   }
   &.style4{
+    left: 80%;
     background: url('../img/scene-4/bag.png') center no-repeat;
     background-size: auto 100%;
   }
 }
 
 .heart{
+  width: 0.7rem;
+  height: 0.7rem;
   background: url('../img/heart.png') center no-repeat;
   background-size: auto 100%;
   position: absolute;
@@ -1110,12 +1118,6 @@
 }
 
 
-.section#scores{
-  opacity: 0.2;
-}
-
-
-
 
 @media all and (orientation : landscape) {  // 横屏
 
@@ -1137,7 +1139,7 @@
     display: inline-block;
   }
   .xmasVideo{
-    width: 60%;
+    width: 6.0rem;
     height: 2.36rem;
     position: relative;
     float: left;

@@ -31,9 +31,9 @@
 		this.parentEl = document.getElementById('scene');
 		this.cname = 'style1';
 		this.x = 0;
-		this.y = 70;
-		this.width = 0;
-		this.height = 0;
+		this.y = 62;
+		this.width = null;
+		this.height = null;
 		this.elements = [];
 		this.speed = 6;
 		this.hero = null;
@@ -43,9 +43,10 @@
 		this.render();
 		var el = document.createElement('div');
 			el.className = 'coachPro ' + this.cname;
-			el.style = `width: ${this.width}%; height: ${this.height}%; left: ${this.x}px; top: ${this.y}%`;
+			el.style = `left: ${this.x}px; top: ${this.y}%`;
 			this.parentEl.appendChild(el);
-
+			this.width = parseInt(w.getComputedStyle(el).width, 10);
+			this.height = parseInt(w.getComputedStyle(el).height, 10);
 		return el;
 	}
 	Barriers.prototype.render = function(){
@@ -78,10 +79,10 @@
 		var pos = {
 			x: me.hero.latex + me.hero.x,  // 250
 			y: me.hero.latey * -1,       // -0
-			heroWidth: Math.floor(me.hero.width * 0.8)
+			heroWidth: Math.floor(me.hero.width * 0.6)
 		}
 
-		if(elLeft > (pos.x) && elLeft < (pos.x + pos.heroWidth) && me.hero.status === 'paused'){
+		if(elLeft > (pos.x - pos.heroWidth) && elLeft < (pos.x + pos.heroWidth) && me.hero.status === 'paused'){
 			magicFun.paused = 1;
 			elLeft = (pos.x + pos.heroWidth);
 			el.className += ' shake';

@@ -56,7 +56,6 @@
         </div>
         <div class="element"></div>
 
-        <div class="gameover">GAME OVER</div>
         <div id="gemeTime">
             <div class="timeArea">
                 <!-- 正在加载... -->
@@ -75,8 +74,8 @@
     <div class="section" id="scores">
         <div class="toplist-tag"></div>
         <div class="scores-show--context">   
-            <div class="heartCount">30 个</div>
-            <div class="timeCount">01 分 23 秒</div>
+            <div class="heartCount">- 个</div>
+            <div class="timeCount">- 分 - 秒</div>
         </div>
         <div class="scores-btn--area">
             <a href="javascript:void(0);" class="replay-btn"></a>
@@ -123,13 +122,6 @@
 
 <script type="text/javascript" src="js/bundle.min.js"></script>
 <script type="text/javascript">
-
-    // ?id =1
-    function GetQueryString(name){
-        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if(r!=null)return unescape(r[2]); return null;
-    }
 
     // 视频
     function XmasVideo(el){
@@ -184,75 +176,67 @@
     var xmasVideo = new XmasVideo('.xmasVideo');
     xmasVideo.init();
 
+    
 
-    // 成绩榜
-    var toplistJson = {
-        'list': [
-            {
-                'name': 'a',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'b',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'c',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'd',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'e',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'f',
-                'socurs': '1分20秒'
-            }
-        ],
-        'userinfo': {
-            'socurs': '1分23秒',
-            'ranking': '121'
-        }
-    };
 
-    function Toplist(listEl, userinfoEl){
-        this.setting = {
-            'data': toplistJson,
-            'listEl': document.querySelector(listEl),
-            'userinfoEl': document.querySelector(userinfoEl)
+
+    function PageController(){
+        if(!(this instanceof PageController)){
+            var self = new PageController();
+            self.init();
+            return self;
+        };
+
+        this.common = new Common();
+        this.container = {
+            'giftBtn': null,
+            'replayBtn': null,
+            'toplistTag': null,
+            'listBtn': null,
+            'backBtn': null
         }
-        this.init = function(){
-            this.update();
-        }
+    } 
+
+    PageController.prototype.init = function(){
+        this.render();
     }
 
-    Toplist.prototype.update = function(){
+    PageController.prototype.render = function(){
+        this.container.giftBtn = document.querySelector('.gift-btn');
+        this.container.replayBtn = document.querySelector('.replay-btn');
+        this.container.listBtn = document.querySelector('.list-btn');
+        this.container.backBtn = document.querySelector('.back-btn');
+        this.container.toplistTag = document.querySelector('.toplist-tag');
+
+        this.bind();
+    }
+
+    PageController.prototype.bind = function(){
         var me = this;
-        var userinfo = me.setting.data.userinfo;
-        var list = me.setting.data.list;
+        me.container.giftBtn.addEventListener('click', function(){
+            me.common.PageRouter('share');
+        })
 
-        var listArray = [], userinfoHTML = '';
-        for(let i = 0; i < list.length; i++){
-            listArray.push(`<li><span>${list[i].name}</span><span>${list[i].socurs}</span></li>`);
-        }
+        me.container.replayBtn.addEventListener('click', function(){
+            location.reload();
+        })
 
-        userinfoHTML = `
-            <div class="socurs">${userinfo.socurs}</div>
-            <div class="ranking">${userinfo.ranking}名</div>
-        `;
+        me.container.toplistTag.addEventListener('click', function(){
+            me.common.PageRouter('toplist');
+        })
 
-        me.setting.listEl.innerHTML = listArray.join('');
-        me.setting.userinfoEl.innerHTML = userinfoHTML;
+        me.container.listBtn.addEventListener('click', function(){
+            me.common.PageRouter('toplist');
+            
+        })
+
+        this.container.backBtn.addEventListener('click', function(){
+            me.common.PageRouter('scores');
+        })
+
     }
 
-    var toplist = new Toplist('.toplist-table ul', '.toplist-userinfo');
-    toplist.init();
-
-
+    PageController();
 
 
 </script>
