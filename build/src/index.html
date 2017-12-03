@@ -215,12 +215,15 @@
         this.setting = {
             id: id,
             popupFrame: null,
-            eventEl: eventEl
+            eventEl: eventEl,
+            scrollId: null
         }
     }
 
     Ruler.prototype.init = function(){
         this.render();
+        this.setting.scrollId = document.getElementById('ruleScroll');
+        common.base.overscroll(this.setting.scrollId);
     }
 
     Ruler.prototype.render = function(){
@@ -232,7 +235,7 @@
         return `
             <div class="rule-con">
                 <div class="title">活动细则</div>
-                <div class="content">
+                <div class="content" id="ruleScroll">
                     <strong>参与本活动无需以购买蔻驰产品或服务为前提。购买我们的产品或服务并不会增加你在本次活动中的获胜机会。本次活动最终解释权归蔻驰贸易（上海）有限公司所有。</strong><br>
 
                     <ol type="1">
@@ -312,6 +315,8 @@
                 el.src = me.datas.path;
                 el.poster = me.datas.poster;
                 el.width = me.datas.videoWidth;
+                el.setAttribute('playsinline', '');
+                el.setAttribute('webkitPlaysinline', '');
                 el.innerHTML = '您的浏览器不支持 video 标签。';
                 me.datas.el = el;
                 me.datas.parentEl.appendChild(el);
