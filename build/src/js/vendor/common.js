@@ -1,6 +1,5 @@
 // Common.js
-;(function(w){
-
+;(function(w, $){
     Array.prototype.unique = function(){
         var res = [];
         var json = {};
@@ -119,7 +118,7 @@
             },3000);
         },
         ajaxFun: function(ajaxType, ajaxUrl, ajaxData, ajaxDataType, ajaxCallback){
-           $.ajax({
+            $.ajax({
                 type: ajaxType,
                 url: ajaxUrl,
                 data: ajaxData,
@@ -329,5 +328,5 @@
 
 
 
-})(window);
+})(window, jQuery);
 

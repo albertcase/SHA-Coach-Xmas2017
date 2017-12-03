@@ -34,6 +34,10 @@
         }
     };
 
+    fetch.authorize({}, function(data){
+        console.log(data);
+    });
+
     function Toplist(listEl, userinfoEl){
         this.setting = {
             'data': toplistJson,
@@ -215,8 +219,20 @@
 
 
 	MagicFun.prototype.count = function(){
+		console.log(fetch);
+
 		var time = timeCount.getTime();
 		var scores = star.eatScores.unique();
+
+		// 提交数据
+		fetch.record({
+	      'records': time,
+		  'animal': me.common.GetQueryString('id'),
+		  'bar': 2
+	    }, function(){
+
+	    });
+
 		document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
 		document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';
 		toplist.init();
