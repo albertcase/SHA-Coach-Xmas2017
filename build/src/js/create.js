@@ -236,6 +236,9 @@
 	w.magicFun = new MagicFun();
 
 	ikonwBtn.addEventListener('click', function(){
+		var bgMusic = document.getElementById('bgMusic');
+		bgMusic.play();
+
 		elementsObj.init();
 
 		timeCount.init();
