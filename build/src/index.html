@@ -90,12 +90,23 @@
         </div>
         <div class="start-btn"></div>
     </div>
+
+    <div class="section" id="share">
+        <div class="head-star"></div>
+        <div class="xmasVideo"></div>
+        <div class="share-btn-area">
+            <a href="javascript:void(0);" class="replay-btn"></a>
+            <a href="javascript:void(0);" class="list-btn"></a>
+            <a href="javascript:void(0);" class="chose-buy-btn"></a>
+        </div>
+    </div>
 </div>
 
 
 
 <script>
     var common = new Common();
+    common.base.init();
 
     // 成绩榜
     var toplistJson = {
@@ -189,7 +200,8 @@
         }
     }
 
-    Toplist('toplist-popup', '.games-list');
+    var toplistObj = Toplist('toplist-popup', '.games-list');
+    
 
 
 
@@ -268,11 +280,67 @@
     
 
     
+    function XmasVideo(el){
+        return {
+            datas: {
+                parentEl: document.querySelector(el),
+                path: 'media/test.mp4',
+                poster: 'media/poster.jpg',
+                posterEl: null,
+                el: null,
+                videoWidth: 0
+            },
+            init: function(){
+                var me  = this;
+                me.render();
+            },
+            render: function(){
+                var me = this;
+                me.datas.videoWidth = parseInt(window.getComputedStyle(me.datas.parentEl).width, 10);
+                me.create();
+            },
+            create: function(){
+                var me = this;
 
+                var posterEl = document.createElement('div');
+                posterEl.className = 'posterEl';
+                me.datas.posterEl = posterEl;
+                me.datas.parentEl.appendChild(posterEl);
+
+                var el = document.createElement('video');
+                el.id = 'xmas-video';
+                el.src = me.datas.path;
+                el.poster = me.datas.poster;
+                el.width = me.datas.videoWidth;
+                el.innerHTML = '您的浏览器不支持 video 标签。';
+                me.datas.el = el;
+                me.datas.parentEl.appendChild(el);
+                
+
+                me.bind();
+            },
+            bind: function(){
+                var me = this;
+                me.datas.posterEl.onclick = function(){
+                    if(!this.getAttribute("status")){
+                        this.setAttribute("status","play");
+                        me.datas.el.play();
+                        me.datas.posterEl.style.opacity = 0;
+                    }else{
+                        this.removeAttribute("status");
+                        me.datas.el.pause();
+                        // me.datas.posterEl.style.opacity = 1;
+                    }  
+                    // me.datas.el.play();
+                    // me.datas.posterEl.style.visibility = 'hidden';
+                }
+            }
+        }
+    }
+
+    var xmasVideo = new XmasVideo('.xmasVideo');
     
-
-
-
+    
 
     function PageController(){
         this.common = new Common();
@@ -283,9 +351,10 @@
         }
 
         this.init = function(){
-            common.PageRouter('index');
+            common.PageRouter('share');
             this.render();
             this.bind();
+            xmasVideo.init();
         }
 
         this.render = function(){
@@ -332,6 +401,20 @@
     pageController.init();
 
 
+    document.querySelector('.list-btn').addEventListener('click', function(){
+        toplistObj.setting.popupFrame.show();
+    })
+
+
+
+
+
+
+
+
+
+
+        
 </script>
 
 </body>

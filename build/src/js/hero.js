@@ -5,7 +5,7 @@
 		this.width = null;
 		this.height = null;
 		this.x = 0;
-		this.y = 55;
+		this.y = 65;
 		this.latex = 0;
 		this.latey = 0;
 		this.parentEl = document.getElementById('scene');
@@ -148,7 +148,6 @@
 	}
 
 	w.hero = new Hero();
-	hero.init();
 })(window);
 
 

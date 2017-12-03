@@ -112,7 +112,6 @@
 		};
 	}
 	var timeCount = new TimeCount('.timeArea');
-	timeCount.init();
 
 
 	function MagicFun(){
@@ -151,16 +150,16 @@
 			case 2: 
 				me.sceneBgChange('.scene1', 0, 'style1');
 			break;
-			case 600:
+			case 800:
 				me.sceneBgChange('.scene2', 1, 'style2');
 			break;
-			case 1200:
+			case 1600:
 				me.sceneBgChange('.scene3', 2, 'style3');
 			break;
-			case 1800:
+			case 2400:
 				me.sceneBgChange('.scene4', 3, 'style4');
 			break;
-			case 2400:
+			case 3200:
 				me.status = 1;
 				w.removeEventListener('deviceorientation', function(){}, true);
 				me.common.PageRouter('scores');
@@ -217,8 +216,8 @@
 
 	MagicFun.prototype.count = function(){
 		var time = timeCount.getTime();
-		var scores = star.eatScores;
-		document.querySelector('.heartCount').innerHTML = scores + ' 个';
+		var scores = star.eatScores.unique();
+		document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
 		document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';
 		toplist.init();
 		
@@ -237,7 +236,15 @@
 	w.magicFun = new MagicFun();
 
 	ikonwBtn.addEventListener('click', function(){
+		elementsObj.init();
+
+		timeCount.init();
+		hero.init();
+		barriers.init();
+		star.init();
+
 		$('.gameTips').hide();
+
 		magicFun.init();
 	}, false)
 

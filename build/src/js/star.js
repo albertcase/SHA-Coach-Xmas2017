@@ -35,12 +35,14 @@
 		this.width = 0;
 		this.height = 0;
 		this.elements = [];
-		this.speed = 3;
+		this.speed = 4;
 		// this.isEat = 0;
 		// this.c = '';
-		this.writeArr = [];
-		this.eatScores = 0;
+		//this.writeArr = [];
+		this.eatScores = []; //吃掉的心的data-id 
 		this.hero = null;
+
+		this.heroId = 0;
 	}
 
 	Star.prototype.init = function(){ // 创建元素
@@ -49,7 +51,8 @@
 		var el = document.createElement('div');
 			el.className = 'heart ' + this.cname;
 			el.style = `left: ${this.x}px; top: ${this.y}%`;
-			// el.innerHTML = this.c;
+			el.setAttribute('data-id', this.heroId);
+			// el.innerHTML = this.heroId;
 			this.parentEl.appendChild(el);
 			this.width = parseInt(w.getComputedStyle(el).width, 10);
 			this.height = parseInt(w.getComputedStyle(el).height, 10);
@@ -62,9 +65,8 @@
 	}
 	Star.prototype.doing = function(count){
 		var creatEle = null, me = this;
-
-		if(me.writeArr.indexOf(count) < 0) {
-			me.writeArr.push(count);
+		//if(me.writeArr.indexOf(count) < 0) {
+			//me.writeArr.push(count);
 			var random = Math.floor(Math.random() * 1000);
 			// for(let i = 0; i < starData.length; i++){
 			// 	// if(count === starData[i].key){
@@ -80,10 +82,11 @@
 
 			if(count % 100 === 0 || (random % 300 === 0)){
 				if(me.elements.length <= 3){
+					me.heroId++;
 					creatEle = me.init(starData[0].style);
 				}
 			}
-		};
+		//};
 		
 		if(creatEle){
 			me.elements.push(creatEle);
@@ -106,10 +109,13 @@
 			heroWidth: Math.floor(me.hero.width * 0.6)
 		}
 		if(elLeft > pos.x && elLeft < (pos.x + pos.heroWidth) && (me.hero.y - pos.y) < me.y){
-			if(!me.hero.isEat){
-				me.eatScores++;
-				console.log(me.eatScores);
-			};
+
+			me.eatScores.push(el.getAttribute('data-id'))
+			// console.log();
+			// if(!me.hero.isEat){
+			// 	me.eatScores++;
+			// 	console.log(me.eatScores);
+			// };
 			me.hero.isEat = 1;
 			el.style.opacity = 0.1;
 			el.remove();
@@ -127,7 +133,6 @@
 
 
 	window.star = new Star();
-	star.init();
 	// star.doing()
 
 })(window)
