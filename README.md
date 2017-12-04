@@ -98,16 +98,29 @@ null
 ##### status 1
 
 ```javascript
-[
-  {
-    "nickname": "a",
-    "records": "2分3秒38毫秒"
-  },
-  {
-    "nickname": "b",
-    "records": "2分6秒34毫秒"
-  }
-]
+{
+  status : 1,
+  msg : '获取成功！'
+  list : [
+    {
+      "nickname": "a",
+      "records": "2分3秒38毫秒"
+    },
+    {
+      "nickname": "b",
+      "records": "2分6秒34毫秒"
+    }
+  ]
+}
+```
+
+##### status 0
+
+```javascript
+{
+  status : 0,
+  msg : '获取失败！'
+}
 ```
 
 ---
@@ -137,6 +150,8 @@ null
 
 ```javascript
 {
+  "status" : 1,
+  'msg' : '获取成功！',
   "topten": [
     {
       "nickname": "a",
@@ -149,5 +164,14 @@ null
   ],
   "myRecord": "2分3秒28毫秒",
   "myNum": "0"
+}
+```
+
+##### status 0
+
+```javascript
+{
+  status : 0,
+  msg : '获取失败！'
 }
 ```

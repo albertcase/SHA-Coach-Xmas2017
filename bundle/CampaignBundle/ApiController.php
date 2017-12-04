@@ -32,6 +32,8 @@ class ApiController extends Controller
         $userRecords = $this->findRecordByUid($user->uid);
         $userNum = $this->findUserRecordNum((float)$userRecords['records']);
         $result = array(
+            'status' => 1,
+            'msg' => '获取成功！',
             'topten' => $topten,
             'myRecord' => $openApi->recordsFormat($userRecords['records']),
             'myNum' => $userNum,

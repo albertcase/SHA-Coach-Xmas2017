@@ -23,7 +23,8 @@ class OpenApiController extends Controller
     public function toptenAction()
     {
         $result = $this->getTopten();
-        $this->dataPrint($result);
+        $return = array('status' => 1, 'msg' => '获取成功！', 'list' => $result); 
+        $this->dataPrint($return);
     }
 
     public function getTopten()
@@ -56,10 +57,14 @@ class OpenApiController extends Controller
     # 格式化成绩
     public function recordsFormat($records)
     {
-        $times = explode('.', $records);
-        $minute = (int) ($times[0] / 60);   
-        $second = $times[0] % 60;
-        return "{$minute}分{$second}秒{$times[1]}毫秒";
+        if($records) {
+            $times = explode('.', $records);
+            $minute = (int) ($times[0] / 60);   
+            $second = $times[0] % 60;
+            return "{$minute}分{$second}秒{$times[1]}毫秒";
+        } else {
+            return "0秒";
+        }
     }
 
     public function findToptenRecord()
