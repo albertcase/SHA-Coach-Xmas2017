@@ -61,9 +61,9 @@ class OpenApiController extends Controller
             $times = explode('.', $records);
             $minute = (int) ($times[0] / 60);   
             $second = $times[0] % 60;
-            return "{$minute}分{$second}秒{$times[1]}毫秒";
+            return "{$minute}分{$second}秒";
         } else {
-            return "0秒";
+            return "0分0秒";
         }
     }
 
