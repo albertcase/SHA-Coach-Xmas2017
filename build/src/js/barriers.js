@@ -31,7 +31,7 @@
 		this.parentEl = document.getElementById('scene');
 		this.cname = 'style1';
 		this.x = 0;
-		this.y = 67;
+		this.y = 65;
 		this.width = null;
 		this.height = null;
 		this.elements = [];
@@ -82,7 +82,7 @@
 			heroWidth: Math.floor(me.hero.width * 0.8)
 		}
 
-		if(elLeft > (pos.x - pos.heroWidth) && elLeft < (pos.x + pos.heroWidth) && me.hero.status === 'paused'){
+		if(elLeft > (pos.x - pos.heroWidth * 0.6) && elLeft < (pos.x + pos.heroWidth) && me.hero.status === 'paused'){
 			magicFun.paused = 1;
 			elLeft = (pos.x + pos.heroWidth);
 			el.className += ' shake';

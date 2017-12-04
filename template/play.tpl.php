@@ -19,8 +19,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="Keywords" content="">
     <meta name="Description" content="...">
-    <link rel="stylesheet" type="text/css" href="css/bundle.min.css">
-    <script type="text/javascript" src="js/bundle-vendor.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./build/dist/css/bundle.min.css">
+    <script type="text/javascript" src="./build/dist/js/bundle-vendor.min.js"></script>
 </head>
 <body>
 
@@ -128,7 +128,7 @@
             <div class="head-star"></div>
             <div class="xmasVideo">
                 <div class="poster"></div>
-                <video src="media/test.mp4" poster="media/poster.jpg" playsinline webkit-playsinline id="xmas-video" width="100%">
+                <video src="./build/dist/media/test.mp4" poster="./build/dist/media/poster.jpg" playsinline webkit-playsinline id="xmas-video" width="100%">
                     您的浏览器不支持 video 标签。
                 </video>
             </div>
@@ -144,14 +144,14 @@
 </div>
 
 
-<audio src="media/bg-music.mp3" loop id="bgMusic">
+<audio src="./build/dist/media/bg-music.mp3" loop id="bgMusic">
 您的浏览器不支持 audio 标签。
 </audio>
-<audio src="media/eat.wav" id="eatMusic">
+<audio src="./build/dist/media/eat.wav" id="eatMusic">
 您的浏览器不支持 audio 标签。
 </audio>
 
-<script type="text/javascript" src="js/bundle.min.js"></script>
+<script type="text/javascript" src="./build/dist/js/bundle.min.js"></script>
 <script type="text/javascript">
     document.body.addEventListener('touchmove', function(evt) {
         if(!evt._isScroller) {

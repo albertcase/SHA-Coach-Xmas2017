@@ -5,7 +5,7 @@
 		this.width = null;
 		this.height = null;
 		this.x = 0;
-		this.y = 61;
+		this.y = 62;
 		this.latex = 0;
 		this.latey = 0;
 		this.parentEl = document.getElementById('scene');

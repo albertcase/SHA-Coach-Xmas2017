@@ -2698,6 +2698,7 @@ body {
 .bg, .scene-bg, .element {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   position: absolute;
   left: 0;
   top: 0; }
@@ -2722,23 +2723,23 @@ body {
 
 .coachPro {
   width: 0.8rem;
-  height: 0.8rem;
+  height: 1.0rem;
   background: url("../img/scene-1/bag.png") center no-repeat;
-  background-size: auto 100%;
+  background-size: 100% auto;
   position: absolute;
   z-index: 10; }
   .coachPro.style1 {
     background: url("../img/scene-1/bag.png") center no-repeat;
-    background-size: auto 100%; }
+    background-size: 100% auto; }
   .coachPro.style2 {
     background: url("../img/scene-2/bag.png") center no-repeat;
-    background-size: auto 100%; }
+    background-size: 100% auto; }
   .coachPro.style3 {
     background: url("../img/scene-3/bag.png") center no-repeat;
-    background-size: auto 100%; }
+    background-size: 100% auto; }
   .coachPro.style4 {
     background: url("../img/scene-4/bag.png") center no-repeat;
-    background-size: auto 100%; }
+    background-size: 100% auto; }
 
 .heart {
   width: 0.7rem;
@@ -3249,11 +3250,11 @@ body {
 
 .jue-se--chose {
   width: 6.25rem;
-  height: 7.4rem;
+  height: 7.2rem;
   margin: 0 0 0.1rem 0;
   display: inline-block; }
   .jue-se--chose #jue-se-small {
-    height: 2.3rem;
+    height: 2.0rem;
     text-align: center; }
   .jue-se--chose .jue-se--item {
     width: 2.0rem;
@@ -3284,14 +3285,14 @@ body {
     width: 100%;
     height: 100%; }
     .jue-se--large .jue-se--item.kl {
-      background: url("../img/juese/kl-large.png") center no-repeat;
-      background-size: cover; }
+      background: url("../img/juese/kl-large.png") left center no-repeat;
+      background-size: 4.99rem 5.0rem; }
     .jue-se--large .jue-se--item.qw {
-      background: url("../img/juese/qw-large.png") center no-repeat;
-      background-size: cover; }
+      background: url("../img/juese/qw-large.png") left center no-repeat;
+      background-size: 4.99rem 5.0rem; }
     .jue-se--large .jue-se--item.mhl {
-      background: url("../img/juese/mhl-large.png") center no-repeat;
-      background-size: cover; }
+      background: url("../img/juese/mhl-large.png") left center no-repeat;
+      background-size: 4.99rem 5.0rem; }
 
 .start-btn {
   width: 4.45rem;

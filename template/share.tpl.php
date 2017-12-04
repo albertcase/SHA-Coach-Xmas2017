@@ -24,9 +24,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="Keywords" content="">
     <meta name="Description" content="...">
-    <link rel="stylesheet" type="text/css" href="css/bundle.min.css">
+    <link rel="stylesheet" type="text/css" href="./build/dist/css/bundle.min.css">
     <script type="text/javascript" src="http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat?debug=true"></script>
-    <script type="text/javascript" src="js/bundle-vendor.min.js"></script>
+    <script type="text/javascript" src="./build/dist/js/bundle-vendor.min.js"></script>
     <style type="text/css">
         #orientLayer { display: none; }
         @media screen and (min-aspect-ratio: 13/9) { 
@@ -79,8 +79,8 @@
         return {
             datas: {
                 parentEl: document.querySelector(el),
-                path: 'media/test.mp4',
-                poster: 'media/poster.jpg',
+                path: './build/dist/media/test.mp4',
+                poster: './build/dist/media/poster.jpg',
                 posterEl: null,
                 el: null,
                 videoWidth: 0
