@@ -298,7 +298,6 @@
         setting_close.addEventListener('click', function(){
             me.hide();
         })
-
         me.setting.eventEl.addEventListener('click', function(){
             me.show();
         })

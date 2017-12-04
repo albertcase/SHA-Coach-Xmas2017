@@ -12,7 +12,7 @@
 	        dataType: 'json'
 	    }).done(function(data){
 	    	console.log(data);
-	    	if(data.status === '1'){
+	    	if(data.status == 1){
 	    		callback(data)
 	    	}else{
 	    		common.base.formErrorTips(data.msg);
