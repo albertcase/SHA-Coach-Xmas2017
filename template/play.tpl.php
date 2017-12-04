@@ -23,7 +23,18 @@
     <script type="text/javascript" src="./build/dist/js/bundle-vendor.min.js"></script>
 </head>
 <body>
+<div class="loading hidden">
+    <div class="loading_con">
+        <img src="img/logo.png" width="100%">
 
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+        <p>目前涌入的小伙伴过多<br>页面正在跳转中，请耐心等待。</p>
+    </div>
+</div>
 <!-- 横屏代码 -->
 <div id="orientLayer" class="mod-orient-layer">
     <div class="mod-orient-layer__content">

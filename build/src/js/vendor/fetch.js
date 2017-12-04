@@ -14,9 +14,10 @@
 	    	console.log(data);
 	    	if(data.status == 1){
 	    		callback(data)
-	    	}else{
-	    		common.base.formErrorTips(data.msg);
 	    	}
+	    	//else{
+	    		common.base.formErrorTips(data.msg);
+	    	//}
 	    })
 	}
 

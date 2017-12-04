@@ -225,6 +225,7 @@
 		var time = timeCount.getTime();
 		var scores = star.eatScores.unique();
 		var loading = document.querySelector('.loading');
+		alert(loading);
 		loading.className = 'loading';
 
 		// 提交数据
