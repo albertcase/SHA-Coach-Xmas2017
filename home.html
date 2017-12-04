@@ -204,7 +204,7 @@
                 }else{
                     var dataslistArray = [];
                     for(let i = 0; i < jsonDatas.length; i++){
-                        dataslistArray.push(`<li><span>${jsonDatas[i]['name']}</span><span>${jsonDatas[i]['socurs']}</span></li>`);
+                        dataslistArray.push(`<li><span>${jsonDatas[i]['nickname']}</span><span>${jsonDatas[i]['records']}</span></li>`);
                     }
                     dataslistHTML = `<div class="toplistScroll">
                         <div class="toplist-popup--context">
@@ -212,10 +212,6 @@
                                 ${dataslistArray.join('')}
                             </ul>
                         </div>
-                    </div>
-                    <div class="toplist-info">
-                        <div class="socurs">${jsonDatas.userinfo.socurs}</div>
-                        <div class="ranking">${jsonDatas.userinfo.ranking}名</div>
                     </div>
                     `;
                 }
