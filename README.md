@@ -4,10 +4,10 @@
 ```
 1.domain/home.html ：入口文件
 2.domain/game ：游戏 
-	- /template/play.tpl.php : 第一玩的模版
-	- /template/replay.tpl.php : 非第一次玩的模版
+	- /template/play.tpl.php : 游戏模版
 3.domain/share : 分享页面
 	- /template/share.tpl.php : 分享模版
+  - isPlay: 1:玩过 0:未玩过
 4.API list
 	- 1.domain/api/record :提交游戏成绩
 	- 2.domain/api/omg/topten :未授权下拉取排行榜（仅有前十名数据）

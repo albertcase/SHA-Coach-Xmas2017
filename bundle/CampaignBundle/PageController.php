@@ -26,23 +26,17 @@ class PageController extends Controller
 
     public function shareAction()
     {
-        $config = array();
+        global $user;
+        $api = new ApiController();
+        $isPlay = $api->findRecordByUid($user->uid);
+        $config = array('isPlay' => (int)$isPlay);
         return $this->render('share', array('config' => $config));
     }
 
     public function gameAction()
     {
-        global $user;
-        $api = new ApiController();
-        $isPlay = $api->findRecordByUid($user->uid);
-
         $config = array();
-
-        if($isPlay) {
-            return $this->render('replay', array('config' => $config));
-        } else {
-            return $this->render('play', array('config' => $config));
-        }
+        return $this->render('play', array('config' => $config));
     }
 
     public function clearCookieAction()

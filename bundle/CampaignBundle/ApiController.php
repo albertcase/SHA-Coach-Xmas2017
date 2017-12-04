@@ -14,8 +14,8 @@ class ApiController extends Controller
 {
     public function __construct() {
 
-   	global $user;
-
+   	    global $user;
+        
         parent::__construct();
         if(!$user->uid) {
             $this->statusPrint('100', 'access deny!');
