@@ -301,7 +301,8 @@
     var startGo = document.querySelector('.start-btn')
     // 出发
     startGo.addEventListener('click', function(){
-        hero.elClassName = swiper.activeIndex;
+        var classArray = ['kl', 'qw', 'mhl'];
+        hero.elClassName = classArray[swiper.activeIndex];
         common.PageRouter('scene');
     })
 
