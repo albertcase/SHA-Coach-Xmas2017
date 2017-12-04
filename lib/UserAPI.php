@@ -80,7 +80,7 @@ class UserAPI extends Base {
   }
 
   public function encodeUser($data) {
-    $helper = new helper();
+    $helper = new Helper();
     $data = base64_encode($helper->aes128_cbc_encrypt(ENCRYPT_KEY, json_encode($data), ENCRYPT_IV));
     return $data;
   }
