@@ -79,7 +79,7 @@
 		var pos = {
 			x: me.hero.latex + me.hero.x,  // 250
 			y: me.hero.latey * -1,       // -0
-			heroWidth: Math.floor(me.hero.width * 0.4)
+			heroWidth: Math.floor(me.hero.width * 0.8)
 		}
 
 		if(elLeft > (pos.x - pos.heroWidth) && elLeft < (pos.x + pos.heroWidth) && me.hero.status === 'paused'){

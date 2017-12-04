@@ -2589,7 +2589,7 @@ body {
   left: 0;
   top: 0;
   z-index: 9999;
-  font-size: 1.5rem;
+  font-size: 0.4rem;
   color: #fff;
   text-align: center;
   /*letter-spacing: 0.1em;*/ }
@@ -3582,6 +3582,22 @@ body {
       width: 2.5rem;
       height: 0.8rem;
       margin: 0.36rem 0 0 0; } }
+
+.mod-orient-layer__desc.vertical {
+  display: none; }
+
+.page-chose #orientLayer {
+  display: none; }
+
+@media screen and (min-aspect-ratio: 13 / 9) {
+  .page-chose #orientLayer {
+    display: block; } }
+
+.page-chose .mod-orient-layer__desc.landscape {
+  display: none; }
+
+.page-chose .mod-orient-layer__desc.vertical {
+  display: block; }
 
 .hidden {
   display: none;

@@ -1,4 +1,5 @@
 ;(function(w, $){
+	var bgMusic = document.getElementById('bgMusic');
 
 	// 成绩榜
     var toplistJson = {
@@ -220,7 +221,7 @@
 
 
 	MagicFun.prototype.count = function(){
-
+		bgMusic.pause();
 		var time = timeCount.getTime();
 		var scores = star.eatScores.unique();
 
@@ -252,7 +253,6 @@
 	w.magicFun = new MagicFun();
 
 	ikonwBtn.addEventListener('click', function(){
-		var bgMusic = document.getElementById('bgMusic');
 		bgMusic.play();
 
 		elementsObj.init();

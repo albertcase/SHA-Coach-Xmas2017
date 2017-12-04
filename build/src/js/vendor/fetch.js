@@ -14,7 +14,8 @@
 	    	if(data.status){
 	    		callback(data)
 	    	}else{
-	    		common.data.formErrorTips(data.msg);
+	    		console.log(common.base);
+	    		common.base.formErrorTips(data.msg);
 	    	}
 	        
 	    })

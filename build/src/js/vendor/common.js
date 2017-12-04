@@ -227,6 +227,7 @@
 
 	    this.exec = function(){
 	    	let selected = this.getSelectedItem();
+            document.body.className = 'page-' + id;
 	        if(selected){
 	            selected.className = 'section';
 	        }

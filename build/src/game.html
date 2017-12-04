@@ -28,7 +28,8 @@
 <div id="orientLayer" class="mod-orient-layer">
     <div class="mod-orient-layer__content">
         <i class="icon mod-orient-layer__icon-orient"></i>
-        <div class="mod-orient-layer__desc">为了更好的体验，请解锁横屏浏览<br><em>建议全程在wifi环境下观看</em></div>
+        <div class="mod-orient-layer__desc vertical">为了更好的体验，请解锁竖屏浏览<br><em>建议全程在wifi环境下观看</em></div>
+        <div class="mod-orient-layer__desc landscape">为了更好的体验，请解锁横屏浏览<br><em>建议全程在wifi环境下观看</em></div>
     </div>
 </div>
 
@@ -37,7 +38,7 @@
 </div>
 
 <div id="dreambox">
-    <div class="section show" id="chose">
+    <div class="section" id="chose">
         <div class="slogan"></div>
         <div class="jue-se--chose">
             <div class="jue-se--large">
@@ -272,11 +273,11 @@
 
 
 
-
+    var swiper = null;
     common.PageRouter('chose', function(){
-        if(me.swiper) return false;
+        if(swiper) return false;
         var jueSeItem = ['kl', 'qw', 'mhl'];
-        me.swiper = new Swiper('.swiper-container',{
+        swiper = new Swiper('.swiper-container',{
             // effect : 'fade',  // coverflow
             effect : 'flip',
             flip: {
@@ -300,6 +301,7 @@
     var startGo = document.querySelector('.start-btn')
     // 出发
     startGo.addEventListener('click', function(){
+        hero.elClassName = swiper.activeIndex;
         common.PageRouter('scene');
     })
 

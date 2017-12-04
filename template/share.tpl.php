@@ -1,7 +1,248 @@
 <?php
 	var_dump($config);
 ?>
+
+
+<!DOCTYPE HTML>
 <html>
-	<script type="text/javascript" src="http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat?debug=true"></script>
-	分享页面
+<head>
+    <title>coach</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="landscape">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="landscape">
+
+    <!-- <link rel="apple-touch-startup-image" href="/build/assets/img/bg1.png" />
+ -->
+    <!--禁用手机号码链接(for iPhone)-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui" />
+    <!--自适应设备宽度-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--控制全屏时顶部状态栏的外，默认白色-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="Keywords" content="">
+    <meta name="Description" content="...">
+    <link rel="stylesheet" type="text/css" href="css/bundle.min.css">
+    <script type="text/javascript" src="http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat?debug=true"></script>
+    <script type="text/javascript" src="js/bundle-vendor.min.js"></script>
+    <style type="text/css">
+        #orientLayer { display: none; }
+        @media screen and (min-aspect-ratio: 13/9) { 
+            #orientLayer { display: block; } 
+        }
+    </style>
+</head>
+<body>
+
+<div id="orientLayer" class="mod-orient-layer">
+    <div class="mod-orient-layer__content">
+        <i class="icon mod-orient-layer__icon-orient"></i>
+        <div class="mod-orient-layer__desc">为了更好的体验，请解锁竖屏浏览<br><em>建议全程在wifi环境下观看</em></div>
+    </div>
+</div>
+
+<div id="dreambox">
+
+    <div class="section" id="friend">
+        <div class="user-photo">
+            <div class="user-photo-con">
+                <img src="img/avatar.jpg" width="100%">
+            </div>
+        </div>
+        <div class="user-txt"></div>
+        <div class="user-btn-area">
+            <a href='javascript:void(0);' class="open-btn"></a>
+            <a href='javascript:void(0);' class="iplay-btn"></a>
+            <a href='javascript:void(0);' class="chose-buy-btn"></a>
+        </div>
+    </div>
+
+    <div class="section show" id="share">
+        <div class="head-star"></div>
+        <div class="xmasVideo"></div>
+        <div class="share-btn-area">
+            <a href="game.html" class="replay-btn"></a>
+            <a href="javascript:void(0);" class="list-btn"></a>
+            <a href="javascript:void(0);" class="chose-buy-btn"></a>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var common = new Common();
+    common.base.init();
+
+    function XmasVideo(el){
+        return {
+            datas: {
+                parentEl: document.querySelector(el),
+                path: 'media/test.mp4',
+                poster: 'media/poster.jpg',
+                posterEl: null,
+                el: null,
+                videoWidth: 0
+            },
+            init: function(){
+                var me  = this;
+                me.render();
+            },
+            render: function(){
+                var me = this;
+                me.datas.videoWidth = parseInt(window.getComputedStyle(me.datas.parentEl).width, 10);
+                me.create();
+            },
+            create: function(){
+                var me = this;
+
+                var posterEl = document.createElement('div');
+                posterEl.className = 'posterEl';
+                me.datas.posterEl = posterEl;
+                me.datas.parentEl.appendChild(posterEl);
+
+                var el = document.createElement('video');
+                el.id = 'xmas-video';
+                el.src = me.datas.path;
+                el.poster = me.datas.poster;
+                el.width = me.datas.videoWidth;
+                el.setAttribute('playsinline', '');
+                el.setAttribute('webkitPlaysinline', '');
+                el.innerHTML = '您的浏览器不支持 video 标签。';
+                me.datas.el = el;
+                me.datas.parentEl.appendChild(el);
+                
+
+                me.bind();
+            },
+            bind: function(){
+                var me = this;
+                me.datas.posterEl.onclick = function(){
+                    if(!this.getAttribute("status")){
+                        this.setAttribute("status","play");
+                        me.datas.el.play();
+                        me.datas.posterEl.style.opacity = 0;
+                    }else{
+                        this.removeAttribute("status");
+                        me.datas.el.pause();
+                        // me.datas.posterEl.style.opacity = 1;
+                    }  
+                    // me.datas.el.play();
+                    // me.datas.posterEl.style.visibility = 'hidden';
+                }
+            }
+        }
+    }
+
+    var xmasVideo = new XmasVideo('.xmasVideo');
+    xmasVideo.init();
+
+
+
+    // 成绩榜
+    var toplistJson = {
+        'list': [
+            {
+                'name': 'a',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'b',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'c',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'd',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'e',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'f',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'g',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'h',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'i',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'j',
+                'socurs': '1分20秒'
+            }
+        ],
+        'userinfo': {
+            'socurs': '1分23秒',
+            'ranking': '121'
+        }
+    };
+
+    function Toplist(id, eventEl){
+        if(!(this instanceof Toplist)){
+            var self = new Toplist(id, eventEl);
+            self.init();
+            return self;
+        };
+        return {
+            init: function(){
+                this.render();
+            },
+            setting: {
+                id: id,
+                popupFrame: null,
+                eventEl: eventEl,
+                listDatas: toplistJson
+            },
+            render: function(){
+                var me = this;
+                me.setting.popupFrame = common.Popup(me.setting.id, me.do(), me.setting.eventEl);
+            },
+            do: function(){
+                var me = this;
+                var jsonDatas = me.setting.listDatas; 
+                var jsonDatasList = jsonDatas.list;
+
+                var dataslistArray = [];
+                for(let i = 0; i < jsonDatasList.length; i++){
+                    dataslistArray.push(`<li><span>${jsonDatasList[i]['name']}</span><span>${jsonDatasList[i]['socurs']}</span></li>`);
+                }
+                var dataslistHTML = `<div class="toplistScroll">
+                                        <div class="toplist-popup--context">
+                                            <ul>
+                                                ${dataslistArray.join('')}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="toplist-info">
+                                        <div class="socurs">${jsonDatas.userinfo.socurs}</div>
+                                        <div class="ranking">${jsonDatas.userinfo.ranking}名</div>
+                                    </div>
+                                    `;
+                return dataslistHTML;
+            }
+        }
+    }
+
+    var toplistObj = Toplist('toplist-popup', '.list-btn');
+
+</script>
+
+
+
+
+</body>
 </html>
+

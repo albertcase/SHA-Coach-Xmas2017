@@ -43,7 +43,6 @@
 			// console.log(this.width, this.height);
 		},
 		create: function(){
-			this.elClassName = (!this.common.GetQueryString('id') ? 0 : this.common.GetQueryString('id'));
 			var classArray = ['kl', 'qw', 'mhl'];
 			var el = document.createElement('div');
 				el.id = 'hero';

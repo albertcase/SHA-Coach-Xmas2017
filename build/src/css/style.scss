@@ -1202,6 +1202,34 @@
 
 
 
+
+
+
+.mod-orient-layer__desc.vertical{
+  display: none;
+}
+
+.page-chose{
+  #orientLayer { display: none; }
+  @media screen and (min-aspect-ratio: 13/9) { 
+      #orientLayer { display: block; } 
+  }
+  .mod-orient-layer__desc.landscape{
+    display: none;
+  }
+  .mod-orient-layer__desc.vertical{
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
+
 .hidden {
     display: none;
     visibility: hidden;
