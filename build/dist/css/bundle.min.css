@@ -3493,7 +3493,10 @@ body {
       .toplist-popup--context ul li span:nth-child(1) {
         width: 38%;
         overflow: hidden;
-        display: inline-block; }
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
       .toplist-popup--context ul li span:nth-child(2) {
         width: 60%;
         overflow: hidden;

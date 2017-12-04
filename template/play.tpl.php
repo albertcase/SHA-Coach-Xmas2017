@@ -211,9 +211,9 @@
     //     console.log(data);
     // });
 
-    function Toplist(listEl, userinfoEl){
+    function Toplist(listEl, userinfoEl, data){
         this.setting = {
-            'data': toplistJson,
+            'data': data,
             'listEl': document.querySelector(listEl),
             'userinfoEl': document.querySelector(userinfoEl)
         }
@@ -224,24 +224,34 @@
 
     Toplist.prototype.update = function(){
         var me = this;
-        var userinfo = me.setting.data.userinfo;
+        var userinfo = me.setting.data;
         var list = me.setting.data.list;
 
         var listArray = [], userinfoHTML = '';
         for(let i = 0; i < list.length; i++){
-            listArray.push(`<li><span>${list[i].name}</span><span>${list[i].socurs}</span></li>`);
+            listArray.push(`<li><span>${list[i].nickname}</span><span>${list[i].records}</span></li>`);
         }
 
         userinfoHTML = `
-            <div class="socurs">${userinfo.socurs}</div>
-            <div class="ranking">${userinfo.ranking}名</div>
+            <div class="socurs">${userinfo.myRecord}</div>
+            <div class="ranking">${userinfo.myNum}名</div>
         `;
 
         me.setting.listEl.innerHTML = listArray.join('');
         me.setting.userinfoEl.innerHTML = userinfoHTML;
     }
 
-    var toplist;
+    var toplistObj;
+    function getTopTen(){
+        if(!toplistObj){
+            fetch.authorize({}, function(data){
+                toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data)
+            });
+        }   
+    }
+    
+
+    
 
 
     // 视频
@@ -332,21 +342,13 @@
         })
 
         me.container.toplistTag.addEventListener('click', function(){
-            if(toplist){
-                common.PageRouter('toplist');
-            }else{
-                common.PageRouter('toplist');
-                toplist = new Toplist('.toplist-table ul', '.toplist-userinfo');
-            }  
+            getTopTen();;
+            common.PageRouter('toplist');
         })
 
         me.container.listBtn.addEventListener('click', function(){
-            if(toplist){
-                common.PageRouter('toplist');
-            }else{
-                common.PageRouter('toplist');
-                toplist = new Toplist('.toplist-table ul', '.toplist-userinfo');
-            }  
+            getTopTen();;
+            common.PageRouter('toplist'); 
         })
 
         me.container.backBtn.addEventListener('click', function(){

@@ -1052,6 +1052,9 @@
           width: 38%;
           overflow: hidden;
           display: inline-block;
+          overflow: hidden;
+          text-overflow:ellipsis;
+          white-space: nowrap;
         }
         span:nth-child(2){
           width: 60%;
