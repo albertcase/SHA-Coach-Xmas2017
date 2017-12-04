@@ -99,7 +99,7 @@ class ApiController extends Controller
     			break;
     		
     		case 1:
-				$result = array('status' => 0, 'msg' => '成绩保存失败！');
+				$result = array('status' => 3, 'msg' => '很遗憾！您未刷新成绩！');
     			break;
 
 			case 2:

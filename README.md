@@ -72,6 +72,15 @@ records=144.122&animal=konglong&bar=4
 }
 ```
 
+#####  status 3
+
+```javascript
+{
+    status: 3,
+    msg: '很遗憾！您未刷新成绩！',
+}
+```
+
 ---
 
 ### 2.未授权下拉取排行榜API
