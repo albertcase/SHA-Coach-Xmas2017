@@ -71,7 +71,7 @@ class UserAPI extends Base {
   }
 
   public function userFinalizeDataNormalize($data) {
-      $user = new stdClass();
+      $user = new \stdClass();
       $user->uid = $data->uid;
       $user->openid = $data->openid;
       return $user;
