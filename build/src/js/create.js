@@ -230,9 +230,9 @@
 
 		// 提交数据
 		fetch.record({
-	      'records': time,
+	      'records': (time.second * 60 + time.minutes + '.' + Math.floor(Math.random() * 1000)),
 		  'animal': hero.elClassName,
-		  'bar': scores
+		  'bar': scores.length
 	    }, function(){
 	    	document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
 			document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';

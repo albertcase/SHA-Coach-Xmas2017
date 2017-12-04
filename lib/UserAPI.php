@@ -62,11 +62,19 @@ class UserAPI extends Base {
   public function userLoginFinalize($user) {
     if(USER_STORAGE == 'COOKIE') {
       $request = new Request();
+      $user = $this->userFinalizeDataNormalize($user);
       setcookie('_user', $this->encodeUser($user), time() + 3600 * 24 * 100, '/', $request->getDomain());
     } else {
       $_SESSION['_user'] = json_encode($user);
     }
     return $user;
+  }
+
+  public function userFinalizeDataNormalize($data) {
+      $user = new \stdClass();
+      $user->uid = $data->uid;
+      $user->openid = $data->openid;
+      return $user;
   }
 
   public function oauthAction($redirect_uri) {
