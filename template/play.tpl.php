@@ -171,6 +171,79 @@
     });
     var common = new Common();
 
+
+    // 成绩榜
+    var toplistJson = {
+        'list': [
+            {
+                'name': 'a',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'b',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'c',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'd',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'e',
+                'socurs': '1分20秒'
+            },
+            {
+                'name': 'f',
+                'socurs': '1分20秒'
+            }
+        ],
+        'userinfo': {
+            'socurs': '1分23秒',
+            'ranking': '121'
+        }
+    };
+
+    // 授权拉取排行榜
+    // fetch.authorize({}, function(data){
+    //     console.log(data);
+    // });
+
+    function Toplist(listEl, userinfoEl){
+        this.setting = {
+            'data': toplistJson,
+            'listEl': document.querySelector(listEl),
+            'userinfoEl': document.querySelector(userinfoEl)
+        }
+        this.init = function(){
+            this.update();
+        }
+    }
+
+    Toplist.prototype.update = function(){
+        var me = this;
+        var userinfo = me.setting.data.userinfo;
+        var list = me.setting.data.list;
+
+        var listArray = [], userinfoHTML = '';
+        for(let i = 0; i < list.length; i++){
+            listArray.push(`<li><span>${list[i].name}</span><span>${list[i].socurs}</span></li>`);
+        }
+
+        userinfoHTML = `
+            <div class="socurs">${userinfo.socurs}</div>
+            <div class="ranking">${userinfo.ranking}名</div>
+        `;
+
+        me.setting.listEl.innerHTML = listArray.join('');
+        me.setting.userinfoEl.innerHTML = userinfoHTML;
+    }
+
+    var toplist;
+
+
     // 视频
     function XmasVideo(el){
         return {
@@ -259,12 +332,21 @@
         })
 
         me.container.toplistTag.addEventListener('click', function(){
-            common.PageRouter('toplist');
+            if(toplist){
+                common.PageRouter('toplist');
+            }else{
+                common.PageRouter('toplist');
+                toplist = new Toplist('.toplist-table ul', '.toplist-userinfo');
+            }  
         })
 
         me.container.listBtn.addEventListener('click', function(){
-            common.PageRouter('toplist');
-            
+            if(toplist){
+                common.PageRouter('toplist');
+            }else{
+                common.PageRouter('toplist');
+                toplist = new Toplist('.toplist-table ul', '.toplist-userinfo');
+            }  
         })
 
         me.container.backBtn.addEventListener('click', function(){
