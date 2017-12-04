@@ -18,7 +18,7 @@
 	    	//else{
 	    		common.base.formErrorTips(data.msg);
 	    	//}
-	    })
+	    }).fail
 	}
 
 
