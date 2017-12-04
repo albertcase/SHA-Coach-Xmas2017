@@ -60,6 +60,16 @@ class ApiController extends Controller
         $recordInfo->animal = $request->request->get('animal');
         $recordInfo->bar = $request->request->get('bar');
 
+        // lock 5s 5s中提交一次成绩
+        $redis = Redis::getInstance();
+        if($redis->get($user->uid)) {
+            $data = array('status' => 2, 'msg' => '您的操作过于频繁！请稍后再试！');
+            $this->dataPrint($result);
+        }
+        $redis->set($user->uid, 1);
+        $redis->setTimeout($user->uid, 60);
+
+        // 保存成绩
   		$result = $this->saveRecord($recordInfo); 
   		$this->dataPrint($result);
     }

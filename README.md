@@ -49,7 +49,7 @@ records=144.122&animal=konglong&bar=4
 
 ```javascript
 {
-    status: '1',
+    status: 1,
     msg: '成绩保存成功！',
 }
 ```
@@ -58,8 +58,17 @@ records=144.122&animal=konglong&bar=4
 
 ```javascript
 {
-    status: '0',
+    status: 0,
     msg: '成绩保存失败！',
+}
+```
+
+#####  status 2
+
+```javascript
+{
+    status: 2,
+    msg: '您的操作过于频繁！请稍后再试！',
 }
 ```
 
