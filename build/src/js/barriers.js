@@ -31,11 +31,11 @@
 		this.parentEl = document.getElementById('scene');
 		this.cname = 'style1';
 		this.x = 0;
-		this.y = 62;
+		this.y = 67;
 		this.width = null;
 		this.height = null;
 		this.elements = [];
-		this.speed = 6;
+		this.speed = 7;
 		this.hero = null;
 	}
 
@@ -79,7 +79,7 @@
 		var pos = {
 			x: me.hero.latex + me.hero.x,  // 250
 			y: me.hero.latey * -1,       // -0
-			heroWidth: Math.floor(me.hero.width * 0.8)
+			heroWidth: Math.floor(me.hero.width * 0.4)
 		}
 
 		if(elLeft > (pos.x - pos.heroWidth) && elLeft < (pos.x + pos.heroWidth) && me.hero.status === 'paused'){

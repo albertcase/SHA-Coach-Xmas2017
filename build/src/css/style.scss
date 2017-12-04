@@ -72,29 +72,25 @@
 
 
 .coachPro{
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 0.8rem;
+  height: 0.8rem;
 	background: url('../img/scene-1/bag.png') center no-repeat;
   background-size: auto 100%;
 	position: absolute;
   z-index: 10;
   &.style1{
-    left: 10%;
     background: url('../img/scene-1/bag.png') center no-repeat;
     background-size: auto 100%;
   }
   &.style2{
-    left: 30%;
     background: url('../img/scene-2/bag.png') center no-repeat;
     background-size: auto 100%;
   }
   &.style3{
-    left: 60%;
     background: url('../img/scene-3/bag.png') center no-repeat;
     background-size: auto 100%;
   }
   &.style4{
-    left: 80%;
     background: url('../img/scene-4/bag.png') center no-repeat;
     background-size: auto 100%;
   }
@@ -450,8 +446,6 @@
     .timePos{
       width: 0.36rem;
       height: 0.5rem;
-      background: url('../img/number.png') center no-repeat;
-      background-size: 100% auto;
       float: left;
       display: inline-block;
       &:nth-child(2){
@@ -467,37 +461,48 @@
         margin: 0 0 0 -0.06rem;
       }
       &.n0{
-        background-position: center 0.06rem;
+        background: url('../img/num0.png') center no-repeat;
+        background-size: cover;
       }
       &.n1{
-        background-position: center -0.37rem;
+        background: url('../img/num1.png') center no-repeat;
+        background-size: cover;
       }
       &.n2{
-        background-position: center -0.79rem;
+        background: url('../img/num2.png') center no-repeat;
+        background-size: cover;
       }
       &.n3{
-        background-position: center -1.2rem;
+        background: url('../img/num3.png') center no-repeat;
+        background-size: cover;
       }
       &.n4{
-        background-position: center -1.63rem;
+        background: url('../img/num4.png') center no-repeat;
+        background-size: cover;
       }
       &.n5{
-        background-position: center -2.45rem;
+        background: url('../img/num5.png') center no-repeat;
+        background-size: cover;
       }
       &.n6{
-        background-position: center -2.03rem;
+        background: url('../img/num6.png') center no-repeat;
+        background-size: cover;
       }
       &.n7{
-        background-position: center -2.87rem;
+        background: url('../img/num7.png') center no-repeat;
+        background-size: cover;
       }
       &.n8{
-        background-position: center -3.29rem;
+        background: url('../img/num8.png') center no-repeat;
+        background-size: cover;
       }
       &.n9{
-        background-position: center -3.71rem;
+        background: url('../img/num9.png') center no-repeat;
+        background-size: cover;
       }
       &.n10{
-        background-position: center -4.1rem;
+        background: url('../img/num10.png') center no-repeat;
+        background-size: cover;
       }
     }
 
@@ -985,10 +990,26 @@
 
 
 #toplist-popup{
+  .popup-con{
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    left: 0;
+    top: 10%;
+  }
+  .toplistScroll{
+    width: 100%;
+    height: 88%;
+    overflow: auto;
+    z-index: 2;
+  }
   .close{
-    top: -6%;
+    top: -8%;
   }
 }
+
+
+
 .toplist-popup--context{
     width: 6.80rem;
     height: 8.59rem;
@@ -1074,11 +1095,11 @@
 #rule-popup{
   .close{
     background: none;
-    width: 0.5rem;
+    width: 0.4rem;
     height: 0.5rem;
     background: url('../img/close-white.png') center no-repeat;
     background-size: 80% auto;
-    top: 1%; 
+    top: 2%; 
     right: 80%;
   }
 }
@@ -1177,8 +1198,6 @@
 
 
 } 
-
-
 
 
 

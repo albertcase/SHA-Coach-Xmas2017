@@ -53,7 +53,15 @@ let paths = {
         'src/js/create.js',
         'src/js/main.js'
     ],
-    vendor: ['src/js/vendor/jquery.min.js', 'src/js/vendor/jquery.transit.js', 'src/js/vendor/swiper.min.js', 'src/js/vendor/rem.js', 'src/js/vendor/common.js', 'src/js/vendor/fetch.js'],
+    vendor: [
+        'src/js/vendor/jquery.min.js', 
+        'src/js/vendor/PxLoader.js', 
+        'src/js/vendor/jquery.transit.js', 
+        'src/js/vendor/swiper.min.js', 
+        'src/js/vendor/rem.js', 
+        'src/js/vendor/common.js', 
+        'src/js/vendor/fetch.js'
+    ],
     img: ['src/img/*.{png,jpg,gif,ico}', 'src/img/*/*.{png,jpg,gif,ico}']
 };
 

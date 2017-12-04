@@ -61,36 +61,7 @@
             <a href="javascript:void(0);" class="rule-btn"></a>
         </div>
     </div>
-    <div class="section" id="chose">
-        <div class="slogan"></div>
-        <div class="jue-se--chose">
-            <div class="jue-se--large">
-               <!-- Swiper -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <div class="jue-se--item kl"></div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="jue-se--item qw"></div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="jue-se--item mhl"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-pagination" id="jue-se-small">
-                <div class="jue-se--item kl"></div>
-                <div class="jue-se--item qw"></div>
-                <div class="jue-se--item mhl"></div>
-            </div>
-
-
-        </div>
-        <div class="start-btn"></div>
-    </div>
-
+    
     <div class="section" id="share">
         <div class="head-star"></div>
         <div class="xmasVideo"></div>
@@ -102,11 +73,110 @@
     </div>
 </div>
 
-
-
 <script>
     var common = new Common();
     common.base.init();
+
+    var allimg = [
+        "/build/dist/media/poster.jpg",
+        "/build/dist/media/test.mp4",
+        "/build/dist/media/eat.wav",
+        "/build/dist/media/bg-music.mp3",
+
+        "/build/dist/img/back-btn.png",
+        "/build/dist/img/chose-buy-btn.png",
+        "/build/dist/img/close-white.png",
+        "/build/dist/img/close.png",
+        "/build/dist/img/friend-txt.png",
+        "/build/dist/img/gift-btn.png",
+        "/build/dist/img/heart.png",
+        "/build/dist/img/home-play-btn.png",
+        "/build/dist/img/index-bg.jpg",
+        "/build/dist/img/iplay-btn.png",
+        "/build/dist/img/kv.png",
+        "/build/dist/img/list-btn.png",
+        "/build/dist/img/logo.png",
+        "/build/dist/img/num0.png",
+        "/build/dist/img/num1.png",
+        "/build/dist/img/num2.png",
+        "/build/dist/img/num3.png",
+        "/build/dist/img/num4.png",
+        "/build/dist/img/num5.png",
+        "/build/dist/img/num6.png",
+        "/build/dist/img/num7.png",
+        "/build/dist/img/num8.png",
+        "/build/dist/img/num9.png",
+        "/build/dist/img/num10.png",
+        "/build/dist/img/open-btn.png",
+        "/build/dist/img/qrcode.png",
+        "/build/dist/img/replay-btn.png",
+        "/build/dist/img/rule-text.png",
+        "/build/dist/img/scores-bg.jpg",
+        "/build/dist/img/scores-show.png",
+        "/build/dist/img/share-head-star--landscape.png",
+        "/build/dist/img/share-head-star.png",
+        "/build/dist/img/share-tips.png",
+        "/build/dist/img/slogan.png",
+        "/build/dist/img/start-btn.png",
+        "/build/dist/img/time.png",
+        "/build/dist/img/tips.png",
+        "/build/dist/img/toplist-bg-vertical.png",
+        "/build/dist/img/toplist-bg.png",
+        "/build/dist/img/toplist-info.png",
+        "/build/dist/img/toplist-tag.png",
+        "/build/dist/img/user-photo-bg.png",
+
+        "/build/dist/img/juese/kl.png",
+        "/build/dist/img/juese/qw.png",
+        "/build/dist/img/juese/mhl.png",
+        "/build/dist/img/juese/kl-large.png",
+        "/build/dist/img/juese/qw-large.png",
+        "/build/dist/img/juese/mhl-large.png",
+
+        "/build/dist/img/scene-1/bag.png",
+        "/build/dist/img/scene-1/el-1.png",
+        "/build/dist/img/scene-1/el-2.png",
+        "/build/dist/img/scene-1/el-3.png",
+        "/build/dist/img/scene-1/el-4.png",
+        "/build/dist/img/scene-1/el-5.png",
+        "/build/dist/img/scene-1/el-6.png",
+        "/build/dist/img/scene-1/el.png",
+        "/build/dist/img/scene-1/scene-bg.jpg",
+
+        "/build/dist/img/scene-2/bag.png",
+        "/build/dist/img/scene-2/el-1.png",
+        "/build/dist/img/scene-2/el-2.png",
+        "/build/dist/img/scene-2/el-3.png",
+        "/build/dist/img/scene-2/el-4.png",
+        "/build/dist/img/scene-2/el-5.png",
+        "/build/dist/img/scene-2/el-6.png",
+        "/build/dist/img/scene-2/scene-bg.jpg",
+
+        "/build/dist/img/scene-3/bag.png",
+        "/build/dist/img/scene-3/el-1.png",
+        "/build/dist/img/scene-3/el-2.png",
+        "/build/dist/img/scene-3/el-3.png",
+        "/build/dist/img/scene-3/el-4.png",
+        "/build/dist/img/scene-3/el-5.png",
+        "/build/dist/img/scene-3/el-6.png",
+        "/build/dist/img/scene-3/el.png",
+        "/build/dist/img/scene-3/scene-bg.jpg",
+
+        "/build/dist/img/scene-4/bag.png",
+        "/build/dist/img/scene-4/el-1.png",
+        "/build/dist/img/scene-4/el-2.png",
+        "/build/dist/img/scene-4/el-3.png",
+        "/build/dist/img/scene-4/el-4.png",
+        "/build/dist/img/scene-4/el-5.png",
+        "/build/dist/img/scene-4/el-6.png",
+        "/build/dist/img/scene-4/el.png",
+        "/build/dist/img/scene-4/scene-bg.jpg"
+        
+    ];
+    
+
+
+    
 
     // 成绩榜
     var toplistJson = {
@@ -187,9 +257,13 @@
                 for(let i = 0; i < jsonDatasList.length; i++){
                     dataslistArray.push(`<li><span>${jsonDatasList[i]['name']}</span><span>${jsonDatasList[i]['socurs']}</span></li>`);
                 }
-                var dataslistHTML = `<div class="toplist-popup--context"><ul>
-                                        ${dataslistArray.join('')}
-                                    </ul></div>
+                var dataslistHTML = `<div class="toplistScroll">
+                                        <div class="toplist-popup--context">
+                                            <ul>
+                                                ${dataslistArray.join('')}
+                                            </ul>
+                                        </div>
+                                    </div>
                                     <div class="toplist-info">
                                         <div class="socurs">${jsonDatas.userinfo.socurs}</div>
                                         <div class="ranking">${jsonDatas.userinfo.ranking}名</div>
@@ -350,9 +424,7 @@
     function PageController(){
         this.common = new Common();
         this.container = {
-            'homePlayBtn': null,
-            'startGo': null,
-            'swiper': null
+            'homePlayBtn': null
         }
 
         this.init = function(){
@@ -364,57 +436,40 @@
 
         this.render = function(){
             this.container.homePlayBtn = document.querySelector('.home-play-btn');
-            this.container.startGo = document.querySelector('.start-btn');
         }
 
         this.bind = function(){
             var me = this;
             // 包你好玩按钮
             me.container.homePlayBtn.addEventListener('click', function(){
-                common.PageRouter('chose', function(){
-                    if(me.swiper) return false;
-                    var jueSeItem = ['kl', 'qw', 'mhl'];
-                    me.swiper = new Swiper('.swiper-container',{
-                        // effect : 'fade',  // coverflow
-                        effect : 'flip',
-                        flip: {
-                            slideShadows : true,
-                            limitRotation : true,
-                        },
-                        slidesPerView: 1,
-                        centeredSlides: true,
-                        pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                        renderBullet: function (index, className) {
-                          return `<div class="${className} jue-se--item ${jueSeItem[index]}"></div>`;
-                          // return '<div class="' + className + '">' + (index + 1) + '</div>';
-                        },
-                      },
-                    });
-                });
-            })
-
-            // 出发
-            me.container.startGo.addEventListener('click', function(){
-                location.href = 'game.html?id=' + me.swiper.activeIndex;
+                location.href = 'game.html';
             })
         }
     }
 
     var pageController = new PageController();
-    pageController.init();
 
 
-    document.querySelector('.list-btn').addEventListener('click', function(){
-        toplistObj.setting.popupFrame.show();
+    common.base.loadingFnDoing(allimg, function(){
+        $(".loading").css({"visibility": "hidden"});
+
+        pageController.init();
+
+        document.querySelector('.list-btn').addEventListener('click', function(){
+            toplistObj.setting.popupFrame.show();
+        })
+
+        fetch.noAuthorize({}, function(data){
+            console.log(data);
+        });
+
     })
 
 
 
-    fetch.noAuthorize({}, function(data){
-        console.log(data);
-    });
+
+
+    
 
 
 

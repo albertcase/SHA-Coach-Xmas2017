@@ -2515,7 +2515,7 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   z-index: 10;
   text-align: center;
   /* Center slide text vertically */
@@ -2530,8 +2530,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
-  align-items: center;
-  display: none; }
+  align-items: center; }
 
 .loading_con {
   width: 70%;
@@ -2539,7 +2538,7 @@ body {
   display: inline-block; }
 
 .spinner {
-  margin: 18px 0 3px 0;
+  margin: 6px 0 3px 0;
   display: inline-block; }
 
 .spinner > div {
@@ -2722,26 +2721,22 @@ body {
     background-size: cover; }
 
 .coachPro {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 0.8rem;
+  height: 0.8rem;
   background: url("../img/scene-1/bag.png") center no-repeat;
   background-size: auto 100%;
   position: absolute;
   z-index: 10; }
   .coachPro.style1 {
-    left: 10%;
     background: url("../img/scene-1/bag.png") center no-repeat;
     background-size: auto 100%; }
   .coachPro.style2 {
-    left: 30%;
     background: url("../img/scene-2/bag.png") center no-repeat;
     background-size: auto 100%; }
   .coachPro.style3 {
-    left: 60%;
     background: url("../img/scene-3/bag.png") center no-repeat;
     background-size: auto 100%; }
   .coachPro.style4 {
-    left: 80%;
     background: url("../img/scene-4/bag.png") center no-repeat;
     background-size: auto 100%; }
 
@@ -3024,8 +3019,6 @@ body {
     #gemeTime .timeArea .timePos {
       width: 0.36rem;
       height: 0.5rem;
-      background: url("../img/number.png") center no-repeat;
-      background-size: 100% auto;
       float: left;
       display: inline-block; }
       #gemeTime .timeArea .timePos:nth-child(2) {
@@ -3037,27 +3030,38 @@ body {
       #gemeTime .timeArea .timePos:nth-child(5) {
         margin: 0 0 0 -0.06rem; }
       #gemeTime .timeArea .timePos.n0 {
-        background-position: center 0.06rem; }
+        background: url("../img/num0.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n1 {
-        background-position: center -0.37rem; }
+        background: url("../img/num1.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n2 {
-        background-position: center -0.79rem; }
+        background: url("../img/num2.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n3 {
-        background-position: center -1.2rem; }
+        background: url("../img/num3.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n4 {
-        background-position: center -1.63rem; }
+        background: url("../img/num4.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n5 {
-        background-position: center -2.45rem; }
+        background: url("../img/num5.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n6 {
-        background-position: center -2.03rem; }
+        background: url("../img/num6.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n7 {
-        background-position: center -2.87rem; }
+        background: url("../img/num7.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n8 {
-        background-position: center -3.29rem; }
+        background: url("../img/num8.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n9 {
-        background-position: center -3.71rem; }
+        background: url("../img/num9.png") center no-repeat;
+        background-size: cover; }
       #gemeTime .timeArea .timePos.n10 {
-        background-position: center -4.1rem; }
+        background: url("../img/num10.png") center no-repeat;
+        background-size: cover; }
 
 .gameTips {
   width: 100%;
@@ -3434,8 +3438,21 @@ body {
     left: 8%;
     top: 8%; }
 
+#toplist-popup .popup-con {
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  left: 0;
+  top: 10%; }
+
+#toplist-popup .toplistScroll {
+  width: 100%;
+  height: 88%;
+  overflow: auto;
+  z-index: 2; }
+
 #toplist-popup .close {
-  top: -6%; }
+  top: -8%; }
 
 .toplist-popup--context {
   width: 6.80rem;
@@ -3487,11 +3504,11 @@ body {
 *****************************/
 #rule-popup .close {
   background: none;
-  width: 0.5rem;
+  width: 0.4rem;
   height: 0.5rem;
   background: url("../img/close-white.png") center no-repeat;
   background-size: 80% auto;
-  top: 1%;
+  top: 2%;
   right: 80%; }
 
 .rule-con {

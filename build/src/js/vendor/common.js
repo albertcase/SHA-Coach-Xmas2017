@@ -21,11 +21,11 @@
         init: function(){
             // this.wxshareFun();
 
-            document.body.addEventListener('touchmove', function(evt) {
-                if(!evt._isScroller) {
-                    evt.preventDefault()
-                }
-            });
+            // document.body.addEventListener('touchmove', function(evt) {
+            //     if(!evt._isScroller) {
+            //         evt.preventDefault()
+            //     }
+            // });
 
             // var self = this;
             // self.ajaxFun("POST", "/jssdk", {
@@ -134,19 +134,19 @@
             // }  
         },
         loadingFnDoing: function(allAmg, loadCallback){
-            pfun.loadFn(allAmg , function (){
+            this.loadFn(allAmg , function (){
 
                 $("img").each(function(){ 
                     $(this).attr("src",$(this).attr("sourcesrc"));
                 })
                 
                 loadCallback();
-                $(".loadingBar").css({"width": 0});
+                //$(".loadingBar").css({"width": 0});
                 
             } , function (p){
-                $(".loadingBar").css({"width": p + '%'});
+                //$(".loadingBar").css({"width": p + '%'});
                 //$(".loading em").html(p);
-                //console.log(p);
+                console.log(p);
             });
         },
         overscroll: function(el){

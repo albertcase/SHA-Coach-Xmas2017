@@ -5,7 +5,7 @@ $fontSize: 0.12rem;
 $fontColor: #fff;
 $lineHeight: 0.22rem;
 
-$loadingBgColor: rgba(255,255,255,0.8);
+$loadingBgColor: rgba(255,255,255,0.9);
 $loadingZindex: 10;
 
 
@@ -105,7 +105,6 @@ body{
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-    display: none;
 }
 
 .loading_con{
@@ -115,7 +114,7 @@ body{
 }
 
 .spinner{
-    margin: 18px 0 3px 0;
+    margin: 6px 0 3px 0;
     display: inline-block;
 }
 

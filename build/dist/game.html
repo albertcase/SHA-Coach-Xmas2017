@@ -23,18 +23,6 @@
     <script type="text/javascript" src="js/bundle-vendor.min.js"></script>
 </head>
 <body>
-<div class="loading">
-    <div class="loading_con">
-        <img src="img/logo.png" width="100%">
-
-        <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
-        <p>目前涌入的小伙伴过多<br>页面正在跳转中，请耐心等待。</p>
-    </div>
-</div>
 
 <!-- 横屏代码 -->
 <div id="orientLayer" class="mod-orient-layer">
@@ -49,7 +37,37 @@
 </div>
 
 <div id="dreambox">
-    <div class="section show" id="scene">
+    <div class="section show" id="chose">
+        <div class="slogan"></div>
+        <div class="jue-se--chose">
+            <div class="jue-se--large">
+               <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="jue-se--item kl"></div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="jue-se--item qw"></div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="jue-se--item mhl"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination" id="jue-se-small">
+                <div class="jue-se--item kl"></div>
+                <div class="jue-se--item qw"></div>
+                <div class="jue-se--item mhl"></div>
+            </div>
+
+
+        </div>
+        <div class="start-btn"></div>
+    </div>
+
+    <div class="section" id="scene">
         
         <div class="gameTips">
             <a href="javascript:void(0);" class="iknow-btn"></a>
@@ -134,6 +152,11 @@
 
 <script type="text/javascript" src="js/bundle.min.js"></script>
 <script type="text/javascript">
+    document.body.addEventListener('touchmove', function(evt) {
+        if(!evt._isScroller) {
+            evt.preventDefault()
+        }
+    });
     var common = new Common();
 
     // 视频
@@ -239,6 +262,49 @@
     }
 
     PageController();
+
+
+
+
+
+
+
+
+
+
+
+    common.PageRouter('chose', function(){
+        if(me.swiper) return false;
+        var jueSeItem = ['kl', 'qw', 'mhl'];
+        me.swiper = new Swiper('.swiper-container',{
+            // effect : 'fade',  // coverflow
+            effect : 'flip',
+            flip: {
+                slideShadows : true,
+                limitRotation : true,
+            },
+            slidesPerView: 1,
+            centeredSlides: true,
+            pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            renderBullet: function (index, className) {
+              return `<div class="${className} jue-se--item ${jueSeItem[index]}"></div>`;
+              // return '<div class="' + className + '">' + (index + 1) + '</div>';
+            },
+          },
+        });
+    });
+
+
+    var startGo = document.querySelector('.start-btn')
+    // 出发
+    startGo.addEventListener('click', function(){
+        common.PageRouter('scene');
+    })
+
+
+
 
 
 </script>

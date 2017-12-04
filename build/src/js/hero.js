@@ -5,7 +5,7 @@
 		this.width = null;
 		this.height = null;
 		this.x = 0;
-		this.y = 65;
+		this.y = 61;
 		this.latex = 0;
 		this.latey = 0;
 		this.parentEl = document.getElementById('scene');
@@ -73,7 +73,7 @@
 			    me.update();
 			})
 
-			var a2 = new Animator(400, function(p){
+			var a2 = new Animator(500, function(p){
 			    var tx = -160 * (1-p);
 			    me.latey = tx;
 			    me.update();

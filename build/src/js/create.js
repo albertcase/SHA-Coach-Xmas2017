@@ -34,9 +34,10 @@
         }
     };
 
-    fetch.authorize({}, function(data){
-        console.log(data);
-    });
+    // 授权拉取排行榜
+    // fetch.authorize({}, function(data){
+    //     console.log(data);
+    // });
 
     function Toplist(listEl, userinfoEl){
         this.setting = {
@@ -154,16 +155,16 @@
 			case 2: 
 				me.sceneBgChange('.scene1', 0, 'style1');
 			break;
-			case 800:
+			case 600:
 				me.sceneBgChange('.scene2', 1, 'style2');
 			break;
-			case 1600:
+			case 1200:
 				me.sceneBgChange('.scene3', 2, 'style3');
 			break;
-			case 2400:
+			case 1800:
 				me.sceneBgChange('.scene4', 3, 'style4');
 			break;
-			case 3200:
+			case 2400:
 				me.status = 1;
 				w.removeEventListener('deviceorientation', function(){}, true);
 				me.common.PageRouter('scores');
@@ -219,19 +220,18 @@
 
 
 	MagicFun.prototype.count = function(){
-		console.log(fetch);
 
 		var time = timeCount.getTime();
 		var scores = star.eatScores.unique();
 
 		// 提交数据
-		fetch.record({
-	      'records': time,
-		  'animal': me.common.GetQueryString('id'),
-		  'bar': 2
-	    }, function(){
+		// fetch.record({
+	 //      'records': time,
+		//   'animal': this.common.GetQueryString('id'),
+		//   'bar': 2
+	 //    }, function(){
 
-	    });
+	 //    });
 
 		document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
 		document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';
