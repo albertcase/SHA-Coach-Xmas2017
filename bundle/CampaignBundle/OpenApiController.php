@@ -29,16 +29,20 @@ class OpenApiController extends Controller
     public function getTopten()
     {
         if(OPEN_CACHE == true) {
-            $redis = new Redis();
+            $redis = Redis::getInstance();;
             if($redis->get(self::CACHE_KEY)) {
                 $result = json_decode($redis->get(self::CACHE_KEY), 1);
             } else {
                 $result = $this->findToptenRecord();
-                foreach ($result as $k => $v) {
-                    $result[$k]['records'] = $this->recordsFormat($v['records']);
+                if(!$result) {
+                    $result = array();  
+                } else{
+                    foreach ($result as $k => $v) {
+                        $result[$k]['records'] = $this->recordsFormat($v['records']);
+                    }
+                    $redis->set(self::CACHE_KEY, json_encode($result, 1));
+                    $redis->setTimeout(self::CACHE_KEY, CACHE_TIME);
                 }
-                $redis->set(self::CACHE_KEY, json_encode($result, 1));
-                $redis->setTimeout(self::CACHE_KEY, CACHE_TIME);
             }
         } else {
             $result = $this->findToptenRecord();
