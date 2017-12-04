@@ -43,10 +43,10 @@
 			// console.log(this.width, this.height);
 		},
 		create: function(){
-			var classArray = ['kl', 'qw', 'mhl'];
+			
 			var el = document.createElement('div');
 				el.id = 'hero';
-				el.className = 'hero ' + classArray[this.elClassName];
+				el.className = 'hero ' + this.elClassName;
 			this.parentEl.appendChild(el);
 		},
 		left: function(){

@@ -4,6 +4,7 @@
 	var common = new Common();
 
 	function ajaxFun(type, url, data, callback){
+		
 		$.ajax({  // records:游戏成绩 animal:动物 bar:跳过几个障碍物
 	        type: type,
 	        url: url,
@@ -11,12 +12,11 @@
 	        dataType: 'json'
 	    }).done(function(data){
 	    	console.log(data);
-	    	if(data.status){
+	    	if(data.status === '1'){
 	    		callback(data)
 	    	}else{
 	    		common.base.formErrorTips(data.msg);
 	    	}
-	        
 	    })
 	}
 

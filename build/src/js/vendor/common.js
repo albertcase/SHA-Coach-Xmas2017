@@ -1,5 +1,6 @@
 // Common.js
 ;(function(w, $){
+
     Array.prototype.unique = function(){
         var res = [];
         var json = {};
@@ -12,9 +13,7 @@
         return res;
     }
 
-	function Common(){
-
-	}
+	function Common(){}
 
 
     Common.prototype.base = {
@@ -141,10 +140,10 @@
                 })
                 
                 loadCallback();
-                //$(".loadingBar").css({"width": 0});
+                // $(".loadingBar").html(p + '%');
                 
             } , function (p){
-                //$(".loadingBar").css({"width": p + '%'});
+                $(".loadingBar").html(p + '%');
                 //$(".loading em").html(p);
                 console.log(p);
             });

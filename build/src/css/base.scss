@@ -1,11 +1,11 @@
 $defaultBg: #000;
 $defaultColor: #333;
 
-$fontSize: 0.12rem;
+$fontSize: 12px;
 $fontColor: #fff;
-$lineHeight: 0.22rem;
+$lineHeight: 18px;
 
-$loadingBgColor: rgba(255,255,255,0.9);
+$loadingBgColor: rgba(255,255,255,0.6);
 $loadingZindex: 10;
 
 
@@ -76,6 +76,15 @@ body{
 *{
   margin: 0;
   padding: 0;
+}
+
+.loadingBar{
+  color: #f60;
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
 }
 
 
@@ -165,7 +174,7 @@ body{
 
 .alertNode{
     width: 100%;
-    padding: 22px 0;
+    padding: 20px 0;
     background: rgba(0,0,0,0.86);
     position: fixed;
     left: 0;
@@ -223,6 +232,7 @@ body{
     -webkit-align-items: center;
     align-items: center;
   .popup-con{
+    color: #fff;
     position: relative;
     .close{
       width: 0.6rem;

@@ -29,6 +29,7 @@
     </style>
 </head>
 <body>
+<div class="loadingBar"></div>
 <div class="loading">
     <div class="loading_con">
         <img src="img/logo.png" width="100%">
@@ -64,7 +65,7 @@
     
 </div>
 
-<script>
+<script type="text/javascript">
     var common = new Common();
     common.base.init();
 
@@ -165,63 +166,25 @@
         
     ];
     
+    common.base.loadingFnDoing(allimg, function(){
+        $(".loading").css({"visibility": "hidden"});
 
+        pageController.init();
+
+        fetch.noAuthorize({}, function(data){
+            if(data.status){
+                var toplistObj = Toplist('toplist-popup', '.games-list', data.list);
+            }
+        });
+
+    })
 
     
 
     // 成绩榜
-    var toplistJson = {
-        'list': [
-            {
-                'name': 'a',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'b',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'c',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'd',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'e',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'f',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'g',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'h',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'i',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'j',
-                'socurs': '1分20秒'
-            }
-        ],
-        'userinfo': {
-            'socurs': '1分23秒',
-            'ranking': '121'
-        }
-    };
-
-    function Toplist(id, eventEl){
+    function Toplist(id, eventEl, toplistJson){
         if(!(this instanceof Toplist)){
-            var self = new Toplist(id, eventEl);
+            var self = new Toplist(id, eventEl, toplistJson);
             self.init();
             return self;
         };
@@ -242,30 +205,36 @@
             do: function(){
                 var me = this;
                 var jsonDatas = me.setting.listDatas; 
-                var jsonDatasList = jsonDatas.list;
 
-                var dataslistArray = [];
-                for(let i = 0; i < jsonDatasList.length; i++){
-                    dataslistArray.push(`<li><span>${jsonDatasList[i]['name']}</span><span>${jsonDatasList[i]['socurs']}</span></li>`);
+                var dataslistHTML;
+                if(jsonDatas.length <= 0){
+                    dataslistHTML = '暂无数据！';
+                }else{
+                    var dataslistArray = [];
+                    for(let i = 0; i < jsonDatas.length; i++){
+                        dataslistArray.push(`<li><span>${jsonDatas[i]['name']}</span><span>${jsonDatas[i]['socurs']}</span></li>`);
+                    }
+                    dataslistHTML = `<div class="toplistScroll">
+                        <div class="toplist-popup--context">
+                            <ul>
+                                ${dataslistArray.join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="toplist-info">
+                        <div class="socurs">${jsonDatas.userinfo.socurs}</div>
+                        <div class="ranking">${jsonDatas.userinfo.ranking}名</div>
+                    </div>
+                    `;
                 }
-                var dataslistHTML = `<div class="toplistScroll">
-                                        <div class="toplist-popup--context">
-                                            <ul>
-                                                ${dataslistArray.join('')}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="toplist-info">
-                                        <div class="socurs">${jsonDatas.userinfo.socurs}</div>
-                                        <div class="ranking">${jsonDatas.userinfo.ranking}名</div>
-                                    </div>
-                                    `;
+
+                
                 return dataslistHTML;
             }
         }
     }
 
-    var toplistObj = Toplist('toplist-popup', '.games-list');
+    
     
 
 
@@ -379,19 +348,7 @@
 
     var pageController = new PageController();
 
-
-    common.base.loadingFnDoing(allimg, function(){
-        $(".loading").css({"visibility": "hidden"});
-
-        pageController.init();
-
-        fetch.noAuthorize({}, function(data){
-            console.log(data);
-        });
-
-    })
-
-        
+ 
 </script>
 
 </body>

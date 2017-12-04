@@ -98,8 +98,8 @@
 }
 
 .heart{
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.6rem;
+  height: 0.6rem;
   background: url('../img/heart.png') center no-repeat;
   background-size: auto 100%;
   position: absolute;
@@ -1109,6 +1109,7 @@
   height: 10rem;
   overflow: hidden;
   background: #fff;
+  color: #333;
   display: inline-block;
   .title{
     width: 100%;
