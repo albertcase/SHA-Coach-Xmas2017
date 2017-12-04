@@ -15,7 +15,7 @@
 5.JSSDK 
 	- http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat
 6.模拟登陆
-	- http://127.0.0.1:9123/wechat/curio/callback?openid=123
+	- http://127.0.0.1:9123/wechat/coach/callback?openid=oKCDxjnSxj8QpmCvrjD0V8lb-JyE
 ```
 
 ### 1. 提交成绩API
