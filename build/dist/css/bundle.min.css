@@ -3489,9 +3489,15 @@ body {
         color: #fff;
         text-shadow: none; }
       .toplist-popup--context ul li span {
-        width: 50%;
-        display: inline-block;
         text-align: center; }
+      .toplist-popup--context ul li span:nth-child(1) {
+        width: 30%;
+        overflow: hidden;
+        display: inline-block; }
+      .toplist-popup--context ul li span:nth-child(2) {
+        width: 67%;
+        overflow: hidden;
+        display: inline-block; }
 
 .toplist-info {
   width: 5rem;

@@ -166,9 +166,6 @@
 			me.common.PageRouter('scores');
 			loading.className = 'loading hidden';
 	    });
-
-		
-		toplist.init();
 		
 	}
 
