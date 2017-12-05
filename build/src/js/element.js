@@ -1,4 +1,4 @@
-;(function(w, $){
+;(function(w){
 
 	var elementsDataJson = [
 		{
@@ -133,4 +133,4 @@
 	// 更新 update
 
 
-})(window, jQuery)
+})(window)

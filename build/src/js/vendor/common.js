@@ -144,7 +144,7 @@ Common.prototype.base = {
         } , function (p){
             //$(".loadingBar").html(p + '%');
             //$(".loading em").html(p);
-            console.log(p);
+            // console.log(p);
         });
     },
     overscroll: function(el){

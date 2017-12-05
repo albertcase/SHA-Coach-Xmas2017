@@ -1,4 +1,4 @@
-;(function(w, $){
+;(function(w){
 	var bgMusic = document.getElementById('bgMusic');
 
 	// 总共用时
@@ -159,20 +159,20 @@
 			loading.className = 'loading';
 
 
-			me.common.PageRouter('scores');
-			loading.className = 'loading hidden';
+			// me.common.PageRouter('scores');
+			// loading.className = 'loading hidden';
 
-			// 提交数据
-			// fetch.record({
-		 //      'records': (time.second * 60 + time.minutes + '.' + Math.floor(Math.random() * 1000)),
-			//   'animal': hero.elClassName,
-			//   'bar': scores.length
-		 //    }, function(){
-		 //    	document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
-			// 	document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';
-			// 	me.common.PageRouter('scores');
-			// 	loading.className = 'loading hidden';
-		 //    });
+			提交数据
+			me.common.fetch.record({
+		      'records': (time.second * 60 + time.minutes + '.' + Math.floor(Math.random() * 1000)),
+			  'animal': hero.elClassName,
+			  'bar': scores.length
+		    }, function(){
+		    	document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
+				document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';
+				me.common.PageRouter('scores');
+				loading.className = 'loading hidden';
+		    });
 		});
 
 	}
@@ -205,6 +205,4 @@
 
 
 
-
-
-})(window, jQuery);
+})(window);

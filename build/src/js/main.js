@@ -1,4 +1,4 @@
-;(function($){
+;(function(w){
 
 	function ShareTips(el){
 		return {
@@ -37,4 +37,4 @@
 
 
 
-})(jQuery)
+})(window)
