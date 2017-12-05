@@ -1238,8 +1238,40 @@
 
 
 
+.mvExit{
+  animation: mvleft 5s cubic-bezier(.25,.1,.25,1);
+  -moz-animation: mvleft 5s cubic-bezier(.25,.1,.25,1); /* Firefox */
+  -webkit-animation: mvleft 5s cubic-bezier(.25,.1,.25,1); /* Safari and Chrome */
+  -o-animation: mvleft 5s cubic-bezier(.25,.1,.25,1); /* Opera */
+  animation-fill-mode : forwards;
+  -moz-animation-fill-mode : forwards;
+  -webkit-animation-fill-mode : forwards;
+  -o-animation-fill-mode : forwards;
+}
 
+@keyframes mvleft
+{
+  0%   {left: 10%;}
+  100% {left:110%;}
+}
 
+@-moz-keyframes mvleft /* Firefox */
+{
+  0%   {left: 10%;}
+  100% {left:110%;}
+}
+
+@-webkit-keyframes mvleft /* Safari and Chrome */
+{
+  0%   {left: 10%;}
+  100% {left:110%;}
+}
+
+@-o-keyframes mvleft /* Opera */
+{
+  0%   {left: 10%;}
+  100% {left:110%;}
+}
 
 
 
@@ -1247,6 +1279,10 @@
     display: none;
     visibility: hidden;
     opacity: 0;
+    animation: all 5s cubic-bezier(.25,.1,.25,1);
+    -moz-animation: all 5s cubic-bezier(.25,.1,.25,1); /* Firefox */
+    -webkit-animation: all 5s cubic-bezier(.25,.1,.25,1); /* Safari and Chrome */
+    -o-animation: all 5s cubic-bezier(.25,.1,.25,1); /* Opera */
 }
 
 .show {

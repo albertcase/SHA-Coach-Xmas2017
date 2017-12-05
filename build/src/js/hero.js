@@ -143,6 +143,9 @@
 			// MOBILE 跳跃事件
 			w.addEventListener("deviceorientation", me.handleOrientation.bind(me), true);
 
+		},
+		exit: function(){
+			this.el.className += ' mvExit';
 		}
 	}
 
