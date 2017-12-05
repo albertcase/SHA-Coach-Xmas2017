@@ -8,10 +8,11 @@ function ajaxFun(type, url, data, callback){
         data: data,
         dataType: 'json'
     }).done(function(data){
-    	console.log(data);
-    	if(data.status == 1){
+    	if(data.status != 0){
     		callback(data)
-    	}
+    	}else{
+        console.log(data);
+      }
     }).fail
 }
 

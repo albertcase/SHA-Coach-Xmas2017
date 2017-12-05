@@ -25,7 +25,7 @@
 <body>
 <div class="loading hidden">
     <div class="loading_con">
-        <img src="img/logo.png" width="100%">
+        <img src="/build/dist/img/logo.png" width="100%">
 
         <div class="spinner">
             <div class="bounce1"></div>

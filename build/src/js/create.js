@@ -167,7 +167,10 @@
 		      'records': (time.second * 60 + time.minutes + '.' + Math.floor(Math.random() * 1000)),
 			  'animal': hero.elClassName,
 			  'bar': scores.length
-		    }, function(){
+		    }, function(data){
+		    	if(data.status === 3){
+		    		me.common.formErrorTips(data.msg);
+		    	}
 		    	document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
 				document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';
 				me.common.PageRouter('scores');
