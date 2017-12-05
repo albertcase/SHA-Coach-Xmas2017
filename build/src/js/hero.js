@@ -29,8 +29,7 @@
 		init: function(){
 			this.create();
 			this.render();
-
-			this.el.style = `left: ${this.x}px; top: ${this.y}%;`;
+			this.el.style = 'left: '+ this.x +'px; top: '+ this.y +'%';
 			this.bind();
 		},
 		render: function(){

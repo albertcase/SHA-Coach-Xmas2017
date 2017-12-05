@@ -163,8 +163,10 @@
 			// loading.className = 'loading hidden';
 
 			// 提交数据
+			var countTime = (time.second * 60 + time.minutes - scores.length * 0.5);
+
 			me.common.fetch.record({
-		      'records': (time.second * 60 + time.minutes + '.' + Math.floor(Math.random() * 1000)),
+		      'records': (countTime + '.' + Math.floor(Math.random() * 1000)),
 			  'animal': hero.elClassName,
 			  'bar': scores.length
 		    }, function(data){
@@ -172,7 +174,7 @@
 		    		me.common.base.formErrorTips(data.msg);
 		    	}
 		    	document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
-				document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';
+				document.querySelector('.timeCount').innerHTML = Math.floor(countTime/60) + ' 分 ' + countTime%60 + ' 秒';
 				me.common.PageRouter('scores');
 				loading.className = 'loading hidden';
 		    });

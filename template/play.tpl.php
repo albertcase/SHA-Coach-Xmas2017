@@ -35,14 +35,7 @@
         <p>目前涌入的小伙伴过多<br>页面正在跳转中，请耐心等待。</p>
     </div>
 </div>
-<!-- 横屏代码 -->
-<div id="orientLayer" class="mod-orient-layer">
-    <div class="mod-orient-layer__content">
-        <i class="icon mod-orient-layer__icon-orient"></i>
-        <div class="mod-orient-layer__desc vertical">为了更好的体验，请解锁竖屏浏览<br><em>建议全程在wifi环境下观看</em></div>
-        <div class="mod-orient-layer__desc landscape">为了更好的体验，请解锁横屏浏览<br><em>建议全程在wifi环境下观看</em></div>
-    </div>
-</div>
+
 
 <div class="shareTips hidden">
     <a href="javascript:void(0);" class="close"></a>
@@ -441,5 +434,14 @@
 
 
 </script>
+
+<!-- 横屏代码 -->
+<div id="orientLayer" class="mod-orient-layer">
+    <div class="mod-orient-layer__content">
+        <i class="icon mod-orient-layer__icon-orient"></i>
+        <div class="mod-orient-layer__desc vertical">为了更好的体验，请解锁竖屏浏览<br><em>建议全程在wifi环境下观看</em></div>
+        <div class="mod-orient-layer__desc landscape">为了更好的体验，请解锁横屏浏览<br><em>建议全程在wifi环境下观看</em></div>
+    </div>
+</div>
 </body>
 </html>
