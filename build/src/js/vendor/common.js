@@ -1,5 +1,22 @@
 // Common.js
 
+var shareArr = {
+    "_title": 'Coach 123', //分享标题
+    "_desc": "Coach感恩母亲节，为妈妈赢取比花束更美好的礼物",    // 分享朋友圈的描述
+    "_desc_friend": "Coach感恩母亲节，为妈妈赢取比花束更美好的礼物",    // 分享好友的描述
+    "_link": window.location.origin,    //分享的连接
+    "_imgUrl": window.location.origin + "/build/dist/img/share.jpg",   //分享的图片
+    "_shareAppMessageCallback": function(){
+        //_hmt.push(['_trackEvent', 'buttons', 'share', 'onMenuShareAppMessage']);
+    },
+    "_shareTimelineCallback": function(){
+        //_hmt.push(['_trackEvent', 'buttons', 'share', 'onMenuShareTimeline']);
+    }
+    //"_url": encodeURIComponent(window.location.href)//encodeURIComponent(window.location.href.split("#")[0]) //.replace('http%3A%2F%2F','')
+}
+
+
+
 Array.prototype.unique = function(){
     var res = [];
     var json = {};

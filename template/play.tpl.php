@@ -20,6 +20,9 @@
     <meta name="Keywords" content="">
     <meta name="Description" content="...">
     <link rel="stylesheet" type="text/css" href="./build/dist/css/bundle.min.css">
+    <script type="text/javascript">
+        document.write('<script type="text/javascript" src="http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat?debug=true&v='+ Math.random()+'"><\/script>');
+    </script>
     <script type="text/javascript" src="./build/dist/js/bundle-vendor.min.js"></script>
 </head>
 <body>
@@ -163,6 +166,7 @@
     //     }
     // });
     var common = new Common();
+    common.base.wxshareFun();
 
     var allimg = [
         "/build/dist/media/poster.jpg",
