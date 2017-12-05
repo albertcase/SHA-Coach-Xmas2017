@@ -245,7 +245,8 @@
     function getTopTen(){
         if(!toplistObj){
             fetch.authorize({}, function(data){
-                toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data)
+                toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data);
+                toplistObj.init();
             });
         }   
     }

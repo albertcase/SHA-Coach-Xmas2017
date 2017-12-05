@@ -118,6 +118,11 @@
 	/*left: 270px;
 	top: 230px;*/
 	z-index: 15;
+
+  animation: left 5s cubic-bezier(.25,.1,.25,1);
+  -moz-animation: left 5s cubic-bezier(.25,.1,.25,1); /* Firefox */
+  -webkit-animation: left 5s cubic-bezier(.25,.1,.25,1); /* Safari and Chrome */
+  -o-animation: left 5s cubic-bezier(.25,.1,.25,1); /* Opera */
   &.kl{ 
     background: url('../img/scene-1/el.png') center no-repeat;
     background-size: auto 100%;

@@ -2764,7 +2764,14 @@ body {
   position: absolute;
   /*left: 270px;
 	top: 230px;*/
-  z-index: 15; }
+  z-index: 15;
+  animation: left 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  -moz-animation: left 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  /* Firefox */
+  -webkit-animation: left 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  /* Safari and Chrome */
+  -o-animation: left 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  /* Opera */ }
   .hero.kl {
     background: url("../img/scene-1/el.png") center no-repeat;
     background-size: auto 100%; }
