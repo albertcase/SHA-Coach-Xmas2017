@@ -3169,7 +3169,6 @@ body {
     text-shadow: 0 0 10px #da7c25, 0 0 20px  #da7c25, 0 0 30px  #da7c25, 0 0 40px  #da7c25, 0 0 70px  #da7c25, 0 0 80px  #da7c25, 0 0 100px #da7c25, 0 0 150px #da7c25; }
   .toplist-l .qrcode {
     width: 67%;
-    height: 50%;
     background: url("../img/qrcode.png") center no-repeat;
     background-size: auto 100%;
     display: inline-block;

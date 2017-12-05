@@ -120,7 +120,7 @@
                 正在加载...
             </div>
             <div class="qrcode">
-                <img src="img/qrcode.png" width="100%;">
+                <img src="./build/dist/img/qrcode.png" width="100%;">
             </div>
             <a href="javascript:void(0);" class="back-btn"></a>
         </div>
