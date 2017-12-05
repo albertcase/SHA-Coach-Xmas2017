@@ -225,7 +225,7 @@
     Toplist.prototype.update = function(){
         var me = this;
         var userinfo = me.setting.data;
-        var list = me.setting.data.list;
+        var list = me.setting.data.topten;
 
         var listArray = [], userinfoHTML = '';
         for(let i = 0; i < list.length; i++){
