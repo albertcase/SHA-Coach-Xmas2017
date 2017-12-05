@@ -1,7 +1,3 @@
-<?php
-	var_dump($config);
-?>
-
 
 <!DOCTYPE HTML>
 <html>
@@ -70,7 +66,9 @@
     </div>
 
 </div>
-
+<?php
+    var_dump($config);
+?>
 <script type="text/javascript">
     var common = new Common();
     common.base.init();
@@ -141,58 +139,9 @@
 
 
     // 成绩榜
-    var toplistJson = {
-        'list': [
-            {
-                'name': 'a',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'b',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'c',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'd',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'e',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'f',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'g',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'h',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'i',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'j',
-                'socurs': '1分20秒'
-            }
-        ],
-        'userinfo': {
-            'socurs': '1分23秒',
-            'ranking': '121'
-        }
-    };
-
-    function Toplist(id, eventEl){
+    function Toplist(id, eventEl, toplistJson){
         if(!(this instanceof Toplist)){
-            var self = new Toplist(id, eventEl);
+            var self = new Toplist(id, eventEl, toplistJson);
             self.init();
             return self;
         };
@@ -213,30 +162,50 @@
             do: function(){
                 var me = this;
                 var jsonDatas = me.setting.listDatas; 
-                var jsonDatasList = jsonDatas.list;
 
-                var dataslistArray = [];
-                for(let i = 0; i < jsonDatasList.length; i++){
-                    dataslistArray.push(`<li><span>${jsonDatasList[i]['name']}</span><span>${jsonDatasList[i]['socurs']}</span></li>`);
+                var dataslistHTML;
+                if(jsonDatas.length <= 0){
+                    dataslistHTML = '暂无数据！';
+                }else{
+                    var dataslistArray = [];
+                    for(var i = 0; i < jsonDatas.length; i++){
+                        dataslistArray.push(`<li><span>${jsonDatas[i]['nickname']}</span><span>${jsonDatas[i]['records']}</span></li>`);
+                    }
+                    dataslistHTML = `<div class="toplistScroll">
+                        <div class="toplist-popup--context">
+                            <ul>
+                                ${dataslistArray.join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    `;
                 }
-                var dataslistHTML = `<div class="toplistScroll">
-                                        <div class="toplist-popup--context">
-                                            <ul>
-                                                ${dataslistArray.join('')}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="toplist-info">
-                                        <div class="socurs">${jsonDatas.userinfo.socurs}</div>
-                                        <div class="ranking">${jsonDatas.userinfo.ranking}名</div>
-                                    </div>
-                                    `;
+
+                
                 return dataslistHTML;
+            },
+            show: function(){
+                this.setting.popupFrame.show();
+            },
+            hide: function(){
+                this.setting.popupFrame.hide();
             }
         }
     }
 
-    var toplistObj = Toplist('toplist-popup', '.list-btn');
+    var toplistObj;
+    document.querySelector('.games-list').addEventListener('click', function(){
+        if(toplistObj){
+            toplistObj.show()
+        }else{
+            common.fetch.authorize({}, function(data){
+                toplistObj = Toplist('toplist-popup', '.games-list', data.list);
+                toplistObj.show();
+            });
+        }
+    })
+
+
 
 </script>
 
