@@ -21,6 +21,13 @@
     <meta name="Description" content="...">
     <link rel="stylesheet" type="text/css" href="css/bundle.min.css">
     <script type="text/javascript" src="js/bundle-vendor.min.js"></script>
+   <!--  <script type="text/javascript" src="../src/js/vendor/swiper.min.js"></script>
+    <script type="text/javascript" src="../src/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="../src/js/vendor/jquery.transit.js"></script>
+    <script type="text/javascript" src="../src/js/vendor/PxLoader.js"></script>
+    <script type="text/javascript" src="../src/js/vendor/rem.js"></script>
+    <script type="text/javascript" src="../src/js/vendor/common.js"></script>
+    <script type="text/javascript" src="../src/js/vendor/fetch.js"></script> -->
     <style type="text/css">
         #orientLayer { display: none; }
         @media screen and (min-aspect-ratio: 13/9) { 
@@ -29,7 +36,6 @@
     </style>
 </head>
 <body>
-<div class="loadingBar"></div>
 <div class="loading">
     <div class="loading_con">
         <img src="img/logo.png" width="100%">
@@ -68,12 +74,11 @@
 <script type="text/javascript">
     var common = new Common();
     common.base.init();
-
     var allimg = [
         "/build/dist/media/poster.jpg",
         "/build/dist/media/test.mp4",
         "/build/dist/media/eat.wav",
-        "/build/dist/media/bg-music.mp3",
+        "/build/dist/media/bg-music.acc",
 
         "/build/dist/img/back-btn.png",
         "/build/dist/img/chose-buy-btn.png",
@@ -170,16 +175,7 @@
         $(".loading").css({"visibility": "hidden"});
 
         pageController.init();
-
-        fetch.noAuthorize({}, function(data){
-            if(data.status){
-                var toplistObj = Toplist('toplist-popup', '.games-list', data.list);
-            }
-        });
-
     })
-
-    
 
     // 成绩榜
     function Toplist(id, eventEl, toplistJson){
@@ -211,8 +207,8 @@
                     dataslistHTML = '暂无数据！';
                 }else{
                     var dataslistArray = [];
-                    for(let i = 0; i < jsonDatas.length; i++){
-                        dataslistArray.push(`<li><span>${jsonDatas[i]['name']}</span><span>${jsonDatas[i]['socurs']}</span></li>`);
+                    for(var i = 0; i < jsonDatas.length; i++){
+                        dataslistArray.push(`<li><span>${jsonDatas[i]['nickname']}</span><span>${jsonDatas[i]['records']}</span></li>`);
                     }
                     dataslistHTML = `<div class="toplistScroll">
                         <div class="toplist-popup--context">
@@ -221,21 +217,32 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="toplist-info">
-                        <div class="socurs">${jsonDatas.userinfo.socurs}</div>
-                        <div class="ranking">${jsonDatas.userinfo.ranking}名</div>
-                    </div>
                     `;
                 }
 
                 
                 return dataslistHTML;
+            },
+            show: function(){
+                this.setting.popupFrame.show();
+            },
+            hide: function(){
+                this.setting.popupFrame.hide();
             }
         }
     }
 
-    
-    
+    var toplistObj;
+    document.querySelector('.games-list').addEventListener('click', function(){
+        if(toplistObj){
+            toplistObj.show()
+        }else{
+            fetch.noAuthorize({}, function(data){
+                toplistObj = Toplist('toplist-popup', '.games-list', data.list);
+                toplistObj.show();
+            });
+        }
+    })
 
 
 
@@ -317,9 +324,6 @@
     
 
     
-    
-    
-    
 
     function PageController(){
         this.common = new Common();
@@ -341,7 +345,7 @@
             var me = this;
             // 包你好玩按钮
             me.container.homePlayBtn.addEventListener('click', function(){
-                location.href = 'game.html';
+                location.href = '/game';
             })
         }
     }

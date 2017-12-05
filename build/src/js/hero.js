@@ -65,15 +65,15 @@
 			this.status = 'play';
 			magicFun.paused = 0;
 			var me = this;
-			var a1 = new Animator(200, function(p){
-			    var tx = 150 - 150 * (1-p);
+			var a1 = new Animator(300, function(p){
+			    var tx = 180 - 180 * (1-p);
 			    me.latey = -tx;
 			    // me.latex = -tx;;
 			    me.update();
 			})
 
-			var a2 = new Animator(600, function(p){
-			    var tx = -150 * (1-p);
+			var a2 = new Animator(500, function(p){
+			    var tx = -180 * (1-p);
 			    me.latey = tx;
 			    me.update();
 			})
@@ -90,7 +90,7 @@
 			var me = this;
 			me.jump.count++;
 			if(me.jump.count > 6) {
-				if(hero.status === 'paused' && (me.jump.first - me.jump.end) >= 4 && (me.jump.first > me.jump.end)){
+				if(hero.status === 'paused' && (me.jump.first - me.jump.end) > 4 && (me.jump.first > me.jump.end)){
 					hero.anim();
 				};
 				me.jump.count = 0;

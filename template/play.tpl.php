@@ -155,7 +155,7 @@
 </div>
 
 
-<audio src="./build/dist/media/bg-music.mp3" loop id="bgMusic">
+<audio src="./build/dist/media/bg-music.aac" loop id="bgMusic">
 您的浏览器不支持 audio 标签。
 </audio>
 <audio src="./build/dist/media/eat.wav" id="eatMusic">
@@ -175,7 +175,7 @@
         "/build/dist/media/poster.jpg",
         "/build/dist/media/test.mp4",
         "/build/dist/media/eat.wav",
-        "/build/dist/media/bg-music.mp3",
+        "/build/dist/media/bg-music.aac",
 
         
         "/build/dist/img/num0.png",

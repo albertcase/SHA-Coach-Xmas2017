@@ -72,7 +72,7 @@
         "/build/dist/media/poster.jpg",
         "/build/dist/media/test.mp4",
         "/build/dist/media/eat.wav",
-        "/build/dist/media/bg-music.mp3",
+        "/build/dist/media/bg-music.acc",
 
         "/build/dist/img/back-btn.png",
         "/build/dist/img/chose-buy-btn.png",
@@ -203,7 +203,7 @@
                     dataslistHTML = '暂无数据！';
                 }else{
                     var dataslistArray = [];
-                    for(let i = 0; i < jsonDatas.length; i++){
+                    for(var i = 0; i < jsonDatas.length; i++){
                         dataslistArray.push(`<li><span>${jsonDatas[i]['nickname']}</span><span>${jsonDatas[i]['records']}</span></li>`);
                     }
                     dataslistHTML = `<div class="toplistScroll">

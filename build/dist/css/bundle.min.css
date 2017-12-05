@@ -2733,21 +2733,21 @@ body {
 .coachPro {
   width: 0.8rem;
   height: 1.0rem;
-  background: url("../img/scene-1/bag.png") center no-repeat;
+  background: url("../img/scene-1/bag.png") center bottom no-repeat;
   background-size: 100% auto;
   position: absolute;
   z-index: 10; }
   .coachPro.style1 {
-    background: url("../img/scene-1/bag.png") center no-repeat;
+    background: url("../img/scene-1/bag.png") center bottom no-repeat;
     background-size: 100% auto; }
   .coachPro.style2 {
-    background: url("../img/scene-2/bag.png") center no-repeat;
+    background: url("../img/scene-2/bag.png") center bottom no-repeat;
     background-size: 100% auto; }
   .coachPro.style3 {
-    background: url("../img/scene-3/bag.png") center no-repeat;
+    background: url("../img/scene-3/bag.png") center bottom no-repeat;
     background-size: 100% auto; }
   .coachPro.style4 {
-    background: url("../img/scene-4/bag.png") center no-repeat;
+    background: url("../img/scene-4/bag.png") center bottom no-repeat;
     background-size: 100% auto; }
 
 .heart {

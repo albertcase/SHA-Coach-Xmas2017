@@ -31,7 +31,7 @@
 		this.parentEl = document.getElementById('scene');
 		this.cname = 'style1';
 		this.x = 0;
-		this.y = 65;
+		this.y = 62;
 		this.width = null;
 		this.height = null;
 		this.elements = [];
