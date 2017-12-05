@@ -59,7 +59,7 @@
         <div class="head-star"></div>
         <div class="xmasVideo"></div>
         <div class="share-btn-area">
-            <a href="game.html" class="replay-btn"></a>
+            <a href="/game" class="replay-btn"></a>
             <a href="javascript:void(0);" class="list-btn"></a>
             <a href="javascript:void(0);" class="chose-buy-btn"></a>
         </div>
@@ -194,12 +194,12 @@
     }
 
     var toplistObj;
-    document.querySelector('.games-list').addEventListener('click', function(){
+    document.querySelector('.list-btn').addEventListener('click', function(){
         if(toplistObj){
             toplistObj.show()
         }else{
             common.fetch.authorize({}, function(data){
-                toplistObj = Toplist('toplist-popup', '.games-list', data.list);
+                toplistObj = Toplist('toplist-popup', '.list-btn', data.list);
                 toplistObj.show();
             });
         }
