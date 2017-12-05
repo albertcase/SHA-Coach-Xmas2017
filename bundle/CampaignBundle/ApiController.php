@@ -109,15 +109,15 @@ class ApiController extends Controller
     			$rs = $this->insertRecord($recordInfo);
                 $redis->setTimeout($floodkey, 0);
     			if($rs) {
-    				$result = array('status' => 1, 'msg' => '成绩保存成功！', 'share_url' => $share_url    );
+    				$result = array('status' => 1, 'msg' => '成绩保存成功！', 'share_url' => $share_url);
     			} else {
-    				$result = array('status' => 0, 'msg' => '成绩保存失败！');
+    				$result = array('status' => 0, 'msg' => '成绩保存失败！', 'share_url' => $share_url);
     			}
     			break;
     		
     		case 1:
                 $redis->setTimeout($floodkey, 0);
-				$result = array('status' => 3, 'msg' => '很遗憾！您未刷新成绩！');
+				$result = array('status' => 3, 'msg' => '很遗憾！您未刷新成绩！', 'share_url' => $share_url);
     			break;
 
 			case 2:
@@ -126,7 +126,7 @@ class ApiController extends Controller
     			if($rs) {
     				$result = array('status' => 1, 'msg' => '成绩保存成功！', 'share_url' => $share_url);
     			} else {
-    				$result = array('status' => 0, 'msg' => '成绩保存失败！');
+    				$result = array('status' => 0, 'msg' => '成绩保存失败！', 'share_url' => $share_url);
     			}
     			break;	
 

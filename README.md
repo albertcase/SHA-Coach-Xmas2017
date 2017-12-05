@@ -60,7 +60,8 @@ records=144.122&animal=konglong&bar=4
 ```javascript
 {
     status: 0,
-    msg: '成绩保存失败！'
+    msg: '成绩保存失败！',
+    share_url: 'http://xmas2017.coach.samesamechina.com/share/1',
 }
 ```
 
@@ -78,7 +79,8 @@ records=144.122&animal=konglong&bar=4
 ```javascript
 {
     status: 3,
-    msg: '很遗憾！您未刷新成绩！'
+    msg: '很遗憾！您未刷新成绩！',
+    share_url: 'http://xmas2017.coach.samesamechina.com/share/1',
 }
 ```
 
