@@ -24,17 +24,25 @@ class PageController extends Controller
         return $this->render('index', array('config' => $config));
     }
 
-    public function shareAction()
+    public function shareAction($gameid)
     {
         global $user;
-        $api = new ApiController();
-        $isPlay = $api->findRecordByUid($user->uid);
-        $config = array('isPlay' => (int)$isPlay);
-        return $this->render('share', array('config' => $config));
+
+        $uid = (int) $this->getUidByGid($gameid);
+        //自己
+        if($user->uid == $uid) {
+            $config = array();
+            return $this->render('isplay', array('config' => $config));
+        } else { //不是自己
+            $userInfo = $this->findInfoByUid($uid);
+            return $this->render('share', array('userInfo' => $userInfo));
+        }
     }
 
     public function gameAction()
     {
+        $api = new ApiController();
+        $api->gameStart(); 
         $config = array();
         return $this->render('play', array('config' => $config));
     }
@@ -46,4 +54,27 @@ class PageController extends Controller
 	    $this->statusPrint('success');
     }
 
+    public function getUidByGid($gameid) 
+    {
+        $sql = "SELECT `uid` FROM `record` WHERE `id` = :gid";
+        $query = $this->_pdo->prepare($sql);
+        $query->execute(array(':gid' => $gameid));
+        $row = $query->fetch(\PDO::FETCH_ASSOC);
+        if($row) {
+            return $row['uid'];
+        }
+        return false;
+    }
+
+    public function findInfoByUid($uid) 
+    {
+        $sql = "SELECT `nickname`, `headimgurl` FROM `user` WHERE `uid` = :uid";
+        $query = $this->_pdo->prepare($sql);
+        $query->execute(array(':uid' => $uid));
+        $row = $query->fetch(\PDO::FETCH_ASSOC);
+        if($row) {
+            return $row;
+        }
+        return false;
+    }
 }

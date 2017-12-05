@@ -5,9 +5,9 @@
 1.domain/home.html ：入口文件
 2.domain/game ：游戏 
 	- /template/play.tpl.php : 游戏模版
-3.domain/share : 分享页面
-	- /template/share.tpl.php : 分享模版
-  - isPlay: 1:玩过 0:未玩过
+3.domain/share/gameid (路由会在提交成绩成成功之后返回share_url字段)
+	- /template/isplay.tpl.php :自己
+  - /template/share.tpl.php :非自己 【$userInfo['nickname']:昵称， $userInfo['headimgurl']：头像】
 4.API list
 	- 1.domain/api/record :提交游戏成绩
 	- 2.domain/api/omg/topten :未授权下拉取排行榜（仅有前十名数据）
@@ -51,6 +51,7 @@ records=144.122&animal=konglong&bar=4
 {
     status: 1,
     msg: '成绩保存成功！',
+    share_url: 'http://xmas2017.coach.samesamechina.com/share/1',
 }
 ```
 

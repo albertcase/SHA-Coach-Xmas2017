@@ -62,14 +62,19 @@ class ApiController extends Controller
         $recordInfo->animal = $request->request->get('animal');
         $recordInfo->bar = $request->request->get('bar');
 
+        // API安全处理
+        $this->checkSafe($recordInfo);
+
         // lock 5s 5s中提交一次成绩
         $redis = Redis::getInstance();
-        if($redis->get($user->uid)) {
+        $floodkey = 'flood:' . $user->uid;
+
+        if($redis->get($floodkey)) {
             $data = array('status' => 2, 'msg' => '您的操作过于频繁！请稍后再试！');
-            $this->dataPrint($result);
+            $this->dataPrint($data);
         }
-        $redis->set($user->uid, 1);
-        $redis->setTimeout($user->uid, 60);
+        $redis->set($floodkey, 1);
+        $redis->setTimeout($floodkey, 5);
 
         // 保存成绩
   		$result = $this->saveRecord($recordInfo); 
@@ -84,6 +89,8 @@ class ApiController extends Controller
     	$isPlay = $this->findRecordByUid($recordInfo->uid);
     	$isMax = $this->findMaxRecord($recordInfo);
     	$result = array();
+        $redis = Redis::getInstance();
+        $floodkey = 'flood:' . $user->uid;
 
     	//1.[1,1]刷新成绩 2.[1,0] or [0,1]重复未刷新成绩 3.[0,0]第一次玩游戏
     	$recordStatus = (int)$isPlay + (int)$isMax;
@@ -91,6 +98,7 @@ class ApiController extends Controller
     	switch ($recordStatus) {
     		case 0:
     			$rs = $this->insertRecord($recordInfo);
+                $redis->setTimeout($floodkey, 0);
     			if($rs) {
     				$result = array('status' => 1, 'msg' => '成绩保存成功！');
     			} else {
@@ -99,11 +107,13 @@ class ApiController extends Controller
     			break;
     		
     		case 1:
+                $redis->setTimeout($floodkey, 0);
 				$result = array('status' => 3, 'msg' => '很遗憾！您未刷新成绩！');
     			break;
 
 			case 2:
     			$rs = $this->updateRecord($recordInfo);
+                $redis->setTimeout($floodkey, 0);
     			if($rs) {
     				$result = array('status' => 1, 'msg' => '成绩保存成功！');
     			} else {
@@ -176,4 +186,81 @@ class ApiController extends Controller
         }
         return false;
     }
+
+    public function gameStart()
+    {
+        if(!SAFE_LOCK) { 
+            return true;
+        }
+
+        // 开启安全模式
+        global $user;
+        $request = $this->request;
+        $redis = Redis::getInstance();
+        $time = time();
+
+        $uuid = $this->helper->uuidGenerator();
+        setcookie('7dc4b594a1ee58d', $uuid, $time + 300, '/', $request->getDomain());
+        $redisKey = 'start:' . $user->uid . $uuid;
+        $redis->set($redisKey, $time);
+    }
+
+    public function checkSafe($recordInfo)
+    {
+        if(!SAFE_LOCK) { 
+            return true;
+        } 
+
+        global $user;
+        $request = $this->request;
+        $redis = Redis::getInstance();
+        $time = time();
+        $floodkey = 'flood:' . $user->uid;
+        $block_key = 'block:' . $user->uid;
+
+        if($recordInfo->records < SAFE_TIME) {
+            $attackLog = new \stdClass();
+            $attackLog->uid = $user->uid;
+            $attackLog->game_time = $recordInfo->records;
+            $attackLog->api_data = json_encode($recordInfo, 1);
+            $this->insertAttackLog($attackLog);
+            $data = array('status' => 3, 'msg' => '该成绩异常！');
+            $this->dataPrint($data);
+        }
+
+        if($redis->get($block_key)) {
+            $data = array('status' => 4, 'msg' => '该用户为黑名单用户！');
+            $this->dataPrint($data);
+        }
+
+        $uuid = isset($_COOKIE['7dc4b594a1ee58d']) ? $_COOKIE['7dc4b594a1ee58d'] : 0;
+
+        $redisKey = 'start:' . $user->uid . $uuid;
+        if($redis->get($redisKey)) {
+            $startTime = $redis->get($redisKey);
+            $gameTime = $time - $startTime;
+            if($gameTime < SAFE_TIME) {
+                //恶意用户锁定并记录日志
+                $redis->set($block_key, 1);
+                $attackLog = new \stdClass();
+                $attackLog->uid = $user->uid;
+                $attackLog->gameTime = $gameTime;
+                $attackLog->api_data = json_encode($recordInfo, 1);
+                $this->insertAttackLog($attackLog);
+            }
+        }
+        exit;  
+    }
+
+    public function insertAttackLog($log)
+    {
+        $log->created = date('Y-m-d H:i:s');
+        $log = (array) $log;
+        $id = $this->helper->insertTable('attack_log', $log);
+        if($id) {
+            return $id;
+        }
+        return false;
+    }
+
 }

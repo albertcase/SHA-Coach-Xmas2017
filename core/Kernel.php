@@ -33,7 +33,7 @@ class Kernel
 		if($router->getCallback()) {
 			$event = new ControllerEvent($request);
 			$this->dispatcher->dispatch(KernelEvents::CONTROLLER, $event);
-			$response = call_user_func_array($router->getCallback(), array($router->getCallbackParam()));
+			$response = call_user_func_array($router->getCallback(), $router->getCallbackParam());
 		} else {
 			$response = new Response('<center><h1>404 page not found!</h1></center>');
 		}

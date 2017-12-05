@@ -1,4 +1,7 @@
-
+<?php 
+    echo '昵称：' . $userInfo['nickname'];
+    echo '头像：' . $userInfo['headimgurl'];
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -68,9 +71,6 @@
     </div>
 
 </div>
-<?php
-    var_dump($config);
-?>
 <script type="text/javascript">
     var common = new Common();
     common.base.wxshareFun();

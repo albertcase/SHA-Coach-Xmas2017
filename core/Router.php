@@ -44,16 +44,11 @@ class Router
 	public function getCallback()
 	{
 		return $this->callback;
-		if($this->callback) {
-			return $this->callback;
-		} else {
-			return NULL;
-		}
 	}
 
 	public function getCallbackParam()
 	{
-		$this->param;
+		return $this->param;
 	}
 
 	public function generateUrl($router, $query = array(), $absolute = false){
