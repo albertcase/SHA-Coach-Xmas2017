@@ -45,3 +45,6 @@ Fetch.prototype.noAuthorize = function({}, callback){  // 未授权下拉取排�
 	ajaxFun('GET', 'domian/api/omg/topten', {}, callback)
 }
 	
+
+Common.prototype.fetch = new Fetch();
+
