@@ -162,7 +162,7 @@
 			// me.common.PageRouter('scores');
 			// loading.className = 'loading hidden';
 
-			提交数据
+			// 提交数据
 			me.common.fetch.record({
 		      'records': (time.second * 60 + time.minutes + '.' + Math.floor(Math.random() * 1000)),
 			  'animal': hero.elClassName,
