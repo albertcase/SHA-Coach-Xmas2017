@@ -261,7 +261,7 @@
         var list = me.setting.data.topten;
 
         var listArray = [], userinfoHTML = '';
-        for(let i = 0; i < list.length; i++){
+        for(var i = 0; i < list.length; i++){
             listArray.push(`<li><span>${list[i].nickname}</span><span>${list[i].records}</span></li>`);
         }
 
@@ -277,7 +277,7 @@
     var toplistObj;
     function getTopTen(){
         if(!toplistObj){
-            fetch.authorize({}, function(data){ // 授权拉取排行榜
+            common.fetch.authorize({}, function(data){ // 授权拉取排行榜
                 toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data);
                 toplistObj.init();
             });
