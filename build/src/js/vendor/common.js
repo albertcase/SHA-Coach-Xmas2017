@@ -143,7 +143,7 @@
                 // $(".loadingBar").html(p + '%');
                 
             } , function (p){
-                $(".loadingBar").html(p + '%');
+                //$(".loadingBar").html(p + '%');
                 //$(".loading em").html(p);
                 console.log(p);
             });

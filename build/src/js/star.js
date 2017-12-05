@@ -44,6 +44,8 @@
 
 		this.heroId = 0;
 		this.eatMusic = null;
+
+		this.enterSpace = 0;
 	}
 
 	Star.prototype.init = function(){ // 创建元素
@@ -69,7 +71,7 @@
 		var creatEle = null, me = this;
 		//if(me.writeArr.indexOf(count) < 0) {
 			//me.writeArr.push(count);
-			var random = Math.floor(Math.random() * 1000);
+			var random = Math.floor(Math.random() * 100);
 			// for(let i = 0; i < starData.length; i++){
 			// 	// if(count === starData[i].key){
 			// 	// 	creatEle = me.init(starData[i].style);
@@ -81,9 +83,10 @@
 			// 		}
 			// 	}
 			// }
-
-			if(count % 100 === 0 || (random % 300 === 0)){
-				if(me.elements.length <= 3){
+			me.enterSpace++;
+			if(count % 100 === 0 || (random % 50 === 0)){
+				if(me.elements.length <= 3 && me.enterSpace >= 16){
+					me.enterSpace = 0;
 					me.heroId++;
 					creatEle = me.init(starData[0].style);
 				}

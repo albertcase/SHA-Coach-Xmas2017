@@ -60,7 +60,7 @@
 			// if(countInit === barriersData[i].key){
 			// 	creatEle = me.init();
 			// }
-			if(countInit%100 === 0){
+			if(countInit%80 === 0){
 				creatEle = me.init();
 			}
 		//}

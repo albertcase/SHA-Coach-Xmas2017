@@ -108,7 +108,7 @@
             <div class="timeCount">- 分 - 秒</div>
         </div>
         <div class="scores-btn--area">
-            <a href="javascript:void(0);" class="replay-btn"></a>
+            <a href="javascript:location.reload();" class="replay-btn"></a>
             <a href="javascript:void(0);" class="gift-btn"></a>
         </div>
     </div>
@@ -171,45 +171,78 @@
     });
     var common = new Common();
 
+    var allimg = [
+        "/build/dist/media/poster.jpg",
+        "/build/dist/media/test.mp4",
+        "/build/dist/media/eat.wav",
+        "/build/dist/media/bg-music.mp3",
+
+        
+        "/build/dist/img/num0.png",
+        "/build/dist/img/num1.png",
+        "/build/dist/img/num2.png",
+        "/build/dist/img/num3.png",
+        "/build/dist/img/num4.png",
+        "/build/dist/img/num5.png",
+        "/build/dist/img/num6.png",
+        "/build/dist/img/num7.png",
+        "/build/dist/img/num8.png",
+        "/build/dist/img/num9.png",
+        "/build/dist/img/num10.png",
+        
+
+        "/build/dist/img/juese/kl.png",
+        "/build/dist/img/juese/qw.png",
+        "/build/dist/img/juese/mhl.png",
+        "/build/dist/img/juese/kl-large.png",
+        "/build/dist/img/juese/qw-large.png",
+        "/build/dist/img/juese/mhl-large.png",
+
+        "/build/dist/img/scene-1/bag.png",
+        "/build/dist/img/scene-1/el-1.png",
+        "/build/dist/img/scene-1/el-2.png",
+        "/build/dist/img/scene-1/el-3.png",
+        "/build/dist/img/scene-1/el-4.png",
+        "/build/dist/img/scene-1/el-5.png",
+        "/build/dist/img/scene-1/el-6.png",
+        "/build/dist/img/scene-1/el.png",
+        "/build/dist/img/scene-1/scene-bg.jpg",
+
+        "/build/dist/img/scene-2/bag.png",
+        "/build/dist/img/scene-2/el-1.png",
+        "/build/dist/img/scene-2/el-2.png",
+        "/build/dist/img/scene-2/el-3.png",
+        "/build/dist/img/scene-2/el-4.png",
+        "/build/dist/img/scene-2/el-5.png",
+        "/build/dist/img/scene-2/el-6.png",
+        "/build/dist/img/scene-2/scene-bg.jpg",
+
+        "/build/dist/img/scene-3/bag.png",
+        "/build/dist/img/scene-3/el-1.png",
+        "/build/dist/img/scene-3/el-2.png",
+        "/build/dist/img/scene-3/el-3.png",
+        "/build/dist/img/scene-3/el-4.png",
+        "/build/dist/img/scene-3/el-5.png",
+        "/build/dist/img/scene-3/el-6.png",
+        "/build/dist/img/scene-3/el.png",
+        "/build/dist/img/scene-3/scene-bg.jpg",
+
+        "/build/dist/img/scene-4/bag.png",
+        "/build/dist/img/scene-4/el-1.png",
+        "/build/dist/img/scene-4/el-2.png",
+        "/build/dist/img/scene-4/el-3.png",
+        "/build/dist/img/scene-4/el-4.png",
+        "/build/dist/img/scene-4/el-5.png",
+        "/build/dist/img/scene-4/el-6.png",
+        "/build/dist/img/scene-4/el.png",
+        "/build/dist/img/scene-4/scene-bg.jpg"
+        
+    ];
+    
+    
+
 
     // 成绩榜
-    var toplistJson = {
-        'list': [
-            {
-                'name': 'a',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'b',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'c',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'd',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'e',
-                'socurs': '1分20秒'
-            },
-            {
-                'name': 'f',
-                'socurs': '1分20秒'
-            }
-        ],
-        'userinfo': {
-            'socurs': '1分23秒',
-            'ranking': '121'
-        }
-    };
-
-    // 授权拉取排行榜
-    // fetch.authorize({}, function(data){
-    //     console.log(data);
-    // });
 
     function Toplist(listEl, userinfoEl, data){
         this.setting = {
@@ -244,7 +277,7 @@
     var toplistObj;
     function getTopTen(){
         if(!toplistObj){
-            fetch.authorize({}, function(data){
+            fetch.authorize({}, function(data){ // 授权拉取排行榜
                 toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data);
                 toplistObj.init();
             });
@@ -343,12 +376,12 @@
         })
 
         me.container.toplistTag.addEventListener('click', function(){
-            getTopTen();;
+            getTopTen();
             common.PageRouter('toplist');
         })
 
         me.container.listBtn.addEventListener('click', function(){
-            getTopTen();;
+            getTopTen();
             common.PageRouter('toplist'); 
         })
 
@@ -364,43 +397,46 @@
 
 
 
-
-
-
-
-
-    var swiper = null;
-    common.PageRouter('chose', function(){
-        if(swiper) return false;
-        var jueSeItem = ['kl', 'qw', 'mhl'];
-        swiper = new Swiper('.swiper-container',{
-            // effect : 'fade',  // coverflow
-            effect : 'flip',
-            flip: {
-                slideShadows : true,
-                limitRotation : true,
-            },
-            slidesPerView: 1,
-            centeredSlides: true,
-            pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            renderBullet: function (index, className) {
-              return `<div class="${className} jue-se--item ${jueSeItem[index]}"></div>`;
-              // return '<div class="' + className + '">' + (index + 1) + '</div>';
-            },
-          },
+    
+    common.base.loadingFnDoing(allimg, function(){
+        var swiper = null;
+        common.PageRouter('chose', function(){
+            if(swiper) return false;
+            var jueSeItem = ['kl', 'qw', 'mhl'];
+            swiper = new Swiper('.swiper-container',{
+                // effect : 'fade',  // coverflow
+                effect : 'flip',
+                flip: {
+                    slideShadows : true,
+                    limitRotation : true,
+                },
+                slidesPerView: 1,
+                centeredSlides: true,
+                pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                  return `<div class="${className} jue-se--item ${jueSeItem[index]}"></div>`;
+                  // return '<div class="' + className + '">' + (index + 1) + '</div>';
+                },
+              },
+            });
         });
-    });
 
-
-    var startGo = document.querySelector('.start-btn')
-    // 出发
-    startGo.addEventListener('click', function(){
-        var classArray = ['kl', 'qw', 'mhl'];
-        hero.elClassName = classArray[swiper.activeIndex];
-        common.PageRouter('scene');
+        var startGo = document.querySelector('.start-btn')
+        // 出发
+        startGo.addEventListener('click', function(){
+            var classArray = ['kl', 'qw', 'mhl'];
+            hero.elClassName = classArray[swiper.activeIndex];
+            common.PageRouter('scene');
+        })
     })
+
+
+    
+
+
+    
 
 
 

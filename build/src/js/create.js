@@ -199,9 +199,8 @@
 		barriers.init();
 		star.init();
 
-		$('.gameTips').hide();
-
 		magicFun.init();
+		$('.gameTips').fadeOut();
 	}, false)
 
 

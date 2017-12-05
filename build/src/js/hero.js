@@ -65,15 +65,15 @@
 			this.status = 'play';
 			magicFun.paused = 0;
 			var me = this;
-			var a1 = new Animator(300, function(p){
-			    var tx = 160 - 160 * (1-p);
+			var a1 = new Animator(200, function(p){
+			    var tx = 150 - 150 * (1-p);
 			    me.latey = -tx;
 			    // me.latex = -tx;;
 			    me.update();
 			})
 
-			var a2 = new Animator(500, function(p){
-			    var tx = -160 * (1-p);
+			var a2 = new Animator(600, function(p){
+			    var tx = -150 * (1-p);
 			    me.latey = tx;
 			    me.update();
 			})
@@ -115,7 +115,7 @@
 			var me = this;
 			// PC 跳跃事件
 			document.onkeyup = function(evt){
-				if(hero.status === 'play') return;
+				// if(hero.status === 'play') return;
 
 			    evt = (evt) ? evt : w.event;
 			    if (evt.keyCode) {

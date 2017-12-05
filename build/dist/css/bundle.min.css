@@ -3150,11 +3150,11 @@ body {
 
 /* toplist */
 .toplist-l {
-  width: 30%;
+  width: 36%;
   height: 80%;
   background: url("../img/toplist-info.png") left top no-repeat;
   background-size: 40% auto;
-  margin: 3% 0 0 10%;
+  margin: 4% 0 0 4%;
   float: left;
   display: inline-block; }
   .toplist-l .toplist-userinfo {
@@ -3163,19 +3163,22 @@ body {
     float: left;
     display: inline-block;
     color: #fff;
-    margin: 1% 0 0 42%;
+    margin: 0 0 0 42%;
     font-size: 0.2rem;
     text-shadow: 0 0 10px #da7c25, 0 0 20px  #da7c25, 0 0 30px  #da7c25, 0 0 40px  #da7c25, 0 0 70px  #da7c25, 0 0 80px  #da7c25, 0 0 100px #da7c25, 0 0 150px #da7c25; }
   .toplist-l .qrcode {
-    width: 80%;
-    margin: -8% 0 0 0;
+    width: 67%;
+    margin: -2% 0 0 0;
+    background: url("../img/qrcode.png") center no-repeat;
+    background-size: auto 100%;
     display: inline-block; }
+    .toplist-l .qrcode img {
+      opacity: 0; }
   .toplist-l .back-btn {
     width: 100%;
     height: 0.6rem;
     background: url("../img/back-btn.png") center no-repeat;
     background-size: auto 100%;
-    margin: 2% 0 0 0;
     display: inline-block; }
 
 .toplist-r {
@@ -3186,8 +3189,8 @@ body {
   display: inline-block; }
   .toplist-r .toplist-table {
     width: 88%;
-    height: 80%;
-    margin: 8% 0 0 0;
+    height: 86%;
+    margin: 6% 0 0 0;
     background: url("../img/toplist-bg.png") center top no-repeat;
     background-size: 90% auto;
     display: inline-block; }
@@ -3210,9 +3213,18 @@ body {
           color: #fff;
           text-shadow: none; }
         .toplist-r .toplist-table ul li span {
-          width: 50%;
-          display: inline-block;
           text-align: center; }
+        .toplist-r .toplist-table ul li span:nth-child(1) {
+          width: 38%;
+          overflow: hidden;
+          display: inline-block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+        .toplist-r .toplist-table ul li span:nth-child(2) {
+          width: 60%;
+          overflow: hidden;
+          display: inline-block; }
 
 /*****************************
 * index
