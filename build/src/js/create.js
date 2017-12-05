@@ -169,7 +169,7 @@
 			  'bar': scores.length
 		    }, function(data){
 		    	if(data.status === 3){
-		    		me.common.formErrorTips(data.msg);
+		    		me.common.base.formErrorTips(data.msg);
 		    	}
 		    	document.querySelector('.heartCount').innerHTML = scores.length + ' 个';
 				document.querySelector('.timeCount').innerHTML = time.second + ' 分 ' + time.minutes + ' 秒';
