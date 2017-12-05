@@ -86,11 +86,20 @@ class ApiController extends Controller
      */ 
     public function saveRecord($recordInfo)
     {
-    	$isPlay = $this->findRecordByUid($recordInfo->uid);
+        global $user;
+
+    	$playInfo = $this->findRecordByUid($recordInfo->uid);
+        if(empty($playInfo)) {
+            $isPlay = 0;
+        } else {
+            $isPlay = 1;
+        }
     	$isMax = $this->findMaxRecord($recordInfo);
     	$result = array();
         $redis = Redis::getInstance();
         $floodkey = 'flood:' . $user->uid;
+        $gameid = isset($playInfo['id']) ? $playInfo['id'] : 0;
+        $share_url = 'http://xmas2017.coach.samesamechina.com/share/'. $gameid;
 
     	//1.[1,1]刷新成绩 2.[1,0] or [0,1]重复未刷新成绩 3.[0,0]第一次玩游戏
     	$recordStatus = (int)$isPlay + (int)$isMax;
@@ -100,24 +109,24 @@ class ApiController extends Controller
     			$rs = $this->insertRecord($recordInfo);
                 $redis->setTimeout($floodkey, 0);
     			if($rs) {
-    				$result = array('status' => 1, 'msg' => '成绩保存成功！');
+    				$result = array('status' => 1, 'msg' => '成绩保存成功！', 'share_url' => $share_url    );
     			} else {
-    				$result = array('status' => 0, 'msg' => '成绩保存失败！');
+    				$result = array('status' => 0, 'msg' => '成绩保存失败！', 'share_url' => $share_url);
     			}
     			break;
     		
     		case 1:
                 $redis->setTimeout($floodkey, 0);
-				$result = array('status' => 3, 'msg' => '很遗憾！您未刷新成绩！');
+				$result = array('status' => 3, 'msg' => '很遗憾！您未刷新成绩！', 'share_url' => $share_url);
     			break;
 
 			case 2:
     			$rs = $this->updateRecord($recordInfo);
                 $redis->setTimeout($floodkey, 0);
     			if($rs) {
-    				$result = array('status' => 1, 'msg' => '成绩保存成功！');
+    				$result = array('status' => 1, 'msg' => '成绩保存成功！', 'share_url' => $share_url);
     			} else {
-    				$result = array('status' => 0, 'msg' => '成绩保存失败！');
+    				$result = array('status' => 0, 'msg' => '成绩保存失败！', 'share_url' => $share_url);
     			}
     			break;	
 

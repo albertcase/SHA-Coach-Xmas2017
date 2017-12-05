@@ -68,5 +68,5 @@ define("OPEN_CACHE", true);
 define("CACHE_TIME", 60);
 
 //safe lock
-define("SAFE_LOCK", true);
+define("SAFE_LOCK", false);
 define("SAFE_TIME", 32);
