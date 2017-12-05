@@ -164,11 +164,11 @@
 
 <script type="text/javascript" src="./build/dist/js/bundle.min.js"></script>
 <script type="text/javascript">
-    document.body.addEventListener('touchmove', function(evt) {
-        if(!evt._isScroller) {
-            evt.preventDefault()
-        }
-    });
+    // document.body.addEventListener('touchmove', function(evt) {
+    //     if(!evt._isScroller) {
+    //         evt.preventDefault()
+    //     }
+    // });
     var common = new Common();
 
     var allimg = [
