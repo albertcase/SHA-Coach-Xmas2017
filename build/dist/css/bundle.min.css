@@ -2731,8 +2731,8 @@ body {
     background-size: cover; }
 
 .coachPro {
-  width: 0.8rem;
-  height: 1.0rem;
+  width: 1.0rem;
+  height: 1.2rem;
   background: url("../img/scene-1/bag.png") center bottom no-repeat;
   background-size: 100% auto;
   position: absolute;

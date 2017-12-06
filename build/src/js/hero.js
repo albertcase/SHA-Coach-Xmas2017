@@ -23,6 +23,8 @@
 		this.elClassName = null;
 
 		this.isEat = 0;
+
+		this.waitStatus = 0;
 	}
 
 	Hero.prototype = {
@@ -60,7 +62,7 @@
 			this.el.style.transform = 'translate('+ this.latex +'px, ' + this.latey + 'px)';
 		},
 		anim: function(){
-			if(this.status === 'play') return;
+			if(this.status === 'play' || this.waitStatus) return;
 			this.status = 'play';
 			magicFun.paused = 0;
 			var me = this;
@@ -85,7 +87,8 @@
 		    });
 		    me.animators.flush();
 		},
-		jumpMobile: function(b){
+		jumpMobile: function(b){    // 跳的方法
+
 			var me = this;
 			me.jump.count++;
 			if(me.jump.count > 6) {
@@ -101,6 +104,7 @@
 			if(me.jump.count == 6){
 				me.jump.end = b;
 			}
+
 		},
 		handleOrientation: function(orientData){
 			var me = this;
@@ -145,6 +149,23 @@
 		},
 		exit: function(){
 			this.el.className += ' mvExit';
+		},
+		waitAnimate: function(){
+			var a = 0.5, me = this;
+			me.waitStatus = 1;
+			function setSta(){	
+				if(a >= 1){
+					me.waitStatus = 0;
+					clearTimeout(setIntervalTime);
+					me.el.className += ' shake';
+				}else{
+					a += 0.1;
+				}
+				me.el.style.opacity = parseFloat(a).toFixed(1);
+			}
+			var setIntervalTime = setInterval(function(){
+				setSta();
+			}, 200);
 		}
 	}
 

@@ -31,7 +31,7 @@
 		this.parentEl = document.getElementById('scene');
 		this.cname = 'style1';
 		this.x = 0;
-		this.y = 62;
+		this.y = 59;
 		this.width = null;
 		this.height = null;
 		this.elements = [];
@@ -83,9 +83,10 @@
 		}
 
 		if(elLeft > (pos.x - pos.heroWidth * 0.6) && elLeft < (pos.x + pos.heroWidth) && me.hero.status === 'paused'){
+			me.hero.waitAnimate();
 			magicFun.paused = 1;
 			elLeft = (pos.x + pos.heroWidth);
-			me.hero.el.className += ' shake';
+			me.hero.el.style.opacity = 0.5;
 		}else{
 			me.hero.el.className = me.hero.el.className.replace(' shake', '');
 		}

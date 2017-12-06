@@ -89,7 +89,7 @@
 		},
 		loop: function(){
 			var me = elements_obj;
-			// if(magicFun.paused) return false;
+			if(magicFun.paused) return false;   // 碰到障碍物暂停元素
 			me.elDataArray = elementsDataJson[me.elDataArrayIndex];
 			
 			var x = me.initX;
