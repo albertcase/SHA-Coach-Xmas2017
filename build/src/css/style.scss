@@ -874,7 +874,7 @@
 * share
 *****************************/
 
-#share{
+#share, #isplay{
   .head-star{
     width: 100%;
     height: 1.14rem;
@@ -960,7 +960,7 @@
 }
 .user-btn-area{
   width: 5.0rem;
-  margin: 0.57rem 0 0 0;
+  margin: 0.2rem 0 0 0;
   display: inline-block;
   .open-btn, .iplay-btn{
     width: 5.18rem;
@@ -979,7 +979,7 @@
     width: 5.18rem;
     height: 1.72rem;
     display: inline-block;
-    margin: 0.67rem 0 0 0;
+    margin: 0.2rem 0 0 0;
     background: url('../img/chose-buy-btn.png') center no-repeat;
     background-size: auto 100%;
   }
