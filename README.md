@@ -32,6 +32,7 @@ domian/api/record
 records:游戏成绩
 animal:动物
 bar:吃了几个心
+timeinit:游戏耗时时间
 
 records=144.122&animal=konglong&bar=4
 
@@ -39,7 +40,8 @@ records=144.122&animal=konglong&bar=4
 {
   records: 144.122,
   animal: konglong,
-  bar: 4  
+  bar: 4,
+  timeinit : 158.99
 }
 ```
 
