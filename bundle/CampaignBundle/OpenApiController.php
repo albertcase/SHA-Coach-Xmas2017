@@ -51,7 +51,6 @@ class OpenApiController extends Controller
                 $result[$k]['records'] = $this->recordsFormat($v['records']);
             }
         }
-        var_dump($result);exit;
         return $result;
     }
 
@@ -72,7 +71,6 @@ class OpenApiController extends Controller
     public function findToptenRecord()
     {
         $sql = "SELECT u.`nickname`, r.`records` FROM `user` u, `record` r WHERE u.`uid` = r.`uid` ORDER BY r.`records` ASC LIMIT 0, 10";
-        echo $sql;
         $query = $this->_pdo->prepare($sql);
         $query->execute();
         $row = $query->fetchAll(\PDO::FETCH_ASSOC);
