@@ -1,7 +1,7 @@
-<?php 
+<!-- <?php 
     echo '昵称：' . $userInfo['nickname'];
     echo '头像：' . $userInfo['headimgurl'];
-?>
+?> -->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -49,7 +49,7 @@
     <div class="section" id="friend">
         <div class="user-photo">
             <div class="user-photo-con">
-                <img src="img/avatar.jpg" width="100%">
+                <img src="<?php echo $userInfo['headimgurl']; ?>" width="100%">
             </div>
         </div>
         <div class="user-txt"></div>
@@ -60,155 +60,13 @@
         </div>
     </div>
 
-    <div class="section show" id="share">
-        <div class="head-star"></div>
-        <div class="xmasVideo"></div>
-        <div class="share-btn-area">
-            <a href="/game" class="replay-btn"></a>
-            <a href="javascript:void(0);" class="list-btn"></a>
-            <a href="javascript:void(0);" class="chose-buy-btn"></a>
-        </div>
-    </div>
-
 </div>
+
+
+
 <script type="text/javascript">
     var common = new Common();
     common.base.wxshareFun();
-
-    function XmasVideo(el){
-        return {
-            datas: {
-                parentEl: document.querySelector(el),
-                path: './build/dist/media/test.mp4',
-                poster: './build/dist/media/poster.jpg',
-                posterEl: null,
-                el: null,
-                videoWidth: 0
-            },
-            init: function(){
-                var me  = this;
-                me.render();
-            },
-            render: function(){
-                var me = this;
-                me.datas.videoWidth = parseInt(window.getComputedStyle(me.datas.parentEl).width, 10);
-                me.create();
-            },
-            create: function(){
-                var me = this;
-
-                var posterEl = document.createElement('div');
-                posterEl.className = 'posterEl';
-                me.datas.posterEl = posterEl;
-                me.datas.parentEl.appendChild(posterEl);
-
-                var el = document.createElement('video');
-                el.id = 'xmas-video';
-                el.src = me.datas.path;
-                el.poster = me.datas.poster;
-                el.width = me.datas.videoWidth;
-                el.setAttribute('playsinline', '');
-                el.setAttribute('webkitPlaysinline', '');
-                el.innerHTML = '您的浏览器不支持 video 标签。';
-                me.datas.el = el;
-                me.datas.parentEl.appendChild(el);
-                
-
-                me.bind();
-            },
-            bind: function(){
-                var me = this;
-                me.datas.posterEl.onclick = function(){
-                    if(!this.getAttribute("status")){
-                        this.setAttribute("status","play");
-                        me.datas.el.play();
-                        me.datas.posterEl.style.opacity = 0;
-                    }else{
-                        this.removeAttribute("status");
-                        me.datas.el.pause();
-                        // me.datas.posterEl.style.opacity = 1;
-                    }  
-                    // me.datas.el.play();
-                    // me.datas.posterEl.style.visibility = 'hidden';
-                }
-            }
-        }
-    }
-
-    var xmasVideo = new XmasVideo('.xmasVideo');
-    xmasVideo.init();
-
-
-
-    // 成绩榜
-    function Toplist(id, eventEl, toplistJson){
-        if(!(this instanceof Toplist)){
-            var self = new Toplist(id, eventEl, toplistJson);
-            self.init();
-            return self;
-        };
-        return {
-            init: function(){
-                this.render();
-            },
-            setting: {
-                id: id,
-                popupFrame: null,
-                eventEl: eventEl,
-                listDatas: toplistJson
-            },
-            render: function(){
-                var me = this;
-                me.setting.popupFrame = common.Popup(me.setting.id, me.do(), me.setting.eventEl);
-            },
-            do: function(){
-                var me = this;
-                var jsonDatas = me.setting.listDatas; 
-
-                var dataslistHTML;
-                if(jsonDatas.length <= 0){
-                    dataslistHTML = '暂无数据！';
-                }else{
-                    var dataslistArray = [];
-                    for(var i = 0; i < jsonDatas.length; i++){
-                        dataslistArray.push(`<li><span>${jsonDatas[i]['nickname']}</span><span>${jsonDatas[i]['records']}</span></li>`);
-                    }
-                    dataslistHTML = `<div class="toplistScroll">
-                        <div class="toplist-popup--context">
-                            <ul>
-                                ${dataslistArray.join('')}
-                            </ul>
-                        </div>
-                    </div>
-                    `;
-                }
-
-                
-                return dataslistHTML;
-            },
-            show: function(){
-                this.setting.popupFrame.show();
-            },
-            hide: function(){
-                this.setting.popupFrame.hide();
-            }
-        }
-    }
-
-    var toplistObj;
-    document.querySelector('.list-btn').addEventListener('click', function(){
-        if(toplistObj){
-            toplistObj.show()
-        }else{
-            common.fetch.authorize({}, function(data){
-                toplistObj = Toplist('toplist-popup', '.list-btn', data.topten);
-                toplistObj.show();
-            });
-        }
-    })
-
-
-
 </script>
 
 
