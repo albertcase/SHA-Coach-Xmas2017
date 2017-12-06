@@ -30,13 +30,13 @@ class ApiController extends Controller
         $openApi = new OpenApiController();
         $topten = $openApi->getTopten();
         $userRecords = $this->findRecordByUid($user->uid);
-        $userNum = $this->findUserRecordNum((float)$userRecords['records']);
+        $userNum = $this->findUserRecordNum($userRecords['records']);
         $result = array(
             'status' => 1,
             'msg' => '获取成功！',
             'topten' => $topten,
             'myRecord' => $openApi->recordsFormat($userRecords['records']),
-            'myNum' => $userNum,
+            'myNum' => $userNum + 1,
             );
         $this->dataPrint($result);
     }
