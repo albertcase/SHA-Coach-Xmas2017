@@ -185,6 +185,7 @@ class ApiController extends Controller
         );
         $info = new \stdClass();
         $info->records = $recordInfo->records;
+        $info->timeinit = $recordInfo->timeinit;
         $info->updated = date('Y-m-d H:i:s');
         return $this->helper->updateTable('record', $info, $condition);
     }
