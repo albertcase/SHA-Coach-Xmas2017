@@ -37,7 +37,6 @@ class ApiController extends Controller
         $userRecords = $this->findRecordByUid($user->uid);
         if($userRecords) {
             $userNum = $this->findUserRecordNum($userRecords['records']);
-            $userNum = $userNum + 1;
         } else {
             $userNum = '暂无排名';
         }
