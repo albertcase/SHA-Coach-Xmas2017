@@ -181,7 +181,7 @@
 
 				// 重绘Share文案
 				shareData['_link'] = data['share_url'];
-				console.log(shareData);
+				// console.log(shareData);
 
 		    });
 		});

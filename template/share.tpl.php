@@ -63,6 +63,7 @@
 <script type="text/javascript">
     var common = new Common();
     common.base.wxshareFun();
+    common.PageRouter('friend');
 </script>
 
 
