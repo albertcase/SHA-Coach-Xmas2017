@@ -64,7 +64,7 @@ define("ENCRYPT_IV", '6E4CAB2EAAF32E90');
 define("WECHAT_TOKEN_PREFIX", 'wechat:token:');
 
 //topten cache
-define("OPEN_CACHE", true);
+define("OPEN_CACHE", false);
 define("CACHE_TIME", 60);
 
 //safe lock
