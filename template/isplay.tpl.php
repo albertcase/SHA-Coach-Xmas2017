@@ -1,7 +1,3 @@
-<!-- <?php
-	echo 'replay';
-?> -->
-
 <!DOCTYPE HTML>
 <html>
 <head>

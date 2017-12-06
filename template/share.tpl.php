@@ -1,7 +1,3 @@
-<!-- <?php 
-    echo '昵称：' . $userInfo['nickname'];
-    echo '头像：' . $userInfo['headimgurl'];
-?> -->
 <!DOCTYPE HTML>
 <html>
 <head>
