@@ -99,6 +99,7 @@ function showcard() {
 
     var openBtn = document.querySelector('.open-btn');
     openBtn.onlick = function(){
+        alert('success');
         if(this.className.indexOf(' disabled') >= 0) return false;
         this.className += ' disabled';
         showcard();

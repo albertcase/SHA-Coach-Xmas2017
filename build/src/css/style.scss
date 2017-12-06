@@ -538,7 +538,7 @@
 
 
 /* scores */
-#scores, #toplist, #share{
+#scores, #toplist, #share, #isplay{
   background: url('../img/scores-bg.jpg') center no-repeat;
   background-size: cover;
 }
@@ -1181,7 +1181,7 @@
 * share
 *****************************/
 
-#share{
+#share, #isplay{
   .share-con{
     width: 94%;
     display: inline-block;

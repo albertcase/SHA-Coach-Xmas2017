@@ -42,7 +42,7 @@
 
 <div id="dreambox">
 
-    <div class="section" id="share">
+    <div class="section" id="isplay">
 	    <div class="head-star"></div>
 	    <div class="xmasVideo"></div>
 	    <div class="share-btn-area">
@@ -60,7 +60,7 @@
     var common = new Common();
     common.base.wxshareFun();
 
-    common.PageRouter('share');
+    common.PageRouter('isplay');
 
     function XmasVideo(el){
         return {
