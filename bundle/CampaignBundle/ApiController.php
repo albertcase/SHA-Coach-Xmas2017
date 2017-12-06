@@ -64,10 +64,10 @@ class ApiController extends Controller
 
         $recordInfo = new \stdClass();
         $recordInfo->uid = $user->uid;
-        $recordInfo->records = $request->request->get('records');
+        $recordInfo->records = (float)$request->request->get('records');
         $recordInfo->animal = $request->request->get('animal');
         $recordInfo->bar = $request->request->get('bar');
-        $recordInfo->timeinit = $request->request->get('timeinit');
+        $recordInfo->timeinit = (float)$request->request->get('timeinit');
 
         // API安全处理
         $this->checkSafe($recordInfo);
@@ -101,7 +101,7 @@ class ApiController extends Controller
             $isPlay = 1;
         }
 
-        if($recordInfo->records < $isPlay['records']){
+        if((float)$recordInfo->records < (float)$isPlay['records']){
             $isMax = 1;
         } else {
             $isMax = 0;
