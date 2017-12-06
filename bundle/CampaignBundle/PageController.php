@@ -18,7 +18,7 @@ class PageController extends Controller
     }
 
     public function indexAction()
-    {       
+    {   
         echo "coache-xmas2017";
         $config = array('name' => '122');
         return $this->render('index', array('config' => $config));

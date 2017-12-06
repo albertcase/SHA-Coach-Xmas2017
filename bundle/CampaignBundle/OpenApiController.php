@@ -58,10 +58,10 @@ class OpenApiController extends Controller
     public function recordsFormat($records)
     {
         if($records) {
+            $records= sprintf('% .2f', $records);
             $times = explode('.', $records);
             $minute = (int) ($times[0] / 60);   
             $second = $times[0] % 60;
-            $times[1] = substr($times[1], 0, 2);
             return "{$minute}分{$second}秒{$times[1]}";
         } else {
             return "0分0秒0";
