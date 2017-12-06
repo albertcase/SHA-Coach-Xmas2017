@@ -163,13 +163,13 @@
 			// loading.className = 'loading hidden';
 
 			// 提交数据
-			var countTime = Math.round(time.second * 60 + time.minutes - scores.length * 0.5);
+			var countTime = Math.round(time.second * 60 + (time.minutes * 1) - scores.length * 0.5);
 
 			me.common.fetch.record({
 		      'records': (countTime + '.' + Math.floor(Math.random() * 1000)),  
 			  'animal': hero.elClassName,
 			  'bar': scores.length,
-			  'timeinit': (time.second * 60 + time.minutes)
+			  'timeinit': (time.second * 60 + time.minutes * 1)
 		    }, function(data){
 		    	if(data.status === 3){
 		    		me.common.base.formErrorTips(data.msg);
