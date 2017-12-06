@@ -84,6 +84,24 @@ records=144.122&animal=konglong&bar=4
 }
 ```
 
+#####  status 4
+
+```javascript
+{
+    status: 4,
+    msg: '该用户为黑名单用户！',
+}
+```
+
+#####  status 5
+
+```javascript
+{
+    status: 5,
+    msg: '游戏成绩异常！',
+}
+```
+
 ---
 
 ### 2.未授权下拉取排行榜API

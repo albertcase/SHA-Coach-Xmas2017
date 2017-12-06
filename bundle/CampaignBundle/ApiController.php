@@ -12,6 +12,10 @@ use CampaignBundle\OpenApiController;
 
 class ApiController extends Controller
 {
+    const FLOOD_KEY = 'flood:';
+    const LOCK_USER_KEY = 'block:';
+    const GAME_START_KEY = 'gamestart:';
+
     public function __construct() {
 
    	    global $user;
@@ -22,6 +26,7 @@ class ApiController extends Controller
         }
         $this->_pdo = PDO::getInstance();
         $this->helper = new Helper();
+        $this->redis = Redis::getInstance();
     }
 
     public function toptenAction()
@@ -42,7 +47,7 @@ class ApiController extends Controller
     }
 
     /**
-     * 
+     * 提交成绩
      */ 
     public function recordAction()
     {
@@ -66,15 +71,14 @@ class ApiController extends Controller
         $this->checkSafe($recordInfo);
 
         // lock 5s 5s中提交一次成绩
-        $redis = Redis::getInstance();
         $floodkey = 'flood:' . $user->uid;
 
-        if($redis->get($floodkey)) {
+        if($this->redis->get($floodkey)) {
             $data = array('status' => 2, 'msg' => '您的操作过于频繁！请稍后再试！');
             $this->dataPrint($data);
         }
-        $redis->set($floodkey, 1);
-        $redis->setTimeout($floodkey, 5);
+        $this->redis->set($floodkey, 1);
+        $this->redis->setTimeout($floodkey, 5);
 
         // 保存成绩
   		$result = $this->saveRecord($recordInfo); 
@@ -96,7 +100,7 @@ class ApiController extends Controller
         }
     	$isMax = $this->findMaxRecord($recordInfo);
     	$result = array();
-        $redis = Redis::getInstance();
+        
         $floodkey = 'flood:' . $user->uid;
         $gameid = isset($playInfo['id']) ? $playInfo['id'] : 0;
         $share_url = 'http://xmas2017.coach.samesamechina.com/share/'. $gameid;
@@ -107,7 +111,7 @@ class ApiController extends Controller
     	switch ($recordStatus) {
     		case 0:
     			$rs = $this->insertRecord($recordInfo);
-                $redis->setTimeout($floodkey, 0);
+                $this->redis->setTimeout($floodkey, 0);
     			if($rs) {
     				$result = array('status' => 1, 'msg' => '成绩保存成功！', 'share_url' => $share_url);
     			} else {
@@ -116,13 +120,13 @@ class ApiController extends Controller
     			break;
     		
     		case 1:
-                $redis->setTimeout($floodkey, 0);
+                $this->redis->setTimeout($floodkey, 0);
 				$result = array('status' => 3, 'msg' => '很遗憾！您未刷新成绩！', 'share_url' => $share_url);
     			break;
 
 			case 2:
     			$rs = $this->updateRecord($recordInfo);
-                $redis->setTimeout($floodkey, 0);
+                $this->redis->setTimeout($floodkey, 0);
     			if($rs) {
     				$result = array('status' => 1, 'msg' => '成绩保存成功！', 'share_url' => $share_url);
     			} else {
@@ -162,11 +166,10 @@ class ApiController extends Controller
 
     public function insertRecord($recordInfo)
     {
-        $helper = new Helper();
         $recordInfo->created = date('Y-m-d H:i:s');
         $recordInfo->updated = date('Y-m-d H:i:s');
         $recordInfo = (array) $recordInfo;
-        $id = $helper->insertTable('record', $recordInfo);
+        $id = $this->helper->insertTable('record', $recordInfo);
         if($id) {
             return $id;
         }
@@ -196,24 +199,44 @@ class ApiController extends Controller
         return false;
     }
 
+    /**
+     * 设置API安全key值
+     * 1.生成安全key值写到客户端cookie里
+     * 2.安全key值 + 登陆用户uid 写到服务端redis中，记录游戏的开始时间。
+     */
+    public function setGameStartTime()
+    {
+        global $user;
+        $gameStartTime = time();
+        $safeKey = $this->helper->uuidGenerator();
+        setcookie('7dc4b594a1ee58d', $safeKey, $gameStartTime + 300, '/', $this->request->getDomain());
+        $startKey = self::GAME_START_KEY . $user->uid . $safeKey;
+        $this->redis->set($startKey, $gameStartTime);
+    }
+
+    public function getGameStartTime()
+    {
+        global $user;
+        $safeKey = isset($_COOKIE['7dc4b594a1ee58d']) ? $_COOKIE['7dc4b594a1ee58d'] : 0;
+        $startKey = self::GAME_START_KEY . $user->uid . $safeKey;
+        $startTime = $this->redis->get($startKey) ? $this->redis->get($startKey) : 0;
+        return $startTime;
+    }
+
+    /**
+     * 游戏开始 
+     */
     public function gameStart()
     {
         if(!SAFE_LOCK) { 
             return true;
         }
-
-        // 开启安全模式
-        global $user;
-        $request = $this->request;
-        $redis = Redis::getInstance();
-        $time = time();
-
-        $uuid = $this->helper->uuidGenerator();
-        setcookie('7dc4b594a1ee58d', $uuid, $time + 300, '/', $request->getDomain());
-        $redisKey = 'start:' . $user->uid . $uuid;
-        $redis->set($redisKey, $time);
+        $this->setGameStartTime();
     }
 
+    /**
+     * API 安全处理
+     */
     public function checkSafe($recordInfo)
     {
         if(!SAFE_LOCK) { 
@@ -221,44 +244,33 @@ class ApiController extends Controller
         } 
 
         global $user;
-        $request = $this->request;
-        $redis = Redis::getInstance();
-        $time = time();
-        $floodkey = 'flood:' . $user->uid;
-        $block_key = 'block:' . $user->uid;
+        $gameEndTime = time();
+        $block_user_key = self::LOCK_USER_KEY . $user->uid;
 
-        if($recordInfo->records < SAFE_TIME) {
-            $attackLog = new \stdClass();
-            $attackLog->uid = $user->uid;
-            $attackLog->game_time = $recordInfo->records;
-            $attackLog->api_data = json_encode($recordInfo, 1);
-            $this->insertAttackLog($attackLog);
-            $data = array('status' => 3, 'msg' => '该成绩异常！');
-            $this->dataPrint($data);
-        }
-
-        if($redis->get($block_key)) {
+        //判断是否是黑名单用户
+        if($this->redis->get($block_user_key)) {
             $data = array('status' => 4, 'msg' => '该用户为黑名单用户！');
             $this->dataPrint($data);
         }
 
-        $uuid = isset($_COOKIE['7dc4b594a1ee58d']) ? $_COOKIE['7dc4b594a1ee58d'] : 0;
-
-        $redisKey = 'start:' . $user->uid . $uuid;
-        if($redis->get($redisKey)) {
-            $startTime = $redis->get($redisKey);
-            $gameTime = $time - $startTime;
-            if($gameTime < SAFE_TIME) {
-                //恶意用户锁定并记录日志
-                $redis->set($block_key, 1);
-                $attackLog = new \stdClass();
-                $attackLog->uid = $user->uid;
-                $attackLog->gameTime = $gameTime;
-                $attackLog->api_data = json_encode($recordInfo, 1);
-                $this->insertAttackLog($attackLog);
-            }
-        }
-        exit;  
+        //如果API提交的成绩低于安全成绩
+        //设置用户黑名单 并且记录攻击日志
+        $gameStartTime = $this->getGameStartTime();
+        $gameTime = $gameEndTime - $gameStartTime;
+            
+        //取出游戏开始时间，计算游戏花费时间，判断是否为恶意刷新API
+        //游戏时间小于安全事件 设置用户黑名单并且记录攻击日志
+        if($gameTime < SAFE_TIME || $recordInfo->records < SAFE_TIME) {
+            //恶意用户锁定并记录日志
+            $this->redis->set($block_user_key, 1);
+            $attackLog = new \stdClass();
+            $attackLog->uid = $user->uid;
+            $attackLog->game_time = $gameTime;
+            $attackLog->api_data = json_encode($recordInfo, 1);
+            $this->insertAttackLog($attackLog);
+            $data = array('status' => 5, 'msg' => '游戏成绩异常！');
+            $this->dataPrint($data);
+        } 
     }
 
     public function insertAttackLog($log)
