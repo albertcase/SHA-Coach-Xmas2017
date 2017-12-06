@@ -85,9 +85,9 @@
 		if(elLeft > (pos.x - pos.heroWidth * 0.6) && elLeft < (pos.x + pos.heroWidth) && me.hero.status === 'paused'){
 			magicFun.paused = 1;
 			elLeft = (pos.x + pos.heroWidth);
-			el.className += ' shake';
+			me.hero.el.className += ' shake';
 		}else{
-			el.className = el.className.replace(' shake', '');
+			me.hero.el.className = me.hero.el.className.replace(' shake', '');
 		}
 
 
