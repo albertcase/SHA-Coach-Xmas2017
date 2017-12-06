@@ -35,13 +35,19 @@ class ApiController extends Controller
         $openApi = new OpenApiController();
         $topten = $openApi->getTopten();
         $userRecords = $this->findRecordByUid($user->uid);
-        $userNum = $this->findUserRecordNum($userRecords['records']);
+        if($userRecords) {
+            $userNum = $this->findUserRecordNum($userRecords['records']);
+            $userNum = $userNum + 1;
+        } else {
+            $userNum = '暂无排名';
+        }
+
         $result = array(
             'status' => 1,
             'msg' => '获取成功！',
             'topten' => $topten,
             'myRecord' => $openApi->recordsFormat($userRecords['records']),
-            'myNum' => $userNum + 1,
+            'myNum' => $userNum,
             );
         $this->dataPrint($result);
     }
@@ -101,7 +107,7 @@ class ApiController extends Controller
             $isPlay = 1;
         }
 
-        if((float)$recordInfo->records < (float)$isPlay['records']){
+        if((float)$recordInfo->records < (float)$playInfo['records']){
             $isMax = 1;
         } else {
             $isMax = 0;

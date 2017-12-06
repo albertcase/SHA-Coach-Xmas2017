@@ -69,4 +69,4 @@ define("CACHE_TIME", 60);
 
 //safe lock
 define("SAFE_LOCK", true);
-define("SAFE_TIME", 32);
+define("SAFE_TIME", 15);
