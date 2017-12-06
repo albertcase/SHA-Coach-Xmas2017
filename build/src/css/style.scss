@@ -939,14 +939,14 @@
   height: 3.29rem;
   background: url('../img/user-photo-bg.png') center no-repeat;
   background-size: auto 100%;
-  margin: 0.8rem 0 0.1rem 0;
+  margin: 0.4rem 0 0.1rem 0;
   display: inline-block;
   .user-photo-con{
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 100%;
     overflow: hidden;
-    background: pink;
+    // background: pink;
     margin: 0.55rem 0 0 0.04rem;
     display: inline-block;
   }
