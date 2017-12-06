@@ -67,7 +67,7 @@ Common.prototype.base = {
             });
             loader.start(); 
     },
-    wxshareFun: function(shareData){  //分享信息重置函数
+    wxshareFun: function(){  //分享信息重置函数
         //wx.config({"debug": true}); 
         wx.ready(function(){
 
