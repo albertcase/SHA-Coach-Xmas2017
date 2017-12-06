@@ -3100,7 +3100,7 @@ body {
     margin: 0 0 0 -17%; }
 
 /* scores */
-#scores, #toplist, #share {
+#scores, #toplist, #share, #isplay {
   background: url("../img/scores-bg.jpg") center no-repeat;
   background-size: cover; }
 
@@ -3354,7 +3354,7 @@ body {
 /*****************************
 * share
 *****************************/
-#share .head-star {
+#share .head-star, #isplay .head-star {
   width: 100%;
   height: 1.14rem;
   background: url("../img/share-head-star.png") center no-repeat;
@@ -3362,14 +3362,14 @@ body {
   margin: 0.5rem 0 0 0;
   display: inline-block; }
 
-#share .xmasVideo {
+#share .xmasVideo, #isplay .xmasVideo {
   width: 100%;
   height: 4.25rem;
   background: #333;
   margin: 0.3rem 0;
   position: relative;
   display: inline-block; }
-  #share .xmasVideo .posterEl {
+  #share .xmasVideo .posterEl, #isplay .xmasVideo .posterEl {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -3377,21 +3377,21 @@ body {
     top: 0;
     z-index: 2; }
 
-#share .share-btn-area {
+#share .share-btn-area, #isplay .share-btn-area {
   width: 100%;
   margin: .2rem 0 0 0;
   text-align: center; }
-  #share .share-btn-area .replay-btn, #share .share-btn-area .list-btn {
+  #share .share-btn-area .replay-btn, #share .share-btn-area .list-btn, #isplay .share-btn-area .replay-btn, #isplay .share-btn-area .list-btn {
     width: 5.18rem;
     height: 1.2rem;
     display: inline-block; }
-  #share .share-btn-area .replay-btn {
+  #share .share-btn-area .replay-btn, #isplay .share-btn-area .replay-btn {
     background: url("../img/replay-btn.png") center no-repeat;
     background-size: auto 100%; }
-  #share .share-btn-area .list-btn {
+  #share .share-btn-area .list-btn, #isplay .share-btn-area .list-btn {
     background: url("../img/list-btn.png") center no-repeat;
     background-size: auto 100%; }
-  #share .share-btn-area .chose-buy-btn {
+  #share .share-btn-area .chose-buy-btn, #isplay .share-btn-area .chose-buy-btn {
     width: 5.18rem;
     height: 1.72rem;
     background: url("../img/chose-buy-btn.png") center no-repeat;
@@ -3427,7 +3427,7 @@ body {
 
 .user-btn-area {
   width: 5.0rem;
-  margin: 0.57rem 0 0 0;
+  margin: 0.2rem 0 0 0;
   display: inline-block; }
   .user-btn-area .open-btn, .user-btn-area .iplay-btn {
     width: 5.18rem;
@@ -3443,7 +3443,7 @@ body {
     width: 5.18rem;
     height: 1.72rem;
     display: inline-block;
-    margin: 0.67rem 0 0 0;
+    margin: 0.2rem 0 0 0;
     background: url("../img/chose-buy-btn.png") center no-repeat;
     background-size: auto 100%; }
 
@@ -3584,17 +3584,17 @@ body {
   /*****************************
 * share
 *****************************/
-  #share .share-con {
+  #share .share-con, #isplay .share-con {
     width: 94%;
     display: inline-block; }
-  #share .head-star {
+  #share .head-star, #isplay .head-star {
     width: 102%;
     height: 0.58rem;
     background: url("../img/share-head-star--landscape.png") left center no-repeat;
     background-size: 100% auto;
     margin: 0.1rem 0 0 -1%;
     display: inline-block; }
-  #share .xmasVideo {
+  #share .xmasVideo, #isplay .xmasVideo {
     width: 60%;
     height: 2.36rem;
     overflow: hidden;
@@ -3602,7 +3602,7 @@ body {
     margin: 0.1rem 0;
     float: left;
     display: inline-block; }
-    #share .xmasVideo .poster {
+    #share .xmasVideo .poster, #isplay .xmasVideo .poster {
       width: 100%;
       height: 100%;
       background: url("../media/poster.jpg") center no-repeat;
@@ -3611,14 +3611,14 @@ body {
       left: 0;
       top: 0;
       z-index: 9; }
-  #share .share-btn-area {
+  #share .share-btn-area, #isplay .share-btn-area {
     width: 38%;
     margin: .1rem 0 0 0;
     float: left; }
-    #share .share-btn-area .replay-btn, #share .share-btn-area .list-btn {
+    #share .share-btn-area .replay-btn, #share .share-btn-area .list-btn, #isplay .share-btn-area .replay-btn, #isplay .share-btn-area .list-btn {
       width: 2.5rem;
       height: 0.6rem; }
-    #share .share-btn-area .chose-buy-btn {
+    #share .share-btn-area .chose-buy-btn, #isplay .share-btn-area .chose-buy-btn {
       width: 2.5rem;
       height: 0.8rem;
       margin: 0.36rem 0 0 0; } }
