@@ -116,8 +116,6 @@
 		if(elLeft > pos.x && elLeft < (pos.x + pos.heroWidth) && (me.hero.y - pos.y) < me.y){
 
 			me.eatScores.push(el.getAttribute('data-id'))
-
-			// console.log();
 			if(!me.hero.isEat){
 				me.eatMusic.play();
 			// 	me.eatScores++;

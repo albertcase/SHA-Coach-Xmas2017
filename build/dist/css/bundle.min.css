@@ -2597,7 +2597,7 @@ body {
   left: 0;
   top: 0;
   z-index: 9999;
-  font-size: 0.4rem;
+  font-size: 0.2rem;
   color: #fff;
   text-align: center;
   /*letter-spacing: 0.1em;*/ }
@@ -3484,8 +3484,8 @@ body {
   top: -8%; }
 
 .toplist-popup--context {
-  width: 6.80rem;
-  height: 9.0rem;
+  width: 6.0rem;
+  height: 7.8rem;
   background: url("../img/toplist-bg-vertical.png") center no-repeat;
   background-size: cover;
   display: inline-block; }
@@ -3496,10 +3496,10 @@ body {
     list-style: none;
     font-size: 0.3rem;
     color: #fff;
-    margin: 14% 0 0 16%; }
+    margin: 13.4% 0 0 16%; }
     .toplist-popup--context ul li {
-      height: 0.72rem;
-      line-height: 0.72rem;
+      height: 0.67rem;
+      line-height: 0.67rem;
       text-shadow: 0 0 10px #da7c25, 0 0 20px  #da7c25, 0 0 30px  #da7c25, 0 0 40px  #da7c25, 0 0 70px  #da7c25, 0 0 80px  #da7c25, 0 0 100px #da7c25, 0 0 150px #da7c25; }
       .toplist-popup--context ul li:nth-child(1) {
         color: #ffffd8;

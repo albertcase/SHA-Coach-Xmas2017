@@ -24,7 +24,7 @@
 
 		this.isEat = 0;
 
-		this.waitStatus = 0;
+		this.waitStatus = 0;    // 碰撞之后等待计算时间设定
 	}
 
 	Hero.prototype = {

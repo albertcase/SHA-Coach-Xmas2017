@@ -138,7 +138,6 @@
 			  easing: 'out',
 			  complete: function() { 
 			  	$(this).removeClass('hover');
-
 			  }
 			});
 
@@ -189,10 +188,12 @@
 
 				shareData['_shareAppMessageCallback'] = function(){
 					me.common.PageRouter('share');
+					shareTips.hide();
 		        	//_hmt.push(['_trackEvent', 'buttons', 'share', 'onMenuShareAppMessage']);
 			    }
 			    shareData['_shareTimelineCallback'] = function(){
 			    	me.common.PageRouter('share');
+			    	shareTips.hide();
 			        //_hmt.push(['_trackEvent', 'buttons', 'share', 'onMenuShareTimeline']);
 			    }
 
