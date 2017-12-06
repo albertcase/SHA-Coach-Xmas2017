@@ -32,9 +32,7 @@
 	}
 
 	// 分享提示层
-	var shareTips = new ShareTips('.shareTips');
+	w.shareTips = new ShareTips('.shareTips');
 	shareTips.init();
-
-
 
 })(window)

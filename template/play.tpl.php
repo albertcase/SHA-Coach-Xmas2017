@@ -371,7 +371,8 @@
     PageController.prototype.bind = function(){
         var me = this;
         me.container.giftBtn.addEventListener('click', function(){
-            common.PageRouter('share');
+            shareTips.show();
+            // common.PageRouter('share');
         })
 
         me.container.replayBtn.addEventListener('click', function(){

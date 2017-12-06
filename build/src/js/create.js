@@ -184,6 +184,17 @@
 
 				// 重绘Share文案
 				shareData['_link'] = data['share_url'];
+
+
+				shareData['_shareAppMessageCallback'] = function(){
+					me.common.PageRouter('share');
+		        	//_hmt.push(['_trackEvent', 'buttons', 'share', 'onMenuShareAppMessage']);
+			    }
+			    shareData['_shareTimelineCallback'] = function(){
+			    	me.common.PageRouter('share');
+			        //_hmt.push(['_trackEvent', 'buttons', 'share', 'onMenuShareTimeline']);
+			    }
+
 				// console.log(shareData);
 
 		    });
