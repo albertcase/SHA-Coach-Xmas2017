@@ -6,10 +6,12 @@
 
 </head>
 <body>
-sdasda
+<div id="test">asfsdfa</div>>
 <script type="text/javascript">
+document.getElementById("test").addEventListener('click', function(){
+    showcard();
+})
 var cardListJSON = <?php echo json_encode($list);?>;
-setTimeout("showcard()",100);
 function showcard() {
      wx.addCard({
         cardList: [{
