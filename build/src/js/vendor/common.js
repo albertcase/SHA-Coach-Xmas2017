@@ -1,9 +1,9 @@
 // Common.js
 
 var shareData = {
-    "_title": 'Coach 123', //分享标题
-    "_desc": "test",    // 分享朋友圈的描述
-    "_desc_friend": "test",    // 分享好友的描述
+    "_title": '这张节日入场券，你领了嘛？', //分享标题
+    "_desc": "尽情欢享，和你的好友一起趣玩圣诞",    // 分享朋友圈的描述
+    "_desc_friend": "尽情欢享，和你的好友一起趣玩圣诞",    // 分享好友的描述
     "_link": window.location.origin,    //分享的连接
     "_imgUrl": window.location.origin + "/build/dist/img/share.jpg",   //分享的图片
     "_shareAppMessageCallback": function(){
