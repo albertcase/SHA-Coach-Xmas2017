@@ -20,3 +20,5 @@ $routers['/share/%'] = array('CampaignBundle\Page', 'share');
 $routers['/api/record'] = array('CampaignBundle\Api', 'record');
 $routers['/api/omg/topten'] = array('CampaignBundle\OpenApi', 'topten');
 $routers['/api/topten'] = array('CampaignBundle\Api', 'topten');
+
+$routers['/cardtest'] = array('CampaignBundle\Page', 'card');

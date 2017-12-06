@@ -2,6 +2,8 @@
 
 namespace Lib;
 
+use Lib\UserAPI;
+
 class WechatAPI {
 
 	private $_token;
@@ -12,6 +14,40 @@ class WechatAPI {
 	public function __construct() {
 		$this->_redis = Redis::getInstance();
 	}
+
+	public function cardList($cardid)
+	{
+	    $UserAPI = new UserAPI();
+	    $user = $UserAPI->userLoad(true);
+	    $api_url = 'http://coach.samesamechina.com/v2/wx/card/js/add/json?access_token='. COACH_TOKEN;
+	    // 参数数组
+	    if (!$user) {
+	        $data[] = array(
+	            'card_id' => $cardid,
+	            'code' => '',
+	            'openid' => ''
+	        );
+	    }
+	    // } else {
+	    //    $data[] = array(
+	    //         'card_id' => $cardid,
+	    //         'code' => 'S'. date("ym") . sprintf("%04d", $user->id),
+	    //         'openid' => $user->openid
+	    //     );
+	    // }
+   
+	    $ch = curl_init ();
+	    curl_setopt ( $ch, CURLOPT_URL, $api_url );
+	    curl_setopt ( $ch, CURLOPT_POST, 1 );
+	    curl_setopt ( $ch, CURLOPT_HEADER, 0 );
+	    curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
+	    curl_setopt ( $ch, CURLOPT_POSTFIELDS, json_encode($data) );
+	    $return = curl_exec ( $ch );
+	    curl_close ( $ch );
+	    $return = json_decode($return,true);
+
+	    return $cardList = $return['data']['cardList'];
+  }
 
 	public function retrieveAccessToken() {
 		$applink = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s';
