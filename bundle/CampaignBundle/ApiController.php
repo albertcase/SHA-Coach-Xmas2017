@@ -156,7 +156,7 @@ class ApiController extends Controller
 
     public function findMaxRecord($recordInfo)
     {
-    	$sql = "SELECT COUNT(id) AS sum FROM `record` WHERE `uid` = :uid AND `records` > :records";
+    	$sql = "SELECT COUNT(id) AS sum FROM `record` WHERE `uid` = :uid AND `records` < :records";
         $query = $this->_pdo->prepare($sql);
         $query->execute(array(':uid' => $recordInfo->uid, ':records' => $recordInfo->records));
         $row = $query->fetch(\PDO::FETCH_ASSOC);
