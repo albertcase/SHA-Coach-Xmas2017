@@ -34,21 +34,15 @@ class PageController extends Controller
             $config = array();
             return $this->render('isplay', array('config' => $config));
         } else { //不是自己
-            $userInfo = $this->findInfoByUid($uid);
-            return $this->render('share', array('userInfo' => $userInfo));
-        }
-    }
 
-    public function cardAction()
-    {
-        $card = 'pKCDxjovWJyOM64_yoYnlWnBh6RY';
-        //$card = array('600'=>'pGXbRsjjVihQHceLiRMgpFWDkNtU', '800'=>'pGXbRssyzDNSGX7qa6D689Vi_700');
-        //$card = array('600'=>'pKCDxji6wCVuB38LBgBTx3U2yBoQ', '800'=>'pKCDxji6wCVuB38LBgBTx3U2yBoQ');
-    
-        $wechatapi = new WechatAPI();
-        $list = $wechatapi->cardList($card);
-        return $this->render('card', array('list'=>$list));
-        exit;
+            //卡券
+            $card = 'pKCDxjovWJyOM64_yoYnlWnBh6RY';
+            $wechatapi = new WechatAPI();
+            $list = $wechatapi->cardList($card);
+
+            $userInfo = $this->findInfoByUid($uid);
+            return $this->render('share', array('userInfo' => $userInfo, 'list' => $list));
+        }
     }
 
     public function gameAction()
