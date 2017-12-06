@@ -29,29 +29,19 @@ class OpenApiController extends Controller
 
     public function getTopten()
     {
-        if(OPEN_CACHE == true) {
-            $redis = Redis::getInstance();;
+        if(OPEN_CACHE) {
+            $redis = Redis::getInstance();
             if($redis->get(self::CACHE_KEY)) {
-                $result = json_decode($redis->get(self::CACHE_KEY), 1);
-            } else {
-                $result = $this->findToptenRecord();
-                if(!$result) {
-                    $result = array();  
-                } else{
-                    foreach ($result as $k => $v) {
-                        $result[$k]['records'] = $this->recordsFormat($v['records']);
-                    }
-                    $redis->set(self::CACHE_KEY, json_encode($result, 1));
-                    $redis->setTimeout(self::CACHE_KEY, CACHE_TIME);
-                }
+                $topten = json_decode($redis->get(self::CACHE_KEY), 1);
+                return $topten;
             }
-        } else {
-            $result = $this->findToptenRecord();
-            foreach ($result as $k => $v) {
-                $result[$k]['records'] = $this->recordsFormat($v['records']);
-            }
+            $topten = $this->findToptenRecord();
+            $redis->set(self::CACHE_KEY, json_encode($topten, 1));
+            $redis->setTimeout(self::CACHE_KEY, CACHE_TIME);
+            return $topten;
         }
-        return $result;
+        $topten = $this->findToptenRecord();
+        return $topten;
     }
 
     # 格式化成绩
@@ -75,6 +65,9 @@ class OpenApiController extends Controller
         $query->execute();
         $row = $query->fetchAll(\PDO::FETCH_ASSOC);
         if($row) {
+            foreach ($row as $k => $v) {
+                $row[$k]['records'] = $this->recordsFormat($v['records']);
+            }
             return $row;
         }
         return false;
