@@ -100,7 +100,14 @@ class ApiController extends Controller
         } else {
             $isPlay = 1;
         }
-    	$isMax = $this->findMaxRecord($recordInfo);
+
+        if($recordInfo->records < $isPlay['records']){
+            $isMax = 1;
+        } else {
+            $isMax = 0;
+        }
+
+    	// $isMax = $this->findMaxRecord($recordInfo);
     	$result = array();
         
         $floodkey = 'flood:' . $user->uid;
