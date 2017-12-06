@@ -24,6 +24,12 @@
         document.write('<script type="text/javascript" src="http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat?v='+ Math.random()+'"><\/script>');
     </script>
     <script type="text/javascript" src="/build/dist/js/bundle-vendor.min.js"></script>
+    <style type="text/css">
+        #orientLayer { display: none; }
+        @media screen and (min-aspect-ratio: 13/9) { 
+            #orientLayer { display: block; } 
+        }
+    </style>
 </head>
 <body>
 <div class="loading">
@@ -135,7 +141,7 @@
             <div class="head-star"></div>
             <div class="xmasVideo">
                 <div class="poster"></div>
-                <video src="/build/dist/media/test.mp4" poster="/build/dist/media/poster.jpg" playsinline webkit-playsinline id="xmas-video" width="100%">
+                <video src="/video/coachxmas.mp4" poster="/build/dist/media/poster.jpg" playsinline webkit-playsinline id="xmas-video" width="100%">
                     您的浏览器不支持 video 标签。
                 </video>
             </div>
@@ -170,7 +176,7 @@
 
     var allimg = [
         "/build/dist/media/poster.jpg",
-        "/build/dist/media/test.mp4",
+        "/video/coachxmas.mp4",
         "/build/dist/media/eat.wav",
         "/build/dist/media/bg-music.aac",
 

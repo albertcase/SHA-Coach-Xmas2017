@@ -1238,21 +1238,23 @@
 
 
 
-
-.mod-orient-layer__desc.vertical{
+.mod-orient-layer__desc.landscape{
   display: none;
 }
+// .mod-orient-layer__desc.vertical{
+//   display: none;
+// }
 
-.page-chose{
-  #orientLayer { display: none; }
+.page-scene, .page-scores, .page-toplist, .page-share{
+  #orientLayer { display: block; }
   @media screen and (min-aspect-ratio: 13/9) { 
-      #orientLayer { display: block; } 
+      #orientLayer { display: none; } 
   }
   .mod-orient-layer__desc.landscape{
-    display: none;
+    display: block;
   }
   .mod-orient-layer__desc.vertical{
-    display: block;
+    display: none;
   }
 }
 

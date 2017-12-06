@@ -3623,21 +3623,21 @@ body {
       height: 0.8rem;
       margin: 0.36rem 0 0 0; } }
 
-.mod-orient-layer__desc.vertical {
+.mod-orient-layer__desc.landscape {
   display: none; }
 
-.page-chose #orientLayer {
-  display: none; }
+.page-scene #orientLayer, .page-scores #orientLayer, .page-toplist #orientLayer, .page-share #orientLayer {
+  display: block; }
 
 @media screen and (min-aspect-ratio: 13 / 9) {
-  .page-chose #orientLayer {
-    display: block; } }
+  .page-scene #orientLayer, .page-scores #orientLayer, .page-toplist #orientLayer, .page-share #orientLayer {
+    display: none; } }
 
-.page-chose .mod-orient-layer__desc.landscape {
-  display: none; }
-
-.page-chose .mod-orient-layer__desc.vertical {
+.page-scene .mod-orient-layer__desc.landscape, .page-scores .mod-orient-layer__desc.landscape, .page-toplist .mod-orient-layer__desc.landscape, .page-share .mod-orient-layer__desc.landscape {
   display: block; }
+
+.page-scene .mod-orient-layer__desc.vertical, .page-scores .mod-orient-layer__desc.vertical, .page-toplist .mod-orient-layer__desc.vertical, .page-share .mod-orient-layer__desc.vertical {
+  display: none; }
 
 .mvExit {
   animation: mvleft 5s cubic-bezier(0.25, 0.1, 0.25, 1);

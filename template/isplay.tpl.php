@@ -66,7 +66,7 @@
         return {
             datas: {
                 parentEl: document.querySelector(el),
-                path: '/build/dist/media/test.mp4',
+                path: '/video/coachxmas.mp4',
                 poster: '/build/dist/media/poster.jpg',
                 posterEl: null,
                 el: null,
