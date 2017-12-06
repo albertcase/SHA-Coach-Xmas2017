@@ -23,7 +23,7 @@
     <script type="text/javascript" src="js/bundle-vendor.min.js"></script>
 </head>
 <body>
-<div class="loading hidden">
+<div class="loading">
     <div class="loading_con">
         <img src="img/logo.png" width="100%">
 
@@ -341,6 +341,7 @@
 
     
     common.base.loadingFnDoing(allimg, function(){
+        $(".loading").css({"visibility": "hidden"});
         var swiper = null;
         common.PageRouter('chose', function(){
             if(swiper) return false;

@@ -19,14 +19,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="Keywords" content="">
     <meta name="Description" content="...">
-    <link rel="stylesheet" type="text/css" href="./build/dist/css/bundle.min.css">
+    <link rel="stylesheet" type="text/css" href="/build/dist/css/bundle.min.css">
     <script type="text/javascript">
         document.write('<script type="text/javascript" src="http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat?v='+ Math.random()+'"><\/script>');
     </script>
-    <script type="text/javascript" src="./build/dist/js/bundle-vendor.min.js"></script>
+    <script type="text/javascript" src="/build/dist/js/bundle-vendor.min.js"></script>
 </head>
 <body>
-<div class="loading hidden">
+<div class="loading">
     <div class="loading_con">
         <img src="/build/dist/img/logo.png" width="100%">
 
@@ -116,7 +116,7 @@
                 正在加载...
             </div>
             <div class="qrcode">
-                <img src="./build/dist/img/qrcode.png" width="100%;">
+                <img src="/build/dist/img/qrcode.png" width="100%;">
             </div>
             <a href="javascript:void(0);" class="back-btn"></a>
         </div>
@@ -135,7 +135,7 @@
             <div class="head-star"></div>
             <div class="xmasVideo">
                 <div class="poster"></div>
-                <video src="./build/dist/media/test.mp4" poster="./build/dist/media/poster.jpg" playsinline webkit-playsinline id="xmas-video" width="100%">
+                <video src="/build/dist/media/test.mp4" poster="/build/dist/media/poster.jpg" playsinline webkit-playsinline id="xmas-video" width="100%">
                     您的浏览器不支持 video 标签。
                 </video>
             </div>
@@ -151,14 +151,14 @@
 </div>
 
 
-<audio src="./build/dist/media/bg-music.aac" loop id="bgMusic">
+<audio src="/build/dist/media/bg-music.aac" loop id="bgMusic">
 您的浏览器不支持 audio 标签。
 </audio>
-<audio src="./build/dist/media/eat.wav" id="eatMusic">
+<audio src="/build/dist/media/eat.wav" id="eatMusic">
 您的浏览器不支持 audio 标签。
 </audio>
 
-<script type="text/javascript" src="./build/dist/js/bundle.min.js"></script>
+<script type="text/javascript" src="/build/dist/js/bundle.min.js"></script>
 <script type="text/javascript">
     // document.body.addEventListener('touchmove', function(evt) {
     //     if(!evt._isScroller) {
@@ -396,6 +396,7 @@
 
     
     common.base.loadingFnDoing(allimg, function(){
+        $(".loading").css({"visibility": "hidden"});
         var swiper = null;
         common.PageRouter('chose', function(){
             if(swiper) return false;

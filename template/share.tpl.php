@@ -58,14 +58,6 @@
 
 </div>
 
-
-
-<script type="text/javascript">
-    var common = new Common();
-    common.base.wxshareFun();
-    common.PageRouter('friend');
-</script>
-
 <!-- 领取卡券 -->
 <script type="text/javascript">
 var cardListJSON = <?php echo json_encode($list);?>;
@@ -77,9 +69,13 @@ function showcard() {
         }],
         success: function(res) {
             var cardList = res.cardList;
+            var openBtnEl = document.querySelector('.open-btn');
+            openBtnEl.className = openBtnEl.className.replace(' disabled', '');
             //alert(JSON.stringfiy(res));
         },
         fail: function(res) {
+            var openBtnEl = document.querySelector('.open-btn');
+            openBtnEl.className = openBtnEl.className.replace(' disabled', '');
             //alert(JSON.stringfiy(res));
         },
         complete: function(res) {
@@ -95,6 +91,22 @@ function showcard() {
 }
 </script>
 <!-- 领取卡券结束 -->
+
+<script type="text/javascript">
+    var common = new Common();
+    common.base.wxshareFun();
+    common.PageRouter('friend');
+
+    var openBtn = document.querySelector('.open-btn');
+    openBtn.onlick = function(){
+        if(this.className.indexOf(' disabled') >= 0) return false;
+        this.className += ' disabled';
+        showcard();
+    }
+
+</script>
+
+
 
 </body>
 </html>

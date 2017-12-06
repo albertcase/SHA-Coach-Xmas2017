@@ -72,6 +72,8 @@
 			me.timer = null;
 		}else{
 			me.timer = w.requestAnimationFrame(me.open.bind(me)); 
+			var ikonwBtnEl = document.querySelector('.iknow-btn');
+			ikonwBtnEl.className = ikonwBtnEl.className.replace(' disabled', '');
 		}
 		
 	}
@@ -202,6 +204,8 @@
 	w.magicFun = new MagicFun();
 
 	ikonwBtn.addEventListener('click', function(){
+		if(this.className.indexOf(' disabled') >= 0) return false;
+		this.className += ' disabled';
 		bgMusic.play();
 
 		elementsObj.init();

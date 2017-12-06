@@ -1,4 +1,4 @@
-const gulp = require('gulp'),
+var gulp = require('gulp'),
 	  ts = require("gulp-typescript"),
       browserify = require('browserify'),
       gulpif = require('gulp-if'),
@@ -8,7 +8,7 @@ const gulp = require('gulp'),
       del = require('del'); 
 
 // JS ES6
-const source = require('vinyl-source-stream'),
+var source = require('vinyl-source-stream'),
 	  watchify = require("watchify"),
 	  tsify = require('tsify'),
 	  uglify = require('gulp-uglify'),                     // 代码混淆
@@ -19,29 +19,29 @@ const source = require('vinyl-source-stream'),
       babel = require('gulp-babel');
 
 // CSS
-const sass = require('gulp-sass'),
+var sass = require('gulp-sass'),
 	  minifyCss = require('gulp-minify-css'),
 	  autoprefixer = require('gulp-autoprefixer');
 
 // IMG
-const imagemintinypng = require('gulp-tinypng'),          // tinypng图片压缩
+var imagemintinypng = require('gulp-tinypng'),          // tinypng图片压缩
       tinyKey = "x_6kBmY-hoXpd7Eg9CchBpFVVH5L9yIf";
       // tinify = require("tinify");
       // tinify.key = "x_6kBmY-hoXpd7Eg9CchBpFVVH5L9yIf";
 
-const imagemin = require('gulp-imagemin'),     
+var imagemin = require('gulp-imagemin'),     
       pngquant = require('imagemin-pngquant');            // 常规图片压缩插件
 
 // HTML
-const minifyHtml = require('gulp-minify-html');
+var minifyHtml = require('gulp-minify-html');
 
 // 浏览器                  
-const browserSync = require('browser-sync').create();
+var browserSync = require('browser-sync').create();
 
-const nmsrc = 'node_modules/';
+var nmsrc = 'node_modules/';
 
 // 路径
-let paths = {
+var paths = {
     pages: ['src/*.html'],
     css: ['src/css/*.scss'],
     js: [
@@ -67,9 +67,7 @@ let paths = {
 
 
 // 是否混淆代码
-let condition = false;
-
-
+var  condition = false; 
 
 
 
