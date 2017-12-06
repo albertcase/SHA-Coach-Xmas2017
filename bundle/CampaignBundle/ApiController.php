@@ -262,7 +262,7 @@ class ApiController extends Controller
             
         //取出游戏开始时间，计算游戏花费时间，判断是否为恶意刷新API
         //游戏时间小于安全事件 设置用户黑名单并且记录攻击日志
-        if($gameTime < SAFE_TIME || $recordInfo->timeinit < SAFE_TIME) {
+        if($gameTime < $recordInfo->timeinit || $recordInfo->records < SAFE_TIME) {
             //恶意用户锁定并记录日志
             $this->redis->set($block_user_key, 1);
             $attackLog = new \stdClass();
