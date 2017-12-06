@@ -62,7 +62,6 @@ Common.prototype.base = {
                     if(fn2) fn2(percent)
             }); 
             
-            
             loader.addCompletionListener( function(){
                 if(fn) fn();    
             });
