@@ -197,6 +197,8 @@
 			        //_hmt.push(['_trackEvent', 'buttons', 'share', 'onMenuShareTimeline']);
 			    }
 
+			    me.common.base.wxshareFun();
+
 				// console.log(shareData);
 
 		    });
