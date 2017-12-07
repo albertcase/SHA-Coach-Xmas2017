@@ -109,8 +109,8 @@
 
 
 			// 调试代码
-			var test = document.getElementById('test');
-			test.innerHTML = 'first:' + me.jump.first + ", end:" + me.jump.end;
+			// var test = document.getElementById('test');
+			// test.innerHTML = 'first:' + me.jump.first + ", end:" + me.jump.end;
 		},
 		handleOrientation: function(orientData){
 			var me = this;

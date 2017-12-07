@@ -265,7 +265,7 @@
         var listArray = [], userinfoHTML = '', maxlen;
         // list.length >= 10 ? maxlen = 10 : maxlen = list.length;
         for(var i = 0; i < list.length; i++){
-            listArray.push(`<li><span>${ i < 3 ? '&nbsp;': i }</span><span>${list[i].nickname}</span><span>${list[i].records}</span></li>`);
+            listArray.push(`<li><span>${ i < 3 ? '&nbsp;': parseInt(i + 1, 10) }</span><span>${list[i].nickname}</span><span>${list[i].records}</span></li>`);
         }
 
         userinfoHTML = `
