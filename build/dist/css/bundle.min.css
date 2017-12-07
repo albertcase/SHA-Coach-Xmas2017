@@ -3225,6 +3225,7 @@ body {
           background-size: auto 100%; }
         .toplist-r .toplist-table ul li span {
           height: 36px;
+          line-height: 36px;
           text-align: center;
           vertical-align: middle; }
         .toplist-r .toplist-table ul li span:nth-child(1) {

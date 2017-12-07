@@ -1,7 +1,7 @@
 // Common.js
 
 var shareData = {
-    "_title": '这张节日入场券，你领了嘛？', //分享标题
+    "_title": 'Hi，这里有你的圣诞好礼。', //分享标题
     "_desc": "尽情欢享，和你的好友一起趣玩圣诞",    // 分享朋友圈的描述
     "_desc_friend": "尽情欢享，和你的好友一起趣玩圣诞",    // 分享好友的描述
     "_link": window.location.origin + '/home.html',    //分享的连接
