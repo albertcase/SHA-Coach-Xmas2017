@@ -3417,6 +3417,8 @@ body {
     overflow: hidden;
     margin: 0.55rem 0 0 0.04rem;
     display: inline-block; }
+    .user-photo .user-photo-con img {
+      vertical-align: middle; }
 
 .user-txt {
   width: 5.92rem;
