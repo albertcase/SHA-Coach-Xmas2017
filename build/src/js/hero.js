@@ -88,6 +88,8 @@
 		},
 		jumpMobile: function(b){    // 跳的方法
 
+
+
 			var me = this;
 			me.jump.count++;
 			if(me.jump.count > 6) {
@@ -105,6 +107,10 @@
 				me.jump.end = b;
 			}
 
+
+			// 调试代码
+			var test = document.getElementById('test');
+			test.innerHTML = 'first:' + me.jump.first + ", end:" + me.jump.end;
 		},
 		handleOrientation: function(orientData){
 			var me = this;

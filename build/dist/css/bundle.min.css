@@ -3197,33 +3197,49 @@ body {
     display: inline-block; }
     .toplist-r .toplist-table ul {
       display: inline-block;
-      width: 67%;
+      width: 80%;
+      height: 60%;
+      overflow: auto;
       text-align: left;
       list-style: none;
       font-size: 0.2rem;
       color: #fff;
-      margin: 11% 0 0 16%; }
+      margin: 11% 0 0 0; }
       .toplist-r .toplist-table ul li {
         height: 0.37rem;
+        margin: 0.01rem 0;
         line-height: 0.37rem;
-        text-shadow: 0 0 10px #da7c25, 0 0 20px  #da7c25, 0 0 30px  #da7c25, 0 0 40px  #da7c25, 0 0 70px  #da7c25, 0 0 80px  #da7c25, 0 0 100px #da7c25, 0 0 150px #da7c25; }
+        color: #fff;
+        text-shadow: 0 0 1px #ff982a, 0 0 2px #ff982a; }
         .toplist-r .toplist-table ul li:nth-child(1) {
           color: #ffffd8;
           font-weight: bold; }
-        .toplist-r .toplist-table ul li:nth-child(2) {
-          color: #fff;
-          text-shadow: none; }
+          .toplist-r .toplist-table ul li:nth-child(1) span:nth-child(1) {
+            background: url("../img/no1.png") center top no-repeat;
+            background-size: auto 100%; }
+        .toplist-r .toplist-table ul li:nth-child(2) span:nth-child(1) {
+          background: url("../img/no2.png") center top no-repeat;
+          background-size: auto 100%; }
+        .toplist-r .toplist-table ul li:nth-child(3) span:nth-child(1) {
+          background: url("../img/no3.png") center top no-repeat;
+          background-size: auto 100%; }
         .toplist-r .toplist-table ul li span {
-          text-align: center; }
+          height: 36px;
+          text-align: center;
+          vertical-align: middle; }
         .toplist-r .toplist-table ul li span:nth-child(1) {
-          width: 38%;
+          width: 15%;
+          font-size: 0.17rem;
+          display: inline-block; }
+        .toplist-r .toplist-table ul li span:nth-child(2) {
+          width: 27%;
           overflow: hidden;
           display: inline-block;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap; }
-        .toplist-r .toplist-table ul li span:nth-child(2) {
-          width: 60%;
+        .toplist-r .toplist-table ul li span:nth-child(3) {
+          width: 52%;
           overflow: hidden;
           display: inline-block; }
 

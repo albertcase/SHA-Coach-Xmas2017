@@ -29,6 +29,7 @@
     </style>
 </head>
 <body>
+    <div class="test" style="position: absolute; left: 0; top: 0;z-index: 999;"></div>
 <div class="loading">
     <div class="loading_con">
         <img src="img/logo.png" width="100%">
@@ -126,7 +127,17 @@
         <div class="toplist-r">
             <div class="toplist-table">
                 <ul class="waiting">
-                    正在加载...
+                    <!-- 正在加载... -->
+                    <li><span>&nbsp;</span><span>Leo LEE</span><span>0分20秒16</span></li>
+                    <li><span>&nbsp;</span><span>Albert</span><span>0分20秒62</span></li>
+                    <li><span>&nbsp;</span><span>Irene</span><span>0分21秒22</span></li>
+                    <li><span>4</span><span>Cindy_L</span><span>0分22秒35</span></li>
+                    <li><span>5</span><span>张小直</span><span>0分23秒40</span></li>
+                    <li><span>6</span><span>亦雪妈妈</span><span>0分25秒64</span></li>
+                    <li><span>7</span><span>Irene</span><span>0分21秒22</span></li>
+                    <li><span>8</span><span>Cindy_L</span><span>0分22秒35</span></li>
+                    <li><span>9</span><span>张小直</span><span>0分23秒40</span></li>
+                    <li><span>10</span><span>亦雪妈妈</span><span>0分25秒64</span></li>
                 </ul>
             </div>
         </div>
@@ -251,6 +262,7 @@
         var me = this;
         me.container.giftBtn.addEventListener('click', function(){
             shareTips.show();
+            // common.PageRouter('share');
         })
 
         me.container.replayBtn.addEventListener('click', function(){
@@ -258,12 +270,13 @@
         })
 
         me.container.toplistTag.addEventListener('click', function(){
+            getTopTen();
             common.PageRouter('toplist');
         })
 
         me.container.listBtn.addEventListener('click', function(){
-            common.PageRouter('toplist');
-            
+            getTopTen();
+            common.PageRouter('toplist'); 
         })
 
         me.container.backBtn.addEventListener('click', function(){
@@ -348,7 +361,7 @@
     common.base.loadingFnDoing(allimg, function(){
         $(".loading").css({"visibility": "hidden"});
         var swiper = null;
-        common.PageRouter('chose', function(){
+        common.PageRouter('toplist', function(){
             var chosePageId = document.getElementById('chose');
             common.base.overscroll(chosePageId);
             if(swiper) return false;
@@ -384,6 +397,57 @@
 
 
     
+
+    // 成绩榜
+
+    function Toplist(listEl, userinfoEl, data){
+        this.setting = {
+            'data': data,
+            'listEl': document.querySelector(listEl),
+            'userinfoEl': document.querySelector(userinfoEl)
+        }
+        this.init = function(){
+            this.update();
+        }
+    }
+
+    Toplist.prototype.update = function(){
+        var me = this;
+        var userinfo = me.setting.data;
+        var list = me.setting.data.topten;
+
+        var listArray = [], userinfoHTML = '', maxlen;
+        list.length >= 6 ? maxlen = 6 : maxlen = list.length;
+        for(var i = 0; i < maxlen; i++){
+            listArray.push(`<li><span>${list[i].nickname}</span><span>${list[i].records}</span></li>`);
+        }
+
+        userinfoHTML = `
+            <div class="socurs">${userinfo.myRecord}</div>
+            <div class="ranking">${userinfo.myNum}名</div>
+        `;
+
+
+        me.setting.listEl.className = me.setting.listEl.className.replace('waiting', '');
+        me.setting.userinfoEl.className = me.setting.userinfoEl.className.replace('waiting', '');
+
+        me.setting.listEl.innerHTML = listArray.join('');
+        me.setting.userinfoEl.innerHTML = userinfoHTML;
+
+        common.base.overscroll(me.setting.listEl);
+    }
+
+    var toplistObj;
+    function getTopTen(){
+        if(!toplistObj){
+            common.fetch.authorize({}, function(data){ // 授权拉取排行榜
+                toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data);
+                toplistObj.init();
+            });
+        }   
+    }
+    
+
 
 
 

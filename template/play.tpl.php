@@ -263,9 +263,9 @@
         var list = me.setting.data.topten;
 
         var listArray = [], userinfoHTML = '', maxlen;
-        list.length >= 6 ? maxlen = 6 : maxlen = list.length;
-        for(var i = 0; i < maxlen; i++){
-            listArray.push(`<li><span>${list[i].nickname}</span><span>${list[i].records}</span></li>`);
+        // list.length >= 10 ? maxlen = 10 : maxlen = list.length;
+        for(var i = 0; i < list.length; i++){
+            listArray.push(`<li><span>${ i <= 3 ? '&nbsp;': i }</span><span>${list[i].nickname}</span><span>${list[i].records}</span></li>`);
         }
 
         userinfoHTML = `
@@ -279,6 +279,8 @@
 
         me.setting.listEl.innerHTML = listArray.join('');
         me.setting.userinfoEl.innerHTML = userinfoHTML;
+
+        common.base.overscroll(me.setting.listEl);
     }
 
     var toplistObj;
