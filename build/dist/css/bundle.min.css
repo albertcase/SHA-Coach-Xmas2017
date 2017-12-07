@@ -3412,6 +3412,7 @@ body {
   .user-photo .user-photo-con {
     width: 2.2rem;
     height: 2.2rem;
+    line-height: 2.2rem;
     border-radius: 100%;
     overflow: hidden;
     margin: 0.55rem 0 0 0.04rem;
