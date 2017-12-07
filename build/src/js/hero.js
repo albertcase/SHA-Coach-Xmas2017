@@ -151,21 +151,25 @@
 			this.el.className += ' mvExit';
 		},
 		waitAnimate: function(){
-			var a = 0.5, me = this;
+			var a = 0.2, me = this;
 			me.waitStatus = 1;
 			function setSta(){	
-				if(a >= 1){
+				if(a >= 0.9){
 					me.waitStatus = 0;
 					clearTimeout(setIntervalTime);
 					me.el.className += ' shake';
 				}else{
 					a += 0.1;
 				}
-				me.el.style.opacity = parseFloat(a).toFixed(1);
+				var jsA = parseFloat(a).toFixed(1),
+					ml = -10 + jsA * 10;
+				me.el.style.opacity = jsA;
+
+				me.el.style.transform = 'translateX('+ ml +'px)';
 			}
 			var setIntervalTime = setInterval(function(){
 				setSta();
-			}, 200);
+			}, 100);
 		}
 	}
 

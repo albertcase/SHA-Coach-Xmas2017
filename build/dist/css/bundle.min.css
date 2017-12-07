@@ -3154,7 +3154,7 @@ body {
   height: 80%;
   background: url("../img/toplist-info.png") left top no-repeat;
   background-size: 40% auto;
-  margin: 4% 0 0 4%;
+  margin: 2% 0 0 4%;
   float: left;
   display: inline-block; }
   .toplist-l .toplist-userinfo {
@@ -3270,16 +3270,16 @@ body {
   text-align: center; }
 
 .slogan {
-  width: 5.64rem;
-  height: 2.66rem;
+  width: 5.0rem;
+  height: 2.5rem;
   background: url("../img/slogan.png") center no-repeat;
   background-size: cover;
   display: inline-block;
   margin: 0.4rem 0 0 0; }
 
 .jue-se--chose {
-  width: 6.25rem;
-  height: 7.2rem;
+  width: 6.0rem;
+  height: 6.0rem;
   margin: 0 0 0.1rem 0;
   display: inline-block; }
   .jue-se--chose #jue-se-small {
@@ -3306,8 +3306,8 @@ body {
       background-size: cover; }
 
 .jue-se--large {
-  width: 4.99rem;
-  height: 5.0rem;
+  width: 4.0rem;
+  height: 4.0rem;
   overflow: hidden;
   display: inline-block; }
   .jue-se--large .jue-se--item {
@@ -3315,13 +3315,13 @@ body {
     height: 100%; }
     .jue-se--large .jue-se--item.kl {
       background: url("../img/juese/kl-large.png") left center no-repeat;
-      background-size: 4.99rem 5.0rem; }
+      background-size: 4.0rem 4.0rem; }
     .jue-se--large .jue-se--item.qw {
       background: url("../img/juese/qw-large.png") left center no-repeat;
-      background-size: 4.99rem 5.0rem; }
+      background-size: 4.0rem 4.0rem; }
     .jue-se--large .jue-se--item.mhl {
       background: url("../img/juese/mhl-large.png") left center no-repeat;
-      background-size: 4.99rem 5.0rem; }
+      background-size: 4.0rem 4.0rem; }
 
 .start-btn {
   width: 4.45rem;
@@ -3674,6 +3674,11 @@ body {
     left: 10%; }
   100% {
     left: 110%; } }
+
+.toplist-l .toplist-userinfo.waiting, .toplist-r .toplist-table ul.waiting {
+  font-size: 0.1rem;
+  color: #ccc;
+  text-align: center; }
 
 .hidden {
   display: none;

@@ -86,7 +86,8 @@
 			me.hero.waitAnimate();
 			magicFun.paused = 1;
 			elLeft = (pos.x + pos.heroWidth);
-			me.hero.el.style.opacity = 0.5;
+			me.hero.el.style.opacity = 0.2;
+			me.hero.el.style.transform = 'translateX(-10px)';
 		}else{
 			me.hero.el.className = me.hero.el.className.replace(' shake', '');
 		}
