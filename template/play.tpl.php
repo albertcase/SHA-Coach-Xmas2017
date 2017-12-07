@@ -141,7 +141,7 @@
             <div class="head-star"></div>
             <div class="xmasVideo">
                 <div class="poster"></div>
-                <video src="/video/coachxmas.mp4" poster="/build/dist/media/poster.jpg" playsinline webkit-playsinline id="xmas-video" width="100%">
+                <video src="/video/coachxmas.mp4" preload="true" poster="/build/dist/media/poster.jpg" playsinline webkit-playsinline id="xmas-video" width="100%">
                     您的浏览器不支持 video 标签。
                 </video>
             </div>
@@ -176,7 +176,6 @@
 
     var allimg = [
         "/build/dist/media/poster.jpg",
-        "/video/coachxmas.mp4",
         "/build/dist/media/eat.wav",
         "/build/dist/media/bg-music.aac",
 
