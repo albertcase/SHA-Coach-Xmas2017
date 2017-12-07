@@ -263,7 +263,7 @@
         var list = me.setting.data.topten;
 
         var listArray = [], userinfoHTML = '', maxlen;
-        list.length >= 5 ? maxlen = 5 : maxlen = list.length;
+        list.length >= 6 ? maxlen = 6 : maxlen = list.length;
         for(var i = 0; i < maxlen; i++){
             listArray.push(`<li><span>${list[i].nickname}</span><span>${list[i].records}</span></li>`);
         }
