@@ -31,7 +31,7 @@
 		init: function(){
 			this.create();
 			this.render();
-			this.el.style = 'left: '+ this.x +'px; top: '+ this.y +'%';
+			this.el.style.cssText = 'left: '+ this.x +'px; top: '+ this.y +'%';
 			this.bind();
 		},
 		render: function(){
@@ -44,7 +44,6 @@
 			// console.log(this.width, this.height);
 		},
 		create: function(){
-			
 			var el = document.createElement('div');
 				el.id = 'hero';
 				el.className = 'hero ' + this.elClassName;
@@ -92,7 +91,8 @@
 			var me = this;
 			me.jump.count++;
 			if(me.jump.count > 6) {
-				if(hero.status === 'paused' && (me.jump.first - me.jump.end) > 4 && (me.jump.first > me.jump.end)){
+				// 元素的状态是否动画中状态，计算间隔时间     // && (me.jump.first > me.jump.end)
+				if(hero.status === 'paused' && (me.jump.first - me.jump.end) > 4){
 					hero.anim();
 				};
 				me.jump.count = 0;

@@ -53,7 +53,7 @@
 		this.x = parseInt(w.getComputedStyle(this.parentEl).width, 10);
 		var el = document.createElement('div');
 			el.className = 'heart ' + this.cname;
-			el.style = `left: ${this.x}px; top: ${this.y}%`;
+			el.style.cssText = 'left: '+ this.x +'px; top: ' + this.y +'%;'
 			el.setAttribute('data-id', this.heroId);
 			// el.innerHTML = this.heroId;
 			this.parentEl.appendChild(el);

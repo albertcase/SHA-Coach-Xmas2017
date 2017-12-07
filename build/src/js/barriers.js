@@ -43,7 +43,7 @@
 		this.render();
 		var el = document.createElement('div');
 			el.className = 'coachPro ' + this.cname;
-			el.style = `left: ${this.x}px; top: ${this.y}%`;
+			el.style.cssText = 'left: '+ this.x +'px; top: '+ this.y +'%';
 			this.parentEl.appendChild(el);
 			this.width = parseInt(w.getComputedStyle(el).width, 10);
 			this.height = parseInt(w.getComputedStyle(el).height, 10);
