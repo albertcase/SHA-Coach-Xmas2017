@@ -273,6 +273,10 @@
             <div class="ranking">${userinfo.myNum}名</div>
         `;
 
+
+        me.setting.listEl.className = me.setting.listEl.className.replace(' waiting', '');
+        me.setting.userinfoEl.className = me.setting.userinfoEl.className.replace(' waiting', '');
+        
         me.setting.listEl.innerHTML = listArray.join('');
         me.setting.userinfoEl.innerHTML = userinfoHTML;
     }
