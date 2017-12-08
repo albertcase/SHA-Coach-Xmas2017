@@ -2612,7 +2612,7 @@ body {
   width: 100%;
   height: 100%;
   text-align: center;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   position: fixed;
   left: 0;
   top: 0;
@@ -3518,7 +3518,7 @@ body {
     .toplist-popup--context ul li {
       height: 0.67rem;
       line-height: 0.67rem;
-      text-shadow: 0 0 10px #da7c25, 0 0 20px  #da7c25, 0 0 30px  #da7c25, 0 0 40px  #da7c25, 0 0 70px  #da7c25, 0 0 80px  #da7c25, 0 0 100px #da7c25, 0 0 150px #da7c25; }
+      text-shadow: 0 0 1px #ff982a, 0 0 2px #ff982a; }
       .toplist-popup--context ul li:nth-child(1) {
         color: #ffffd8;
         font-weight: bold; }
