@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Coach玩出趣</title>
+    <title>Coach礼享圣诞</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="format-detection" content="telephone=no">
     <!-- uc强制竖屏 -->
@@ -51,7 +51,7 @@
         <div class="user-txt"></div>
         <div class="user-btn-area">
             <a href='javascript:void(0);' class="open-btn"></a>
-            <a href='/game' class="iplay-btn"></a>
+            <a href='/home.html' class="iplay-btn"></a>
             <a target="_blank" href="http://china.coach.com/shop/world-of-gifts.htm?utm_medium=organic_soc&utm_source=wechat&utm_campaign=holidayh5&cid=wechat" class="chose-buy-btn" title="选购礼物"></a>
         </div>
     </div>
