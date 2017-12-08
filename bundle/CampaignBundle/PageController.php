@@ -30,7 +30,7 @@ class PageController extends Controller
         } else { //不是自己
 
             //卡券
-            $card = 'pKCDxjhqSe2alfRpLBDzxXSG3K4c';
+            $card = 'pKCDxjlqFHHJMYpHo4hmTg1KF7Zk';
             $wechatapi = new WechatAPI();
             $list = $wechatapi->cardList($card);
 
