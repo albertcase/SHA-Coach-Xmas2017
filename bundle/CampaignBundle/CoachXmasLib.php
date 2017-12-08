@@ -6,6 +6,7 @@ use Lib\Helper;
 use Lib\PDO;
 use Lib\Redis;
 use Core\Router;
+use Core\Request;
 
 class CoachXmasLib 
 {
