@@ -83,7 +83,7 @@ class CoachXmasLib
     public function unsetFloodLock($uid)
     {
         $floodkey = self::FLOOD_KEY . $uid;
-        $this->redis->setTimeout($floodkey, 0);
+        $this->redis->delete($floodkey);
     }
 
     /**
@@ -140,7 +140,7 @@ class CoachXmasLib
     		default:
     			break;
     	}
-        $this->redis->setTimeout($floodkey, 0);
+        $this->redis->delete($floodkey);
     	return $result;
     }
 
@@ -222,19 +222,15 @@ class CoachXmasLib
     public function setGameStartTime()
     {
         global $user;
-        $gameStartTime = time();
-        $safeKey = $this->helper->uuidGenerator();
-        $request = new Request();
-        setcookie('7dc4b594a1ee58d', $safeKey, $gameStartTime + 300, '/', $request->getDomain());
-        $startKey = self::GAME_START_KEY . $user->uid . $safeKey;
-        $this->redis->set($startKey, $gameStartTime);
+        $startKey = self::GAME_START_KEY . $user->uid;
+        $this->redis->set($startKey, time());
+        $this->redis->setTimeout($startKey, 300);
     }
 
     public function getGameStartTime()
     {
         global $user;
-        $safeKey = isset($_COOKIE['7dc4b594a1ee58d']) ? $_COOKIE['7dc4b594a1ee58d'] : 0;
-        $startKey = self::GAME_START_KEY . $user->uid . $safeKey;
+        $startKey = self::GAME_START_KEY . $user->uid;
         $startTime = $this->redis->get($startKey) ? $this->redis->get($startKey) : 0;
         return $startTime;
     }
