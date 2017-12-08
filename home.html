@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>coach</title>
+    <title>Coach玩出趣</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="format-detection" content="telephone=no">
     <!-- uc强制竖屏 -->

@@ -1330,6 +1330,50 @@
 
 
 
+/*****************************
+* 媒体查询
+*****************************/
+
+/* 6plus */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
+  .slogan {
+    width: 6.0rem;
+    height: 3.0rem;
+  }
+
+  .jue-se--chose {
+      height: 7.2rem;
+  }
+    
+  .jue-se--large {
+    width: 5.0rem;
+    height: 5.0rem;
+    .jue-se--item{
+      width: 100%;
+      height: 100%;
+      &.kl{
+        background: url('../img/juese/kl-large.png') left center no-repeat;
+        background-size: 5.0rem 5.0rem
+      }
+      &.qw{
+        background: url('../img/juese/qw-large.png') left center no-repeat;
+        background-size: 5.0rem 5.0rem;
+      }
+      &.mhl{
+        background: url('../img/juese/mhl-large.png') left center no-repeat;
+        background-size: 5.0rem 5.0rem;
+      }
+    }
+  }
+  
+
+}
+
+
+
+
+
+
 .hidden {
     display: none;
     visibility: hidden;

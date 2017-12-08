@@ -65,15 +65,16 @@
 			this.status = 'play';
 			magicFun.paused = 0;
 			var me = this;
+			barriers.speed = 8;
 			var a1 = new Animator(300, function(p){
-			    var tx = 180 - 180 * (1-p);
+			    var tx = 160 - 160 * (1-p);
 			    me.latey = -tx;
 			    // me.latex = -tx;;
 			    me.update();
 			})
 
 			var a2 = new Animator(500, function(p){
-			    var tx = -180 * (1-p);
+			    var tx = -160 * (1-p);
 			    me.latey = tx;
 			    me.update();
 			})
@@ -83,6 +84,7 @@
 		        // console.log('complate!');
 		        me.status = 'paused';
 		        me.isEat = 0;
+		        barriers.speed = 6;
 		    });
 		    me.animators.flush();
 		},
@@ -96,13 +98,13 @@
 				me.jump.first = gammaValue;
 			}
 			
-			if(me.jump.count == 8){
+			if(me.jump.count >= 6){
 				me.jump.end = gammaValue;
 				
 				// (first > end)   // 向下翻
 				// (end > first)   // 向上翻
-				// 取值区间 8 (灵敏度)
-				if(me.jump.first > me.jump.end && (me.jump.first - me.jump.end) > 8){
+				// 取值区间 10 (灵敏度)
+				if(me.jump.first > me.jump.end && (me.jump.first - me.jump.end) > 6){
 					hero.anim();
 				}
 				me.jump.count = 0;

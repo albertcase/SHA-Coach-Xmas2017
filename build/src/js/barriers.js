@@ -35,7 +35,7 @@
 		this.width = null;
 		this.height = null;
 		this.elements = [];
-		this.speed = 7;
+		this.speed = 6;
 		this.hero = null;
 	}
 
