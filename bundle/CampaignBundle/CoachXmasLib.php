@@ -68,16 +68,22 @@ class CoachXmasLib
 
     public function setFloodLock($uid)
     {
-        $floodkey = self::FLOOD_KEY . $uid;
-        return $this->redis->get($floodkey);
-    }
-
-    public function getFloodLock($uid)
-    {
         // lock 5s 5s中提交一次成绩
         $floodkey = self::FLOOD_KEY . $uid;
         $this->redis->set($floodkey, 1);
         $this->redis->setTimeout($floodkey, 5);
+    }
+
+    public function getFloodLock($uid)
+    {
+        $floodkey = self::FLOOD_KEY . $uid;
+        return $this->redis->get($floodkey);
+    }
+
+    public function unsetFloodLock($uid)
+    {
+        $floodkey = self::FLOOD_KEY . $uid;
+        $this->redis->setTimeout($floodkey, 0);
     }
 
     /**

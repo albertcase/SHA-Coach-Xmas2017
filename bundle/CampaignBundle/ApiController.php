@@ -77,6 +77,7 @@ class ApiController extends Controller
 
         // 保存成绩
   		$result = $this->coachLib->saveRecord($recordInfo); 
+        $this->coachLib->unsetFloodLock($user->uid);
   		$this->dataPrint($result);
     }
 
