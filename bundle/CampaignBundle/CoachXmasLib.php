@@ -203,10 +203,9 @@ class CoachXmasLib
      */
     public function gameStart()
     {
-        if(!SAFE_LOCK) { 
-            return true;
+        if(SAFE_LOCK) { 
+            $this->setGameStartTime();
         }
-        $this->setGameStartTime();
     }
 
     /**
@@ -239,38 +238,36 @@ class CoachXmasLib
      */
     public function checkSafe($recordInfo)
     {
-        if(!SAFE_LOCK) { 
-            return true;
-        } 
+        if(SAFE_LOCK) {
+            global $user;
+            $gameEndTime = time();
+            $block_user_key = self::LOCK_USER_KEY . $user->uid;
 
-        global $user;
-        $gameEndTime = time();
-        $block_user_key = self::LOCK_USER_KEY . $user->uid;
+            //判断是否是黑名单用户
+            if($this->redis->get($block_user_key)) {
+                $data = array('status' => 4, 'msg' => '该用户为黑名单用户！');
+                return $data;
+            }
 
-        //判断是否是黑名单用户
-        if($this->redis->get($block_user_key)) {
-            $data = array('status' => 4, 'msg' => '该用户为黑名单用户！');
-            return $data;
+            //如果API提交的成绩低于安全成绩
+            //设置用户黑名单 并且记录攻击日志
+            $gameStartTime = $this->getGameStartTime();
+            $gameTime = $gameEndTime - $gameStartTime;
+                
+            //取出游戏开始时间，计算游戏花费时间，判断是否为恶意刷新API
+            //游戏时间小于安全事件 设置用户黑名单并且记录攻击日志
+            if($gameTime < $recordInfo->timeinit || $recordInfo->records < SAFE_TIME) {
+                //恶意用户锁定并记录日志
+                $this->redis->set($block_user_key, 1);
+                $attackLog = new \stdClass();
+                $attackLog->uid = $user->uid;
+                $attackLog->game_time = $gameTime;
+                $attackLog->api_data = json_encode($recordInfo, 1);
+                $this->insertAttackLog($attackLog);
+                $data = array('status' => 5, 'msg' => '游戏成绩异常！');
+                return $data;
+            } 
         }
-
-        //如果API提交的成绩低于安全成绩
-        //设置用户黑名单 并且记录攻击日志
-        $gameStartTime = $this->getGameStartTime();
-        $gameTime = $gameEndTime - $gameStartTime;
-            
-        //取出游戏开始时间，计算游戏花费时间，判断是否为恶意刷新API
-        //游戏时间小于安全事件 设置用户黑名单并且记录攻击日志
-        if($gameTime < $recordInfo->timeinit || $recordInfo->records < SAFE_TIME) {
-            //恶意用户锁定并记录日志
-            $this->redis->set($block_user_key, 1);
-            $attackLog = new \stdClass();
-            $attackLog->uid = $user->uid;
-            $attackLog->game_time = $gameTime;
-            $attackLog->api_data = json_encode($recordInfo, 1);
-            $this->insertAttackLog($attackLog);
-            $data = array('status' => 5, 'msg' => '游戏成绩异常！');
-            return $data;
-        } 
     }
 
     public function insertAttackLog($log)
