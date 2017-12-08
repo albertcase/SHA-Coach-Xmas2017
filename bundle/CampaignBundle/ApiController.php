@@ -76,7 +76,8 @@ class ApiController extends Controller
         $this->coachLib->setFloodLock($user->uid);
 
         // 保存成绩
-  		$result = $this->coachLib->saveRecord($recordInfo); 
+  		$result = $this->coachLib->saveRecord($recordInfo);
+        $this->coachLib->delGameStartTime();
         $this->coachLib->unsetFloodLock($user->uid);
   		$this->dataPrint($result);
     }

@@ -235,6 +235,13 @@ class CoachXmasLib
         return $startTime;
     }
 
+    public function delGameStartTime()
+    {
+        global $user;
+        $startKey = self::GAME_START_KEY . $user->uid;
+        $this->redis->delete($startKey);
+    }
+
     /**
      * API 安全处理
      */
