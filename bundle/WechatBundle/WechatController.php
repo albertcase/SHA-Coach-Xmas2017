@@ -64,7 +64,7 @@ class WechatController extends Controller
 	}
 
 	public function clearCookieAction() {
-		setcookie('_user', '', time(), '/');
+		setcookie('d0d38ad3', '', time(), '/');
 		$this->statusPrint('success');
 	}
 
