@@ -41,6 +41,7 @@
             <div class="bounce2"></div>
             <div class="bounce3"></div>
         </div>
+
         <p>目前涌入的小伙伴过多<br>页面正在跳转中，请耐心等待。</p>
     </div>
 </div>
@@ -160,7 +161,7 @@
 <audio src="/build/dist/media/bg-music.aac" loop id="bgMusic">
 您的浏览器不支持 audio 标签。
 </audio>
-<audio src="/build/dist/media/eat.wav" id="eatMusic">
+<audio src="/build/dist/media/eat.aac" id="eatMusic">
 您的浏览器不支持 audio 标签。
 </audio>
 
@@ -176,7 +177,7 @@
 
     var allimg = [
         "/build/dist/media/poster.jpg",
-        "/build/dist/media/eat.wav",
+        "/build/dist/media/eat.aac",
         "/build/dist/media/bg-music.aac",
 
         
