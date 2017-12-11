@@ -40,7 +40,7 @@
 	Eatmusic.prototype.bind = function(){
 		var me = this;
 		me.status(me.el, 'ended', function(){
-			console.log(me.el);
+			// console.log(me.el);
 			me.el.remove();
 		});
 	}
