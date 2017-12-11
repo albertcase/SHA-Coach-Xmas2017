@@ -158,7 +158,7 @@
 </div>
 
 
-<audio src="/build/dist/media/bg-music.aac" loop id="bgMusic">
+<audio src="/build/dist/media/coachxmas.m4a" loop id="bgMusic">
 您的浏览器不支持 audio 标签。
 </audio>
 
@@ -174,8 +174,8 @@
 
     var allimg = [
         "/build/dist/media/poster.jpg",
-        "/build/dist/media/eat.aac",
-        "/build/dist/media/bg-music.aac",
+        "/build/dist/media/eat.m4a",
+        "/build/dist/media/coachxmas.m4a",
 
         
         "/build/dist/img/num0.png",
