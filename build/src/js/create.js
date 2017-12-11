@@ -158,6 +158,7 @@
 		document.getElementById('hero').addEventListener("webkitAnimationEnd", function (e) {
 			var loading = document.querySelector('.loading');
 			loading.className = 'loading';
+			loading.style.visibility = 'visible';
 
 
 			// me.common.PageRouter('scores');
@@ -180,6 +181,7 @@
 				document.querySelector('.timeCount').innerHTML = Math.floor(countTime/60) + ' 分 ' + countTime%60 + ' 秒 ' + randomMillisecond;
 				me.common.PageRouter('scores');
 				loading.className = 'loading hidden';
+				loading.style.visibility = 'hidden';
 
 
 				// 重绘Share文案
