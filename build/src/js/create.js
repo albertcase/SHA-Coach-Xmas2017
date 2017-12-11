@@ -159,6 +159,7 @@
 			var loading = document.querySelector('.loading');
 			loading.className = 'loading';
 			loading.style.visibility = 'visible';
+			loading.querySelector('p').innerHTML = '目前涌入的小伙伴过多<br>成绩正在计算中，请耐心等待。';
 
 
 			// me.common.PageRouter('scores');
@@ -182,6 +183,7 @@
 				me.common.PageRouter('scores');
 				loading.className = 'loading hidden';
 				loading.style.visibility = 'hidden';
+				loading.querySelector('p').innerHTML = '目前涌入的小伙伴过多<br>页面正在跳转中，请耐心等待。';
 
 
 				// 重绘Share文案

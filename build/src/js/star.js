@@ -50,7 +50,6 @@
 
 	Star.prototype.init = function(){ // 创建元素
 		this.render();
-		this.x = parseInt(w.getComputedStyle(this.parentEl).width, 10);
 		var el = document.createElement('div');
 			el.className = 'heart ' + this.cname;
 			el.style.cssText = 'left: '+ this.x +'px; top: ' + this.y +'%;'
@@ -64,7 +63,7 @@
 	}
 	Star.prototype.render = function(){
 		this.eatMusic = document.getElementById('eatMusic');
-		this.x = parseInt(w.getComputedStyle(this.parentEl).width, 10)/2;
+		this.x = parseInt(w.getComputedStyle(this.parentEl).width, 10);
 		this.hero = hero;
 	}
 	Star.prototype.doing = function(count){

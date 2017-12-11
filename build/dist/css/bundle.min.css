@@ -3638,7 +3638,11 @@ body {
     #share .share-btn-area .chose-buy-btn, #isplay .share-btn-area .chose-buy-btn {
       width: 2.5rem;
       height: 0.8rem;
-      margin: 0.36rem 0 0 0; } }
+      margin: 0.36rem 0 0 0; }
+  .qrcode {
+    margin: -0.3rem 0 0 0; }
+  .toplist-r .toplist-table ul {
+    height: 70%; } }
 
 .mod-orient-layer__desc.landscape {
   display: none; }
