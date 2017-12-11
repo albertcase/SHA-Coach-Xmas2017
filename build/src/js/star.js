@@ -1,6 +1,54 @@
 // 星星star
 ;(function(w){
 
+
+
+	function Eatmusic(){
+		if(!(this instanceof Eatmusic)){
+            var self = new Eatmusic();
+            self.init();
+            return self;
+        };
+
+		this.el = null;
+	}
+
+	Eatmusic.prototype.init = function(){
+		this.create();
+		this.el.play();
+		this.bind();
+	}
+	Eatmusic.prototype.status = function(m, e, c){
+		/*
+         * eventTester("play");              // play()和autoplay开始播放时触发
+         * eventTester("pause");             // pause() 暂停触发
+         * eventTester("timeupdate");        // 播放时间改变
+         * eventTester("ended");             // 播放结束
+         */
+		m.addEventListener(e,function(){
+             c()
+        },false);
+	}
+	Eatmusic.prototype.create = function(){
+		var em = document.createElement('audio');
+			em.src = '../media/eat.aac';
+			em.innerHTML = '您的浏览器不支持 audio 标签。';
+			this.el = em;
+		document.body.appendChild(em);
+	}
+
+	Eatmusic.prototype.bind = function(){
+		var me = this;
+		me.status(me.el, 'ended', function(){
+			console.log(me.el);
+			me.el.remove();
+		});
+	}
+
+
+
+
+
 	var starData = [
 		{
 			key: 2,
@@ -43,7 +91,7 @@
 		this.hero = null;
 
 		this.heroId = 0;
-		this.eatMusic = null;
+		// this.eatMusic = null;
 
 		this.enterSpace = 0;
 	}
@@ -62,7 +110,7 @@
 		return el;
 	}
 	Star.prototype.render = function(){
-		this.eatMusic = document.getElementById('eatMusic');
+		// this.eatMusic = document.getElementById('eatMusic');
 		this.x = parseInt(w.getComputedStyle(this.parentEl).width, 10);
 		this.hero = hero;
 	}
@@ -113,13 +161,18 @@
 			heroWidth: Math.floor(me.hero.width * 0.6)
 		}
 		if(elLeft > pos.x && elLeft < (pos.x + pos.heroWidth) && (me.hero.y - pos.y) < me.y){
-
-			me.eatScores.push(el.getAttribute('data-id'))
-			if(!me.hero.isEat){
-				me.eatMusic.play();
+			var gid = el.getAttribute('data-id');
+			if(me.eatScores.indexOf(gid) < 0){  // 是否吃到心
+				me.eatScores.push(el.getAttribute('data-id'));
+				Eatmusic();
+			};
+			
+			//if(!me.hero.isEat){
+				// me.eatMusic.play();
+				// Eatmusic();
 			// 	me.eatScores++;
 			// 	console.log(me.eatScores);
-			};
+			//};
 			me.hero.isEat = 1;
 			el.style.opacity = 0.1;
 			el.remove();
