@@ -115,6 +115,7 @@
             // data.cards.cardExt.timestamp
             // data.cards.cardExt.signature
             showcard(data.cards);
+            common.data.formErrorTips(data.msg);
         })
 
     })
