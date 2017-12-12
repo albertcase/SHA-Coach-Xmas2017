@@ -3609,7 +3609,7 @@ body {
     height: 0.58rem;
     background: url("../img/share-head-star--landscape.png") left center no-repeat;
     background-size: 100% auto;
-    margin: 0.1rem 0 0 -1%;
+    margin: 0.02rem 0 0 -1%;
     display: inline-block; }
   #share .xmasVideo, #isplay .xmasVideo {
     width: 60%;
@@ -3638,7 +3638,11 @@ body {
     #share .share-btn-area .chose-buy-btn, #isplay .share-btn-area .chose-buy-btn {
       width: 2.5rem;
       height: 0.8rem;
-      margin: 0.36rem 0 0 0; } }
+      margin: 0.36rem 0 0 0; }
+  .qrcode {
+    margin: -0.3rem 0 0 0; }
+  .toplist-r .toplist-table ul {
+    height: 70%; } }
 
 .mod-orient-layer__desc.landscape {
   display: none; }

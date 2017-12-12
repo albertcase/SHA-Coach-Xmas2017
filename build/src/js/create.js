@@ -1,5 +1,33 @@
 ;(function(w){
-	var bgMusic = document.getElementById('bgMusic');
+	function Bgmusic(){
+		if(!(this instanceof Bgmusic)){
+            var self = new Bgmusic();
+            self.init();
+            return self;
+        };
+		this.el = null;
+		this.init = function(){
+			this.create();
+		}
+		this.create = function(){
+			var em = document.createElement('audio');
+			em.src = '/build/dist/media/coachxmas.m4a';
+			em.loop = true;
+			em.innerHTML = '您的浏览器不支持 audio 标签。';
+			this.el = em;
+			document.body.appendChild(em);
+		}
+		this.play = function(){
+			this.el.play();
+		}
+		this.pause = function(){
+			this.el.pause();
+		}
+	}
+
+	var bgMusic = Bgmusic();
+
+
 
 	// 总共用时
 	function TimeCount(el){
@@ -16,8 +44,8 @@
 			},
 			update: function(){
 				var me = this;
-				me.data.minutes = me.data.count%60 + '';
-				me.data.second = Math.floor(me.data.count/60) + '';
+				me.data.minutes = me.data.count % 60 + '';
+				me.data.second = Math.floor(me.data.count / 60) + '';
 				me.data.el.innerHTML = `
 					<div class="timePos n${me.data.second < 10 ? '0' : me.data.second[0]}"></div>
 	                <div class="timePos n${me.data.second < 10 ? me.data.second : me.data.second[1]}"></div>
@@ -158,6 +186,8 @@
 		document.getElementById('hero').addEventListener("webkitAnimationEnd", function (e) {
 			var loading = document.querySelector('.loading');
 			loading.className = 'loading';
+			loading.style.visibility = 'visible';
+			loading.querySelector('p').innerHTML = '目前涌入的小伙伴过多<br>成绩正在计算中，请耐心等待。';
 
 
 			// me.common.PageRouter('scores');
@@ -180,6 +210,8 @@
 				document.querySelector('.timeCount').innerHTML = Math.floor(countTime/60) + ' 分 ' + countTime%60 + ' 秒 ' + randomMillisecond;
 				me.common.PageRouter('scores');
 				loading.className = 'loading hidden';
+				loading.style.visibility = 'hidden';
+				loading.querySelector('p').innerHTML = '目前涌入的小伙伴过多<br>页面正在跳转中，请耐心等待。';
 
 
 				// 重绘Share文案

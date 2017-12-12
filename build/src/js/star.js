@@ -1,6 +1,7 @@
 // 星星star
 ;(function(w){
 
+
 	var starData = [
 		{
 			key: 2,
@@ -50,7 +51,6 @@
 
 	Star.prototype.init = function(){ // 创建元素
 		this.render();
-		this.x = parseInt(w.getComputedStyle(this.parentEl).width, 10);
 		var el = document.createElement('div');
 			el.className = 'heart ' + this.cname;
 			el.style.cssText = 'left: '+ this.x +'px; top: ' + this.y +'%;'
@@ -64,7 +64,7 @@
 	}
 	Star.prototype.render = function(){
 		this.eatMusic = document.getElementById('eatMusic');
-		this.x = parseInt(w.getComputedStyle(this.parentEl).width, 10)/2;
+		this.x = parseInt(w.getComputedStyle(this.parentEl).width, 10);
 		this.hero = hero;
 	}
 	Star.prototype.doing = function(count){
@@ -114,13 +114,20 @@
 			heroWidth: Math.floor(me.hero.width * 0.6)
 		}
 		if(elLeft > pos.x && elLeft < (pos.x + pos.heroWidth) && (me.hero.y - pos.y) < me.y){
+			var gid = el.getAttribute('data-id');
+			if(me.eatScores.indexOf(gid) < 0){  // 是否吃到心
+				me.eatScores.push(el.getAttribute('data-id'));
 
-			me.eatScores.push(el.getAttribute('data-id'))
-			if(!me.hero.isEat){
+				me.eatMusic.currentTime = 0;
 				me.eatMusic.play();
+			};
+			
+			//if(!me.hero.isEat){
+				// me.eatMusic.play();
+				// Eatmusic();
 			// 	me.eatScores++;
 			// 	console.log(me.eatScores);
-			};
+			//};
 			me.hero.isEat = 1;
 			el.style.opacity = 0.1;
 			el.remove();
