@@ -323,6 +323,7 @@ class CoachXmasLib
         $wechatapi = new WechatAPI();
         $list = $wechatapi->cardList($card);
         if(!empty($list)) {
+            $list[0]['cardExt']['timestamp'] = (string) $list[0]['cardExt']['timestamp'];
             return $list[0];
         } else {
             return false;
