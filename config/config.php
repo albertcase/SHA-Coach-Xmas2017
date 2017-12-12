@@ -74,8 +74,17 @@ define("SAFE_TIME", 15);
 //card
 define("CARD_DATE", '2017-12-12');
 define("CARD_LIST", '{
-	"2017-12-12": "pKCDxjlqFHHJMYpHo4hmTg1KF7Zk",
-	"2017-12-13": "20171213",
-	"2017-12-14": "20171214",
-	"2017-12-15": "20171215"
+	"2017-12-13": "pKCDxjiGkHsWlMDDAfuSnxs2Ales",
+	"2017-12-14": "pKCDxjlniXEqC1WeisXYZaS4lJJI",
+	"2017-12-15": "pKCDxju0XSHvk7YpUVxTU0PIay2k",
+	"2017-12-16": "pKCDxjrkuj9aGvIjOGLWiANjzeBc",
+	"2017-12-17": "pKCDxjtjoLAQXGQ1Sj-1QteZvUOw",
+	"2017-12-18": "pKCDxjvBWIo-q6FCbKe7DHoZZA4Q",
+	"2017-12-19": "pKCDxjh43s3a9zzmuPA1fqZqugc8",
+	"2017-12-20": "pKCDxjpkPTnHVYK6aMt7VT2lhPBw",
+	"2017-12-21": "pKCDxjmhSb41wV5_qjfDLPczBUpI",
+	"2017-12-22": "pKCDxjrM_y6Nvo4PCYP56oamJdFw",
+	"2017-12-23": "pKCDxjrkDdJ-jQ_xGfuXddByBoFY",
+	"2017-12-24": "pKCDxjo2Xf34JxM6A7o8Vre42w1U",
+	"2017-12-25": "pKCDxjgOu8xX6LEQpUmZubtiAs5A"
 }');
