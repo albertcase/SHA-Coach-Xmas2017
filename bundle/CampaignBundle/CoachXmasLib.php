@@ -322,9 +322,14 @@ class CoachXmasLib
         $card = isset($cardArr[CARD_DATE]) ? $cardArr[CARD_DATE] : 0;
         $wechatapi = new WechatAPI();
         $list = $wechatapi->cardList($card);
+        $output = []
         if(!empty($list)) {
-            $list[0]['cardExt']['timestamp'] = (string) $list[0]['cardExt']['timestamp'];
-            return $list[0];
+            $output['cardId'] = $list[0]['cardId'];
+            $output['cardExt']['timestamp'] = $list[0]['cardExt']['timestamp'];
+            $output['cardExt']['signature'] = $list[0]['cardExt']['signature'];
+            $output['cardExt']['openid'] = $list[0]['cardExt']['openid'];
+            $output['cardExt']['code'] = $list[0]['cardExt']['code'];
+            return $output;
         } else {
             return false;
         }
