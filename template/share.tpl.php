@@ -108,7 +108,7 @@
         this.className += ' disabled';
         
 
-        Common.fetch.getCard({}, function(data){
+        common.fetch.getCard({}, function(data){
             // data.cards.cardId
             // data.cards.cardExt.code
             // data.cards.cardExt.openid
