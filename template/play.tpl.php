@@ -458,10 +458,7 @@
      */
     function showcard(data) {
         wx.addCard({
-            cardList: [{
-                cardId: data.cardId,
-                cardExt: '{"timestamp":"'+data.cardExt.timestamp+'","signature":"'+data.cardExt.signature+'","openid":"'+data.cardExt.openid+'","code":"'+data.cardExt.code+'"}'
-            }],
+            cardList: [data],
             success: function(res) {
                 var cardList = res.cardList;
 
