@@ -158,10 +158,6 @@
 </div>
 
 
-<audio src="/build/dist/media/coachxmas.m4a" loop id="bgMusic">
-您的浏览器不支持 audio 标签。
-</audio>
-
 <script type="text/javascript" src="/build/dist/js/bundle.min.js"></script>
 <script type="text/javascript">
     document.body.addEventListener('touchmove', function(evt) {

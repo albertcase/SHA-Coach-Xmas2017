@@ -1,5 +1,33 @@
 ;(function(w){
-	var bgMusic = document.getElementById('bgMusic');
+	function Bgmusic(){
+		if(!(this instanceof Bgmusic)){
+            var self = new Bgmusic();
+            self.init();
+            return self;
+        };
+		this.el = null;
+		this.init = function(){
+			this.create();
+		}
+		this.create = function(){
+			var em = document.createElement('audio');
+			em.src = './media/coachxmas.m4a';
+			em.loop = true;
+			em.innerHTML = '您的浏览器不支持 audio 标签。';
+			this.el = em;
+			document.body.appendChild(em);
+		}
+		this.play = function(){
+			this.el.play();
+		}
+		this.pause = function(){
+			this.el.pause();
+		}
+	}
+
+	var bgMusic = Bgmusic();
+
+
 
 	// 总共用时
 	function TimeCount(el){
