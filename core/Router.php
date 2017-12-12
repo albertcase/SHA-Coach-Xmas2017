@@ -29,7 +29,7 @@ class Router
             return;
 		}
 		foreach($routers as $router => $callbackConfig) {
-			$pattern = '/' . preg_replace(array('/\//', '/%/'), array('\/', '(.*)'), $router) . '$/';
+			$pattern = '/^' . preg_replace(array('/\//', '/%/'), array('\/', '(.*)'), $router) . '$/';
 			if(preg_match($pattern, $current_router, $matches)  && $router != '/') {
 				unset($matches[0]);
 				$class = $callbackConfig[0].'Controller';
