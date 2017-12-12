@@ -7,6 +7,16 @@ use Core\Controller;
 class OpenApiController extends Controller
 {
 
+	public function __construct() 
+	{
+		// ajax 请求的处理方式 
+        if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"])=="xmlhttprequest"){ 
+            //@TODO ? 
+        } else{ 
+            $this->statusPrint('101', 'access deny!');
+        }
+	}
+
     public function toptenAction()
     {
         $coachXmasLib = new CoachXmasLib();
