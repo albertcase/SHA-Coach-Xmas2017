@@ -98,13 +98,13 @@
 				me.jump.first = gammaValue;
 			}
 			
-			if(me.jump.count >= 6){
+			if(me.jump.count >= 5){
 				me.jump.end = gammaValue;
 				
 				// (first > end)   // 向下翻
 				// (end > first)   // 向上翻
 				// 取值区间 10 (灵敏度)
-				if(me.jump.first > me.jump.end && (me.jump.first - me.jump.end) > 6){
+				if(me.jump.first > me.jump.end && (me.jump.first - me.jump.end) > 5){
 					hero.anim();
 				}
 				me.jump.count = 0;
