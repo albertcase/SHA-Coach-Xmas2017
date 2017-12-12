@@ -35,6 +35,7 @@ class PageController extends Controller
             $wechatapi = new WechatAPI();
             $list = $wechatapi->cardList($card);
 
+
             $userInfo = $this->coachLib->findInfoByUid($uid);
             return $this->render('share', array('userInfo' => $userInfo, 'list' => $list));
         }
