@@ -71,10 +71,7 @@
      */
     function showcard(data) {
         wx.addCard({
-            cardList: [{
-                cardId: data.cardId,
-                cardExt: '{"timestamp":"'+data.cardExt.timestamp+'","signature":"'+data.cardExt.signature+'","openid":"'+data.cardExt.openid+'","code":"'+data.cardExt.code+'"}'
-            }],
+            cardList: [data],
             success: function(res) {
                 var cardList = res.cardList;
                 //alert(JSON.stringfiy(res));
@@ -104,7 +101,7 @@
         if(me.className.indexOf(' disabled') >= 0) return false;
         me.className += ' disabled';
         
-
+        alert('test');
         common.fetch.getCard({}, function(data){
             // data.cards.cardId
             // data.cards.cardExt.code
