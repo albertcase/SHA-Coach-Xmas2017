@@ -384,6 +384,7 @@
         var me = this;
         me.container.giftBtn.addEventListener('click', function(){
             shareTips.show();
+            _hmt.push(['_trackEvent', 'click', 'button', '赠送礼物']);
             // common.PageRouter('share');
         })
 
@@ -453,6 +454,8 @@
             eatMusic.play();
             eatMusic.setAttribute('src', '/build/dist/media/eat.m4a');
             eatMusic.load();
+
+            _hmt.push(['_trackEvent', 'click', 'button', '出发']);
         })
     })
 
