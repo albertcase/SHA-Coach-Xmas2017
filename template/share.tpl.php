@@ -58,50 +58,65 @@
 
 </div>
 
-<!-- 领取卡券 -->
-<script type="text/javascript">
-var cardListJSON = <?php echo json_encode($list);?>;
-function showcard() {
-     wx.addCard({
-        cardList: [{
-            cardId: cardListJSON[0].cardId,
-            cardExt: '{"timestamp":"'+cardListJSON[0].cardExt.timestamp+'","signature":"'+cardListJSON[0].cardExt.signature+'","openid":"'+cardListJSON[0].cardExt.openid+'","code":"'+cardListJSON[0].cardExt.code+'"}'
-        }],
-        success: function(res) {
-            var cardList = res.cardList;
-            var openBtnEl = document.querySelector('.open-btn');
-            openBtnEl.className = openBtnEl.className.replace(' disabled', '');
-            //alert(JSON.stringfiy(res));
-        },
-        fail: function(res) {
-            var openBtnEl = document.querySelector('.open-btn');
-            openBtnEl.className = openBtnEl.className.replace(' disabled', '');
-            //alert(JSON.stringfiy(res));
-        },
-        complete: function(res) {
-            //alert(JSON.stringfiy(res));
-        },
-        cancel: function(res) {
-            //alert(JSON.stringfiy(res));
-        },
-        trigger: function(res) {
-            //alert(JSON.stringfiy(res));
-        }
-    });
-}
-</script>
-<!-- 领取卡券结束 -->
+
 
 <script type="text/javascript">
     var common = new Common();
     common.base.wxshareFun();
     common.PageRouter('friend');
 
+
+    /* 
+     * 领取卡券 
+     */
+    function showcard(data) {
+        wx.addCard({
+            cardList: [{
+                cardId: data.cardId,
+                cardExt: '{"timestamp":"'+data.cardExt.timestamp+'","signature":"'+data.cardExt.signature+'","openid":"'+data.cardExt.openid+'","code":"'+data.cardExt.code+'"}'
+            }],
+            success: function(res) {
+                var cardList = res.cardList;
+                var openBtnEl = document.querySelector('.open-btn');
+                openBtnEl.className = openBtnEl.className.replace(' disabled', '');
+                //alert(JSON.stringfiy(res));
+            },
+            fail: function(res) {
+                var openBtnEl = document.querySelector('.open-btn');
+                openBtnEl.className = openBtnEl.className.replace(' disabled', '');
+                //alert(JSON.stringfiy(res));
+            },
+            complete: function(res) {
+                //alert(JSON.stringfiy(res));
+            },
+            cancel: function(res) {
+                //alert(JSON.stringfiy(res));
+            },
+            trigger: function(res) {
+                //alert(JSON.stringfiy(res));
+            }
+        });
+    }
+
+
+
+
+
     var openBtn = document.querySelector('.open-btn');
     openBtn.addEventListener('click', function(){
         if(this.className.indexOf(' disabled') >= 0) return false;
         this.className += ' disabled';
-        showcard();
+        
+
+        Common.fetch.getCard({}, function(data){
+            // data.cards.cardId
+            // data.cards.cardExt.code
+            // data.cards.cardExt.openid
+            // data.cards.cardExt.timestamp
+            // data.cards.cardExt.signature
+            showcard(data.cards);
+        })
+
     })
 
 </script>

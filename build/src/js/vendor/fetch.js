@@ -46,6 +46,19 @@ Fetch.prototype.noAuthorize = function({}, callback){  // 未授权下拉取排�
 	ajaxFun('GET', '/domian/api/omg/topten', {}, callback)
 }
 	
+/* 
+null
+*/
+Fetch.prototype.getCard = function({}, callback){  // 未授权下拉取排行榜API
+  ajaxFun('POST', '/domian/api/card', {}, callback)
+}
 
 Common.prototype.fetch = new Fetch();
+
+
+
+
+
+
+
 
