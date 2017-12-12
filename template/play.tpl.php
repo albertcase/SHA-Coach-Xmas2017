@@ -156,7 +156,9 @@
 
 
 </div>
-
+<audio src="/build/dist/media/eat.m4a" id="eatMusic">
+您的浏览器不支持 audio 标签。
+</audio>
 
 <script type="text/javascript" src="/build/dist/js/bundle.min.js"></script>
 <script type="text/javascript">
@@ -436,6 +438,11 @@
             var classArray = ['kl', 'qw', 'mhl'];
             hero.elClassName = classArray[swiper.activeIndex];
             common.PageRouter('scene');
+
+            var eatMusic = document.getElementById("eatMusic");
+            eatMusic.play();
+            eatMusic.setAttribute('src', '/build/dist/media/eat.m4a');
+            eatMusic.load();
         })
     })
 

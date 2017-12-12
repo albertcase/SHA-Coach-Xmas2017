@@ -3609,7 +3609,7 @@ body {
     height: 0.58rem;
     background: url("../img/share-head-star--landscape.png") left center no-repeat;
     background-size: 100% auto;
-    margin: 0.1rem 0 0 -1%;
+    margin: 0.02rem 0 0 -1%;
     display: inline-block; }
   #share .xmasVideo, #isplay .xmasVideo {
     width: 60%;
