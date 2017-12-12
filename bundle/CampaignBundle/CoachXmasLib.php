@@ -7,6 +7,7 @@ use Lib\PDO;
 use Lib\Redis;
 use Core\Router;
 use Core\Request;
+use Lib\WechatAPI;
 
 class CoachXmasLib 
 {
@@ -314,4 +315,18 @@ class CoachXmasLib
         }
         return false;
     }
+
+    public function getCards()
+    {
+        $cardArr = json_decode(CARD_LIST, 1);
+        $card = isset($cardArr[CARD_DATE]) ? $cardArr[CARD_DATE] : 0;
+        $wechatapi = new WechatAPI();
+        $list = $wechatapi->cardList($card);
+        if(!empty($list)) {
+            return $list[0];
+        } else {
+            return false;
+        }
+    }
+
 }

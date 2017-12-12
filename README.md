@@ -12,6 +12,7 @@
 	- 1.domain/api/record :提交游戏成绩
 	- 2.domain/api/omg/topten :未授权下拉取排行榜（仅有前十名数据）
 	- 3.domian/api/topten :授权下拉取排行榜（前十名+自己的成绩）
+  - 4.domain/api/card :卡券配置接口
 5.JSSDK 
 	- http://coach.samesamechina.com/api/v1/js/a77f2b6c-bad1-4f28-9fdb-e453787882dd/wechat
 6.模拟登陆
@@ -207,5 +208,50 @@ null
 {
   status : 0,
   msg : '获取失败！'
+}
+```
+
+---
+
+
+### 4.卡券配置接口API
+
+Method: POST 
+
+##### API URL:
+
+```html
+domian/api/card
+```
+##### Get Parameter
+
+null
+
+##### Response
+
+##### status 1
+
+```javascript
+{
+  status: 1,
+  msg: "获取成功！",
+  cards: {
+    cardId: "pKCDxjlqFHHJMYpHo4hmTg1KF7Zk",
+    cardExt: {
+      code: "",
+      openid: "",
+      timestamp: 1513059915,
+      signature: "5ff5f5ca71bc988f4bbb0ff18eef0cf8befa7e90"
+    }
+  }
+}
+```
+
+##### status 0
+
+```javascript
+{
+  status: 0,
+  msg: "获取失败！"
 }
 ```
