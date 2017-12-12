@@ -70,3 +70,12 @@ define("CACHE_TIME", 60);
 //safe lock
 define("SAFE_LOCK", true);
 define("SAFE_TIME", 15);
+
+//card
+define("CARD_DATE", '2017-12-12');
+define("CARD_LIST", '{
+	"2017-12-12": "pKCDxjlqFHHJMYpHo4hmTg1KF7Zk",
+	"2017-12-13": "20171213",
+	"2017-12-14": "20171214",
+	"2017-12-15": "20171215"
+}');
