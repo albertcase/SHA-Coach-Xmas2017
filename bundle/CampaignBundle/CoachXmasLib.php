@@ -324,11 +324,7 @@ class CoachXmasLib
         $list = $wechatapi->cardList($card);
         $output = [];
         if(!empty($list)) {
-            $output['cardId'] = $list[0]['cardId'];
-            $output['cardExt']['timestamp'] = $list[0]['cardExt']['timestamp'];
-            $output['cardExt']['signature'] = $list[0]['cardExt']['signature'];
-            $output['cardExt']['openid'] = $list[0]['cardExt']['openid'];
-            $output['cardExt']['code'] = $list[0]['cardExt']['code'];
+            $output['cardExt'] = json_encode($list[0]['cardExt']);
             return $output;
         } else {
             return false;
