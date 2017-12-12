@@ -58,6 +58,39 @@
 
 </div>
 
+<script type="text/javascript">
+var cardListJSON = <?php echo json_encode($list);?>;
+function showcard() {
+     wx.addCard({
+        cardList: [{
+            cardId: cardListJSON[0].cardId,
+            cardExt: '{"timestamp":"'+cardListJSON[0].cardExt.timestamp+'","signature":"'+cardListJSON[0].cardExt.signature+'","openid":"'+cardListJSON[0].cardExt.openid+'","code":"'+cardListJSON[0].cardExt.code+'"}'
+        }],
+        success: function(res) {
+            var cardList = res.cardList;
+            var openBtnEl = document.querySelector('.open-btn');
+            openBtnEl.className = openBtnEl.className.replace(' disabled', '');
+            //alert(JSON.stringfiy(res));
+        },
+        fail: function(res) {
+            var openBtnEl = document.querySelector('.open-btn');
+            openBtnEl.className = openBtnEl.className.replace(' disabled', '');
+            //alert(JSON.stringfiy(res));
+        },
+        complete: function(res) {
+            //alert(JSON.stringfiy(res));
+        },
+        cancel: function(res) {
+            //alert(JSON.stringfiy(res));
+        },
+        trigger: function(res) {
+            //alert(JSON.stringfiy(res));
+        }
+    });
+}
+</script>
+<!-- 领取卡券结束 -->
+
 
 
 <script type="text/javascript">
@@ -66,53 +99,11 @@
     common.PageRouter('friend');
 
 
-    /* 
-     * 领取卡券 
-     */
-    function showcard(data) {
-        console.log(data);
-        wx.addCard({
-            cardList: [data],
-            success: function(res) {
-                var cardList = res.cardList;
-                //alert(JSON.stringfiy(res));
-            },
-            fail: function(res) {
-                //alert(JSON.stringfiy(res));
-            },
-            complete: function(res) {
-                //alert(JSON.stringfiy(res));
-            },
-            cancel: function(res) {
-                //alert(JSON.stringfiy(res));
-            },
-            trigger: function(res) {
-                //alert(JSON.stringfiy(res));
-            }
-        });
-    }
-
-
-
-
-
     var openBtn = document.querySelector('.open-btn');
     openBtn.addEventListener('click', function(){
-        var me = this;
-        if(me.className.indexOf(' disabled') >= 0) return false;
-        me.className += ' disabled';
-        
-        common.fetch.getCard({}, function(data){
-            // data.cards.cardId
-            // data.cards.cardExt.code
-            // data.cards.cardExt.openid
-            // data.cards.cardExt.timestamp
-            // data.cards.cardExt.signature
-            showcard(data.cards);
-            common.base.formErrorTips(data.msg);
-            me.className = me.className.replace(' disabled', '');
-        })
-
+        if(this.className.indexOf(' disabled') >= 0) return false;
+        this.className += ' disabled';
+        showcard();
     })
 
 </script>
