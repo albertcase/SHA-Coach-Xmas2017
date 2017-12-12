@@ -70,8 +70,6 @@
      * 领取卡券 
      */
     function showcard(data) {
-        alert('test');
-        console.log(data);
         wx.addCard({
             cardList: [data],
             success: function(res) {
