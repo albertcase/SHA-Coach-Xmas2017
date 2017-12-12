@@ -109,6 +109,7 @@
         </div>
         <div class="scores-btn--area">
             <a href="javascript:location.reload();" class="replay-btn"></a>
+            <a href="javascript:void(0);" class="applyBtn"></a>
             <a href="javascript:void(0);" class="gift-btn"></a>
         </div>
     </div>
@@ -362,7 +363,7 @@
     common.base.loadingFnDoing(allimg, function(){
         $(".loading").css({"visibility": "hidden"});
         var swiper = null;
-        common.PageRouter('chose', function(){
+        common.PageRouter('scores', function(){
             var chosePageId = document.getElementById('chose');
             common.base.overscroll(chosePageId);
             if(swiper) return false;

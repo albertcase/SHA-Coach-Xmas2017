@@ -112,6 +112,7 @@
         </div>
         <div class="scores-btn--area">
             <a href="javascript:location.reload();" class="replay-btn"></a>
+            <a href="javascript:void(0);" class="applyBtn"></a>
             <a href="javascript:void(0);" class="gift-btn"></a>
         </div>
     </div>
@@ -449,6 +450,57 @@
 
     
 
+
+
+
+    /* 
+     * 领取卡券 
+     */
+    function showcard(data) {
+        wx.addCard({
+            cardList: [{
+                cardId: data.cardId,
+                cardExt: '{"timestamp":"'+data.cardExt.timestamp+'","signature":"'+data.cardExt.signature+'","openid":"'+data.cardExt.openid+'","code":"'+data.cardExt.code+'"}'
+            }],
+            success: function(res) {
+                var cardList = res.cardList;
+
+                //alert(JSON.stringfiy(res));
+            },
+            fail: function(res) {
+                //alert(JSON.stringfiy(res));
+            },
+            complete: function(res) {
+                //alert(JSON.stringfiy(res));
+            },
+            cancel: function(res) {
+                //alert(JSON.stringfiy(res));
+            },
+            trigger: function(res) {
+                //alert(JSON.stringfiy(res));
+            }
+        });
+    }
+
+
+
+    var applyBtn = document.querySelector('.applyBtn');
+    applyBtn.onclick = function(){
+        var me = this;
+        if(me.className.indexOf(' disabled') >= 0) return false;
+        me.className += ' disabled';
+        
+        common.fetch.getCard({}, function(data){
+            // data.cards.cardId
+            // data.cards.cardExt.code
+            // data.cards.cardExt.openid
+            // data.cards.cardExt.timestamp
+            // data.cards.cardExt.signature
+            showcard(data.cards);
+            common.base.formErrorTips(data.msg);
+            me.className = me.className.replace(' disabled', '');
+        })
+    }
 
     
 

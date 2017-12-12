@@ -77,13 +77,9 @@
             }],
             success: function(res) {
                 var cardList = res.cardList;
-                var openBtnEl = document.querySelector('.open-btn');
-                openBtnEl.className = openBtnEl.className.replace(' disabled', '');
                 //alert(JSON.stringfiy(res));
             },
             fail: function(res) {
-                var openBtnEl = document.querySelector('.open-btn');
-                openBtnEl.className = openBtnEl.className.replace(' disabled', '');
                 //alert(JSON.stringfiy(res));
             },
             complete: function(res) {
@@ -104,8 +100,9 @@
 
     var openBtn = document.querySelector('.open-btn');
     openBtn.addEventListener('click', function(){
-        if(this.className.indexOf(' disabled') >= 0) return false;
-        this.className += ' disabled';
+        var me = this;
+        if(me.className.indexOf(' disabled') >= 0) return false;
+        me.className += ' disabled';
         
 
         common.fetch.getCard({}, function(data){
@@ -116,6 +113,7 @@
             // data.cards.cardExt.signature
             showcard(data.cards);
             common.base.formErrorTips(data.msg);
+            me.className = me.className.replace(' disabled', '');
         })
 
     })

@@ -3122,7 +3122,7 @@ body {
   position: relative;
   font-size: 0.25rem;
   color: #fff;
-  text-shadow: 0 0 10px #ff3f3f, 0 0 20px  #ff3f3f, 0 0 30px  #ff3f3f, 0 0 40px  #ff3f3f, 0 0 70px  #ff3f3f, 0 0 80px  #ff3f3f, 0 0 100px #ff3f3f, 0 0 150px #ff3f3f; }
+  text-shadow: 0 0 1px #ff3f3f, 0 0 2px #ff3f3f; }
   .scores-show--context .heartCount {
     position: absolute;
     left: 64%;
@@ -3137,15 +3137,18 @@ body {
   position: absolute;
   left: 0;
   bottom: 8%; }
-  .scores-btn--area .replay-btn, .scores-btn--area .gift-btn {
-    width: 36%;
+  .scores-btn--area .replay-btn, .scores-btn--area .gift-btn, .scores-btn--area .applyBtn {
+    width: 25%;
     height: 0.5rem;
     display: inline-block; }
   .scores-btn--area .replay-btn {
-    background: url("../img/replay-btn.png") center no-repeat;
+    background: url("../img/replayBtn.png") center no-repeat;
+    background-size: auto 100%; }
+  .scores-btn--area .applyBtn {
+    background: url("../img/applyBtn.png") center no-repeat;
     background-size: auto 100%; }
   .scores-btn--area .gift-btn {
-    background: url("../img/gift-btn.png") center no-repeat;
+    background: url("../img/sendgiftBtn.png") center no-repeat;
     background-size: auto 100%; }
 
 /* toplist */
@@ -3166,7 +3169,7 @@ body {
     margin: 1% 0 0 42%;
     font-size: 0.2rem;
     line-height: 0.35rem;
-    text-shadow: 0 0 10px #da7c25, 0 0 20px  #da7c25, 0 0 30px  #da7c25, 0 0 40px  #da7c25, 0 0 70px  #da7c25, 0 0 80px  #da7c25, 0 0 100px #da7c25, 0 0 150px #da7c25; }
+    text-shadow: 0 0 1px #da7c25, 0 0 2px #da7c25; }
   .toplist-l .qrcode {
     width: 67%;
     background: url("../img/qrcode.png") center no-repeat;
@@ -3549,7 +3552,7 @@ body {
   color: #fff;
   font-size: 0.45rem;
   text-align: left;
-  text-shadow: 0 0 10px #da7c25, 0 0 20px  #da7c25, 0 0 30px  #da7c25, 0 0 40px  #da7c25, 0 0 70px  #da7c25, 0 0 80px  #da7c25, 0 0 100px #da7c25, 0 0 150px #da7c25;
+  text-shadow: 0 0 1px #da7c25, 0 0 2px #da7c25;
   line-height: 0.72rem; }
   .toplist-info .socurs, .toplist-info .ranking {
     margin: 0 0 0 48%;
