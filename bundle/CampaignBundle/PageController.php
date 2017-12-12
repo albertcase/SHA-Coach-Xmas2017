@@ -28,15 +28,15 @@ class PageController extends Controller
         if($user->uid == $uid) {
             return $this->render('isplay', array('config' => []));
         } else { //不是自己
-            // //卡券
-            // $cardArr = json_decode(CARD_LIST, 1);
-            // // $card = 'pKCDxjlqFHHJMYpHo4hmTg1KF7Zk';
-            // $card = $cardArr[CARD_DATE];
-            // $wechatapi = new WechatAPI();
-            // $list = $wechatapi->cardList($card);
+            //卡券
+            $cardArr = json_decode(CARD_LIST, 1);
+            // $card = 'pKCDxjlqFHHJMYpHo4hmTg1KF7Zk';
+            $card = $cardArr[CARD_DATE];
+            $wechatapi = new WechatAPI();
+            $list = $wechatapi->cardList($card);
 
             $userInfo = $this->coachLib->findInfoByUid($uid);
-            return $this->render('share', array('userInfo' => $userInfo));
+            return $this->render('share', array('userInfo' => $userInfo, 'list' => $list));
         }
     }
 

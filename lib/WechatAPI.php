@@ -46,7 +46,7 @@ class WechatAPI {
 	    curl_close ( $ch );
 	    $return = json_decode($return,true);
 
-	    return $cardList = $return['data']['cardList'];
+	    return $return['data']['cardList'];
   }
 
 	public function retrieveAccessToken() {
