@@ -461,7 +461,6 @@
             cardList: [data],
             success: function(res) {
                 var cardList = res.cardList;
-
                 //alert(JSON.stringfiy(res));
             },
             fail: function(res) {
@@ -486,7 +485,7 @@
         var me = this;
         if(me.className.indexOf(' disabled') >= 0) return false;
         me.className += ' disabled';
-        
+
         common.fetch.getCard({}, function(data){
             // data.cards.cardId
             // data.cards.cardExt.code

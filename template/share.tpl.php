@@ -58,27 +58,25 @@
 
 </div>
 
+
+
 <script type="text/javascript">
-$(function() {
-    $.ajax({
-        "url" : '/api/card',
-        "cache" : false,
-        "dataType" : 'json',
-        "type" : "GET",
-        "data" : {
-        }
-    }).done(function(data) {
+    var common = new Common();
+    common.base.wxshareFun();
+    common.PageRouter('friend');
+
+
+    /* 
+     * 领取卡券 
+     */
+    function showcard(data) {
         wx.addCard({
-            cardList: [data.cards],
+            cardList: [data],
             success: function(res) {
                 var cardList = res.cardList;
-                var openBtnEl = document.querySelector('.open-btn');
-                openBtnEl.className = openBtnEl.className.replace(' disabled', '');
                 //alert(JSON.stringfiy(res));
             },
             fail: function(res) {
-                var openBtnEl = document.querySelector('.open-btn');
-                openBtnEl.className = openBtnEl.className.replace(' disabled', '');
                 //alert(JSON.stringfiy(res));
             },
             complete: function(res) {
@@ -91,24 +89,29 @@ $(function() {
                 //alert(JSON.stringfiy(res));
             }
         });
-    });
-});
-</script>
-<!-- 领取卡券结束 -->
+    }
 
 
 
-<script type="text/javascript">
-    var common = new Common();
-    common.base.wxshareFun();
-    common.PageRouter('friend');
 
 
     var openBtn = document.querySelector('.open-btn');
     openBtn.addEventListener('click', function(){
-        if(this.className.indexOf(' disabled') >= 0) return false;
-        this.className += ' disabled';
-        showcard();
+        var me = this;
+        if(me.className.indexOf(' disabled') >= 0) return false;
+        me.className += ' disabled';
+        
+        common.fetch.getCard({}, function(data){
+            // data.cards.cardId
+            // data.cards.cardExt.code
+            // data.cards.cardExt.openid
+            // data.cards.cardExt.timestamp
+            // data.cards.cardExt.signature
+            showcard(data.cards);
+            common.base.formErrorTips(data.msg);
+            me.className = me.className.replace(' disabled', '');
+        })
+
     })
 
 </script>
