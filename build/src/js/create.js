@@ -13,6 +13,7 @@
 			var em = document.createElement('audio');
 			em.src = '/build/dist/media/coachxmas.m4a';
 			em.loop = true;
+			em.preload = 'auto';
 			em.innerHTML = '您的浏览器不支持 audio 标签。';
 			this.el = em;
 			document.body.appendChild(em);
