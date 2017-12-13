@@ -147,7 +147,7 @@ class CoachXmasLib
 
     public function findUserRecordNum($records)
     {
-        $sql = "SELECT COUNT(id) AS `sum` FROM `record` WHERE `records` < :records";
+        $sql = "SELECT COUNT(id) AS `sum` FROM `record` WHERE `records` < :records AND `status` = 1";
         $query = $this->_pdo->prepare($sql);
         $query->execute(array(':records' => $records));
         $row = $query->fetchAll(\PDO::FETCH_ASSOC);
