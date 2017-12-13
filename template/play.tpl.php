@@ -167,7 +167,7 @@
 
 </div>
 <audio src="/build/dist/media/eat.m4a" id="eatMusic">
-您的浏览器不支持 audio 标签。
+    您的浏览器不支持 audio 标签。
 </audio>
 
 <script type="text/javascript" src="/build/dist/js/bundle.min.js"></script>
@@ -325,8 +325,8 @@
                 me.datas.posterEl.onclick = function(){
                     if(!this.getAttribute("status")){
                         this.setAttribute("status","play");
-                        me.datas.videoEl.play();
                         me.datas.posterEl.style.opacity = 0;
+                        me.datas.videoEl.play();
                     }else{
                         this.removeAttribute("status");
                         me.datas.videoEl.pause();
