@@ -169,7 +169,7 @@
                 var jsonDatas = me.setting.listDatas; 
 
                 var dataslistHTML;
-                if(jsonDatas.length <= 0){
+                if(jsonDatas.length <= 0 || !jsonDatas){
                     dataslistHTML = '暂无数据！';
                 }else{
                     var dataslistArray = [];
