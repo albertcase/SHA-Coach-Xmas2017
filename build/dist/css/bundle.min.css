@@ -3196,7 +3196,7 @@ body {
     height: 86%;
     margin: 6% 0 0 0;
     background: url("../img/toplist-bg.png") center top no-repeat;
-    background-size: 100% auto;
+    background-size: 100%;
     display: inline-block; }
     .toplist-r .toplist-table ul {
       display: inline-block;
