@@ -341,6 +341,7 @@
             },
             pause: function(){
                 var me = this;
+                me.datas.videoEl.pause();
                 me.datas.posterEl.removeAttribute("status");
                 me.datas.posterEl.style.opacity = 1;
             }
