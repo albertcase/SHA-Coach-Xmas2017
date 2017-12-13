@@ -240,7 +240,8 @@
             'replayBtn': null,
             'toplistTag': null,
             'listBtn': null,
-            'backBtn': null
+            'backBtn': null,
+            'backPage': null
         }
     } 
 
@@ -274,15 +275,17 @@
         me.container.toplistTag.addEventListener('click', function(){
             getTopTen();
             common.PageRouter('toplist');
+            me.container.backPage = 'scores';
         })
 
         me.container.listBtn.addEventListener('click', function(){
             getTopTen();
             common.PageRouter('toplist'); 
+            me.container.backPage = 'share';
         })
 
         me.container.backBtn.addEventListener('click', function(){
-            common.PageRouter('scores');
+            common.PageRouter(me.container.backPage);
         })
 
     }
@@ -363,7 +366,7 @@
     common.base.loadingFnDoing(allimg, function(){
         $(".loading").css({"visibility": "hidden"});
         var swiper = null;
-        common.PageRouter('toplist', function(){
+        common.PageRouter('scores', function(){
             var chosePageId = document.getElementById('chose');
             common.base.overscroll(chosePageId);
             if(swiper) return false;

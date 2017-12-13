@@ -360,7 +360,8 @@
             'replayBtn': null,
             'toplistTag': null,
             'listBtn': null,
-            'backBtn': null
+            'backBtn': null,
+            'backPage': null
         }
     } 
 
@@ -395,15 +396,17 @@
         me.container.toplistTag.addEventListener('click', function(){
             getTopTen();
             common.PageRouter('toplist');
+            me.container.backPage = 'scores';
         })
 
         me.container.listBtn.addEventListener('click', function(){
             getTopTen();
             common.PageRouter('toplist'); 
+            me.container.backPage = 'share';
         })
 
         me.container.backBtn.addEventListener('click', function(){
-            common.PageRouter('scores');
+            common.PageRouter(me.container.backPage);
         })
 
     }
