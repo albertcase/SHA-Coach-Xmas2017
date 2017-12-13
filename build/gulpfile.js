@@ -58,6 +58,7 @@ var paths = {
         'src/js/vendor/PxLoader.js', 
         'src/js/vendor/jquery.transit.js', 
         'src/js/vendor/swiper.min.js', 
+        'src/js/vendor/fastclick.js', 
         'src/js/vendor/rem.js', 
         'src/js/vendor/common.js', 
         'src/js/vendor/fetch.js'

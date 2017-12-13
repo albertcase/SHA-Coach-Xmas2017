@@ -1,3 +1,9 @@
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}
+
 ;(function(w){
 
 	function Animator(duration, update, easing){
