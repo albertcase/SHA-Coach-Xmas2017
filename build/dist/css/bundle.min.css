@@ -3520,7 +3520,7 @@ body {
     margin: 13.4% 0 0 16%; }
     .toplist-popup--context ul li {
       height: 0.67rem;
-      line-height: 0.67rem;
+      line-height: 0.57rem;
       text-shadow: 0 0 1px #ff982a, 0 0 2px #ff982a; }
       .toplist-popup--context ul li:nth-child(1) {
         color: #ffffd8;
