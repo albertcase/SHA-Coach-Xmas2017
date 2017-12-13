@@ -2,9 +2,9 @@
 
 
 var shareData = {
-    "_title": 'Hi，这里有你的圣诞卡券', //分享标题
-    "_desc": "圣诞享礼，和你的好友一起趣玩！",    // 分享朋友圈的描述
-    "_desc_friend": "圣诞享礼，和你的好友一起趣玩！",    // 分享好友的描述
+    "_title": '玩转圣诞，到底谁更快？！', //分享标题
+    "_desc": "冲刺终点，更有惊喜礼遇等你来领！",    // 分享朋友圈的描述
+    "_desc_friend": "冲刺终点，更有惊喜礼遇等你来领！",    // 分享好友的描述
     "_link": window.location.origin + '/home.html',    //分享的连接
     "_imgUrl": window.location.origin + "/build/dist/img/share.jpg",   //分享的图片
     "_shareAppMessageCallback": function(){
