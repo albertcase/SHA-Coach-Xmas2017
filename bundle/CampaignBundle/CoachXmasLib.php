@@ -54,7 +54,7 @@ class CoachXmasLib
 
     public function findToptenRecord()
     {
-        $sql = "SELECT u.`nickname`, r.`records` FROM `user` u, `record` r WHERE u.`uid` = r.`uid` ORDER BY r.`records` ASC LIMIT 0, 10";
+        $sql = "SELECT u.`nickname`, r.`records` FROM `user` u, `record` r WHERE u.`uid` = r.`uid` AND r.`status` = 1 ORDER BY r.`records` ASC LIMIT 0, 10";
         $query = $this->_pdo->prepare($sql);
         $query->execute();
         $row = $query->fetchAll(\PDO::FETCH_ASSOC);
