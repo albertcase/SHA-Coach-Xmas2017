@@ -338,6 +338,10 @@
                     me.datas.posterEl.removeAttribute("status");
                     me.datas.posterEl.style.opacity = 1;
                 });
+            },
+            pause: function(){
+                me.datas.posterEl.removeAttribute("status");
+                me.datas.posterEl.style.opacity = 1;
             }
         }
     }
@@ -400,6 +404,7 @@
         })
 
         me.container.listBtn.addEventListener('click', function(){
+            xmasVideo.pause();
             getTopTen();
             common.PageRouter('toplist'); 
             me.container.backPage = 'share';
