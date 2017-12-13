@@ -218,6 +218,10 @@
                     me.datas.posterEl.removeAttribute("status");
                     me.datas.posterEl.style.opacity = 1;
                 });
+            },
+            pause: function(){
+                me.datas.posterEl.removeAttribute("status");
+                me.datas.posterEl.style.opacity = 1;
             }
         }
     }
@@ -279,6 +283,7 @@
         })
 
         me.container.listBtn.addEventListener('click', function(){
+            xmasVideo.pause();
             getTopTen();
             common.PageRouter('toplist'); 
             me.container.backPage = 'share';
@@ -366,7 +371,7 @@
     common.base.loadingFnDoing(allimg, function(){
         $(".loading").css({"visibility": "hidden"});
         var swiper = null;
-        common.PageRouter('scores', function(){
+        common.PageRouter('share', function(){
             var chosePageId = document.getElementById('chose');
             common.base.overscroll(chosePageId);
             if(swiper) return false;

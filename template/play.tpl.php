@@ -340,6 +340,7 @@
                 });
             },
             pause: function(){
+                var me = this;
                 me.datas.posterEl.removeAttribute("status");
                 me.datas.posterEl.style.opacity = 1;
             }
