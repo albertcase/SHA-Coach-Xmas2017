@@ -260,6 +260,10 @@ class CoachXmasLib
                 return $data;
             }
 
+            $isFake = 1;
+            if($recordInfo->timeinit-floor($recordInfo->bar*0.5) == (int)$recordInfo->records)
+                $isFake = 0;
+
             //如果API提交的成绩低于安全成绩
             //设置用户黑名单 并且记录攻击日志
             $gameStartTime = $this->getGameStartTime();
@@ -267,7 +271,7 @@ class CoachXmasLib
             
             //取出游戏开始时间，计算游戏花费时间，判断是否为恶意刷新API
             //游戏时间小于安全事件 设置用户黑名单并且记录攻击日志
-            if($gameStartTime == 0 || $gameTime < $recordInfo->timeinit || $recordInfo->records < SAFE_TIME) {
+            if($isFake || $recordInfo->timeinit < 32 || $gameStartTime == 0 || $gameTime < $recordInfo->timeinit || $recordInfo->records < SAFE_TIME) {
                 //恶意用户锁定并记录日志
                 $this->redis->set($block_user_key, 1);
                 $attackLog = new \stdClass();
