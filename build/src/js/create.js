@@ -255,6 +255,7 @@
 	ikonwBtn.addEventListener('click', function(){
 		if(this.className.indexOf(' disabled') >= 0) return false;
 		this.className += ' disabled';
+		$('.gameTips').hide();
 		bgMusic.play();
 
 		elementsObj.init();
@@ -265,7 +266,6 @@
 		star.init();
 
 		magicFun.init();
-		$('.gameTips').fadeOut();
 	}, false)
 
 
