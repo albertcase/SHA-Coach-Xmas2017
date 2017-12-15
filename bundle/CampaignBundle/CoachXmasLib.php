@@ -147,14 +147,14 @@ class CoachXmasLib
 
     public function findUserRecordNum($records)
     {
-        $sql = "SELECT COUNT(id) AS `sum` FROM `record` WHERE `records` < :records AND `status` = 1";
+        $sql = "SELECT COUNT(id) AS `sum` FROM `record` WHERE `records` <= :records AND `status` = 1";
         $query = $this->_pdo->prepare($sql);
         $query->execute(array(':records' => $records));
         $row = $query->fetchAll(\PDO::FETCH_ASSOC);
         if($row) {
             return $row[0]['sum'];
         }
-        return false;
+        return 0;
     }
 
     public function findMaxRecord($recordInfo)
@@ -196,7 +196,7 @@ class CoachXmasLib
 
     public function findRecordByUid($uid)
     {
-        $sql = "SELECT `id`, `records` FROM `record` WHERE `uid` = :uid";
+        $sql = "SELECT `id`, `records`, `status` FROM `record` WHERE `uid` = :uid";
         $query = $this->_pdo->prepare($sql);
         $query->execute(array(':uid' => $uid));
         $row = $query->fetch(\PDO::FETCH_ASSOC);

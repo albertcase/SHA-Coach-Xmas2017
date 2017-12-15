@@ -26,19 +26,23 @@ class ApiController extends Controller
         $topten = $this->coachLib->getTopten();
         $userRecords = $this->coachLib->findRecordByUid($user->uid);
         if($userRecords) {
-            $userNum = $this->coachLib->findUserRecordNum($userRecords['records']);
-        } else {
-            $userNum = '暂无排名';
+            if($userRecords['status'] == 0) {
+                $myRecord = '暂无成绩';
+                $userRank = '暂无排';
+            } else {
+                $myRecord = $this->coachLib->recordsFormat($userRecords['records']);
+                $userRank = $this->coachLib->findUserRecordNum($userRecords['records']);
+            }
+            $result = array(
+                'status' => 1,
+                'msg' => '获取成功！',
+                'topten' => $topten,
+                'myRecord' => $myRecord,
+                'myNum' => $userRank,
+                );
+            $this->dataPrint($result);
         }
-
-        $result = array(
-            'status' => 1,
-            'msg' => '获取成功！',
-            'topten' => $topten,
-            'myRecord' => $this->coachLib->recordsFormat($userRecords['records']),
-            'myNum' => $userNum + 1,
-            );
-        $this->dataPrint($result);
+        $this->dataPrint(array('status' => 0));
     }
 
     /**
