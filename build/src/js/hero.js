@@ -140,23 +140,23 @@
 		bind: function(){
 			var me = this;
 			// PC 跳跃事件
-			document.onkeyup = function(evt){
+			document.onkeydown = function(evt){
 				// if(hero.status === 'play') return;
-
 			    evt = (evt) ? evt : w.event;
-			    if (evt.keyCode) {
-			        
-				    if(evt.keyCode == me.keyCode['0']){
+			    var jpKeyCode = evt.keyCode || evt.which || evt.charCode;
+	
+			    if (evt.shiftKey) {
+				    if(jpKeyCode == me.keyCode['0']){
 				       if(magicFun.paused)return;
-				       me.left();
+				       // me.left();
 				       console.log('左')
-				    }else if(evt.keyCode == me.keyCode['2']){
+				    }else if(jpKeyCode == me.keyCode['2']){
 				       if(magicFun.paused)return;
 				   	   console.log('右')
-				   	   me.right();
-				    }else if(evt.keyCode == me.keyCode['3']){
+				   	   // me.right();
+				    }else if(jpKeyCode == me.keyCode['3']){
 				   	   console.log('下')
-				    }else if(evt.keyCode == me.keyCode['1'] || evt.keyCode == me.keyCode['4']){
+				    }else if(jpKeyCode == me.keyCode['1'] || jpKeyCode == me.keyCode['4']){
 			    		me.anim();
 				    }else{
 
