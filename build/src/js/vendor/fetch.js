@@ -17,7 +17,7 @@ function generateEncryptedString(data, password) {
             return cipherParams;
         }
     }
-    var encrypted = CryptoJS.AES.encrypt(JSON.stringify(data), password, {format: CryptoJSAesJson}).toString();
+    var encrypted = Base64.encode(CryptoJS.AES.encrypt(JSON.stringify(data), password, {format: CryptoJSAesJson}).toString());
     return encrypted;
 }
 

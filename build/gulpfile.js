@@ -59,6 +59,7 @@ var paths = {
         'src/js/vendor/jquery.transit.js', 
         'src/js/vendor/swiper.min.js', 
         'src/js/vendor/fastclick.js', 
+        'src/js/vendor/base64.js', 
         'src/js/vendor/aes.js', 
         'src/js/vendor/rem.js', 
         'src/js/vendor/common.js', 
