@@ -51,7 +51,8 @@ class ApiController extends Controller
     public function recordAction()
     {
     	global $user;
-        $raw = json_encode(file_get_contents("php://input"));
+        $base64raw = file_get_contents("php://input");
+        $raw = json_encode(base64_decode($base64raw));
         $encrypted = json_decode($raw);
         $helper = new Helper();
         $password = '490ce5d064d2eb209dddaa118f7a6831';
@@ -59,7 +60,6 @@ class ApiController extends Controller
         if(!$decrypted) {
             $this->dataPrint(array('msg' => 'error'));
         }
-
         $data = json_decode($decrypted);
         $recordInfo = new \stdClass();
         $recordInfo->uid = $user->uid;
