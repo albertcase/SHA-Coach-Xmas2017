@@ -3,6 +3,7 @@
 namespace CampaignBundle;
 
 use Core\Controller;
+use Lib\Helper;
 
 class ApiController extends Controller
 {
@@ -13,9 +14,9 @@ class ApiController extends Controller
         
         parent::__construct();
 
-        if(!$user->uid) {
-            $this->statusPrint('100', 'access deny!');
-        }
+        // if(!$user->uid) {
+        //     $this->statusPrint('100', 'access deny!');
+        // }
         $this->coachLib = new CoachXmasLib();
     }
 
@@ -50,23 +51,23 @@ class ApiController extends Controller
     public function recordAction()
     {
     	global $user;
+        $raw = json_encode(file_get_contents("php://input"));
+        $encrypted = json_decode($raw);
+        $helper = new Helper();
+        $password = '490ce5d064d2eb209dddaa118f7a6831';
+        $decrypted = $helper->cryptoJsAesDecrypt($password, $encrypted);
+        if(!$decrypted) {
+            $this->dataPrint(array('msg' => 'error'));
+        }
 
-        $request = $this->request;
-        $fields = array(
-            'records' => array('notnull', '120'),
-            'animal' => array('notnull', '120'),
-            'bar' => array('notnull', '120'),
-            'timeinit' => array('notnull', '120'),
-        );
-        $request->validation($fields);
-
+        $data = json_decode($decrypted);
         $recordInfo = new \stdClass();
         $recordInfo->uid = $user->uid;
-        $recordInfo->records = (float)$request->request->get('records');
-        $recordInfo->animal = $request->request->get('animal');
-        $recordInfo->bar = $request->request->get('bar');
-        $recordInfo->timeinit = (float)$request->request->get('timeinit');
-        
+        $recordInfo->records = (float)$data->records;
+        $recordInfo->animal = $data->animal;
+        $recordInfo->bar = $data->bar;
+        $recordInfo->timeinit = (float)$data->timeinit;
+
         // API安全处理
         if($data = $this->coachLib->checkSafe($recordInfo)) {
             $this->dataPrint($data);

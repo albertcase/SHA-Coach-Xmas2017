@@ -59,6 +59,7 @@ var paths = {
         'src/js/vendor/jquery.transit.js', 
         'src/js/vendor/swiper.min.js', 
         'src/js/vendor/fastclick.js', 
+        'src/js/vendor/aes.js', 
         'src/js/vendor/rem.js', 
         'src/js/vendor/common.js', 
         'src/js/vendor/fetch.js'
@@ -68,7 +69,7 @@ var paths = {
 
 
 // 是否混淆代码
-var  condition = false; 
+var  condition = true; 
 
 
 
@@ -102,9 +103,9 @@ gulp.task('miniJs', function(){
         .pipe(concat('bundle.js'))                  //合并所有js到main.js
         .pipe(gulpif(
             condition, 
-            uglify(),
-            rename({suffix: '.min'})
+            uglify() 
         ))
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('dist/js'))
         .pipe(browserSync.stream());
 });
@@ -114,9 +115,9 @@ gulp.task('miniVendorJs', function(){
         .pipe(concat('bundle-vendor.js'))                  //合并所有js到main.js
         .pipe(gulpif(
             condition, 
-            uglify(),
-            rename({suffix: '.min'})
+            uglify()
         ))
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('dist/js'))
         .pipe(browserSync.stream());
 });
@@ -136,9 +137,9 @@ gulp.task('miniCss', function(){
         condition, 
         minifyCss({                 
             compatibility: 'ie7'
-        }), 
-        rename({suffix: '.min'})
+        })
     ))
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.stream());
 });
@@ -175,12 +176,12 @@ gulp.task("default", function(){
         }
     })
     
-	gulp.start(['miniHtml', 'miniCss', 'miniImg', 'miniJs', 'miniVendorJs']);
+	gulp.start(['miniHtml', 'miniCss', 'miniJs', 'miniVendorJs', 'miniImg']);  // , 'miniVendorJs'
 	gulp.watch(paths.pages, ['miniHtml']);
     gulp.watch(paths.css, ['miniCss']);
-    gulp.watch(paths.img, ['miniImg']);
     gulp.watch(paths.js, ['miniJs']);
     gulp.watch(paths.vendor, ['miniVendorJs']);
+    gulp.watch(paths.img, ['miniImg']);
     // gulp.watch(paths.js, ['miniJs', 'miniBaseJs']);
 });
 
