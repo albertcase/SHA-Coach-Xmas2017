@@ -40,7 +40,7 @@ Fetch.prototype.createAjax = function(type, url, data, callback, dataType){
 }
 
 Fetch.prototype.record = function(data, callback){
-    var generateEncryptedStringDATA = generateEncryptedString('{"records": "'+ data.records +'", "animal": "'+ data.animal +'", "bar": "'+ data.bar +'", "timeinit": "'+ data.timeinit +'"}', '490ce5d064d2eb209dddaa118f7a6831');
+    var generateEncryptedStringDATA = generateEncryptedString(JSON.stringify(data), '490ce5d064d2eb209dddaa118f7a6831');
 	this.createAjax('POST', '/api/record', generateEncryptedStringDATA, callback, 'text')
 }
 
