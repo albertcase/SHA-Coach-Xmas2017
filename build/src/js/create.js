@@ -47,13 +47,7 @@
 				var me = this;
 				me.data.minutes = me.data.count % 60 + '';
 				me.data.second = Math.floor(me.data.count / 60) + '';
-				me.data.el.innerHTML = `
-					<div class="timePos n${me.data.second < 10 ? '0' : me.data.second[0]}"></div>
-	                <div class="timePos n${me.data.second < 10 ? me.data.second : me.data.second[1]}"></div>
-	                <div class="timePos n10"></div>
-	                <div class="timePos n${me.data.minutes < 10 ? '0' : me.data.minutes[0]}"></div>
-	                <div class="timePos n${me.data.minutes < 10 ? me.data.minutes : me.data.minutes[1]}"></div>
-				`;
+				me.data.el.innerHTML = '<div class="timePos n'+ (me.data.second < 10 ? '0' : me.data.second[0]) +'"></div><div class="timePos n'+ (me.data.second < 10 ? me.data.second : me.data.second[1]) +'"></div><div class="timePos n10"></div><div class="timePos n'+ (me.data.minutes < 10 ? '0' : me.data.minutes[0]) +'"></div><div class="timePos n'+ (me.data.minutes < 10 ? me.data.minutes : me.data.minutes[1]) +'"></div>';
 				me.data.count++;
 			},
 			start: function(){

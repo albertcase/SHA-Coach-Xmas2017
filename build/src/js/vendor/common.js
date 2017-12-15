@@ -278,12 +278,7 @@ function Popup(id, content, eventEl){
             var el = document.createElement('div');
                 el.className = 'popup hidden';
                 el.id = id;
-                el.innerHTML = `  
-                    <div class="popup-con">
-                        <div class="close"></div>
-                        ${content}
-                    </div>
-                `;
+                el.innerHTML = '<div class="popup-con"><div class="close"></div>'+ content +'</div>';
             return el;
         }
     };
