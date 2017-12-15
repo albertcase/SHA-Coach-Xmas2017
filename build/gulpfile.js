@@ -137,9 +137,9 @@ gulp.task('miniCss', function(){
         condition, 
         minifyCss({                 
             compatibility: 'ie7'
-        }), 
-        rename({suffix: '.min'})
+        })
     ))
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.stream());
 });
