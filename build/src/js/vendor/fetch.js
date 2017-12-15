@@ -51,7 +51,8 @@ function Fetch(){}
 */
 
 Fetch.prototype.record = function(data, callback){
-	ajaxFun('POST', '/api/record', data, callback, 'text')
+  var generateEncryptedStringDATA = generateEncryptedString('{"records": '+ data.records +', "animal": '+ data.animal +', "bar": '+ data.bar +', "timeinit": '+ data.timeinit +'}', 'abc123');
+	ajaxFun('POST', '/api/record', generateEncryptedStringDATA, callback, 'text')
 }
 
 /* 
