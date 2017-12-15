@@ -58,7 +58,7 @@ class ApiController extends Controller
         $password = '490ce5d064d2eb209dddaa118f7a6831';
         $decrypted = $helper->cryptoJsAesDecrypt($password, $encrypted);
         if(!$decrypted) {
-           file_put_contents('/data/log/api.log', "uid: {$user->uid},\t contents: {$decrypted}\n", FILE_APPEND);
+           file_put_contents('/data/log/api.log', "uid: {$user->uid},\t contents: {$base64raw}\n", FILE_APPEND);
             $this->dataPrint(array('msg' => 'error'));
         }
         $data = json_decode($decrypted);
