@@ -73,7 +73,7 @@
 	function MagicFun(){
 		this.timer = null;         // 定时器
 		this.paused = 0;           // 全局状态
-		this.countInit = 0;
+		this.countInit = 0;        // 计数器
 		this.sceneHover = null;
 		this.common = new Common();
 		this.status = 0;
@@ -120,7 +120,7 @@
 			case 2000:
 				me.status = 1;
 				w.removeEventListener('deviceorientation', function(){}, true);
-				document.onkeyup = function(evt){}
+				document.onkeyup = null;
 				elementsObj.paused();
 				timeCount.paused();
 			    me.countInit = null;

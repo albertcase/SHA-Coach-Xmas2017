@@ -84,11 +84,13 @@
 			// 	}
 			// }
 			me.enterSpace++;
-			if(count % 100 === 0 || (random % 50 === 0)){
-				if(me.elements.length <= 3 && me.enterSpace >= 12){
-					me.enterSpace = 0;
-					me.heroId++;
-					creatEle = me.init(starData[0].style);
+			if(me.heroId <= 40){
+				if(count % 100 === 0 || (random % 50 === 0)){
+					if(me.elements.length <= 3 && me.enterSpace >= 12){
+						me.enterSpace = 0;
+						me.heroId++;
+						creatEle = me.init(starData[0].style);
+					}
 				}
 			}
 		//};

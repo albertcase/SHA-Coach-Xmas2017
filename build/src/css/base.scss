@@ -22,13 +22,14 @@ html, body{
 }
 
 html{
-    font-size: 65%;
+    font-size: 62.5%;
 }
 
 html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
   -webkit-text-size-adjust:100%;
   margin: 0;
   padding: 0;
+  // transition: opacity .6s cubic-bezier(.215,.61,.355,1);
 }
 
 a{
