@@ -289,14 +289,23 @@
         common.base.overscroll(me.setting.listEl);
     }
 
-    var toplistObj;
+    var toplistObj, endStatusPopup;
     function getTopTen(){
-        if(!toplistObj){
-            common.fetch.authorize({}, function(data){ // 授权拉取排行榜
-                toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data);
-                toplistObj.init();
-            });
-        }   
+        if(common.base.actionStatus === 'end'){
+            if(endStatusPopup){
+                endStatusPopup.show();
+            }else{
+                endStatusPopup = common.Popup('toplist-popup', '<div class="action-status--end"></div>', '.toplist-tag');
+                endStatusPopup.show();
+            }
+            
+        };
+        // if(!toplistObj){
+        //     common.fetch.authorize({}, function(data){ // 授权拉取排行榜
+        //         toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data);
+        //         toplistObj.init();
+        //     });
+        // }   
     }
     
 

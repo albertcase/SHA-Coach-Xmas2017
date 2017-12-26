@@ -191,16 +191,28 @@
         }
     }
 
-    var toplistObj;
+    var toplistObj, endStatusPopup;
     document.querySelector('.list-btn').addEventListener('click', function(){
-        if(toplistObj){
-            toplistObj.show()
-        }else{
-            common.fetch.authorize({}, function(data){
-                toplistObj = Toplist('toplist-popup', '.list-btn', data.topten);
-                toplistObj.show();
-            });
-        }
+
+        if(common.base.actionStatus === 'end'){
+
+            if(endStatusPopup){
+                endStatusPopup.show();
+            }else{
+                endStatusPopup = common.Popup('toplist-popup', '<div class="action-status--end"></div>', '.list-btn');
+                endStatusPopup.show();
+            }
+
+        };
+
+        // if(toplistObj){
+        //     toplistObj.show()
+        // }else{
+        //     common.fetch.authorize({}, function(data){
+        //         toplistObj = Toplist('toplist-popup', '.list-btn', data.topten);
+        //         toplistObj.show();
+        //     });
+        // }
     })
 
 

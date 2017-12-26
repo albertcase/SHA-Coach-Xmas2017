@@ -84,7 +84,7 @@
 			// 	}
 			// }
 			me.enterSpace++;
-			if(me.heroId <= 40){
+			if(me.heroId <= 40){  // 设置最大数
 				if(count % 100 === 0 || (random % 50 === 0)){
 					if(me.elements.length <= 3 && me.enterSpace >= 12){
 						me.enterSpace = 0;

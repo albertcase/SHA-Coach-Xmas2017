@@ -51,6 +51,7 @@ Common.prototype.base = {
         //     self.wechatFun(data.appId, data.timestamp, data.nonceStr, data.signature);
         // });
     },
+    actionStatus: 'end',
     loadFn: function(arr , fn , fn2){
         var loader = new PxLoader();
             for( var i = 0 ; i < arr.length; i ++)

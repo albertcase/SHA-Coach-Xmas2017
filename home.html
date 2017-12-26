@@ -198,16 +198,27 @@
         }
     }
 
-    var toplistObj;
+    var toplistObj, endStatusPopup;
     document.querySelector('.games-list').addEventListener('click', function(){
-        if(toplistObj){
-            toplistObj.show()
-        }else{
-            common.fetch.noAuthorize({}, function(data){
-                toplistObj = Toplist('toplist-popup', '.games-list', data.list);
-                toplistObj.show();
-            });
-        }
+        if(common.base.actionStatus === 'end'){
+
+            if(endStatusPopup){
+                endStatusPopup.show();
+            }else{
+                endStatusPopup = common.Popup('toplist-popup', '<div class="action-status--end"></div>', '.games-list');
+                endStatusPopup.show();
+            }
+
+        };
+
+        // if(toplistObj){
+        //     toplistObj.show()
+        // }else{
+        //     common.fetch.noAuthorize({}, function(data){
+        //         toplistObj = Toplist('toplist-popup', '.games-list', data.list);
+        //         toplistObj.show();
+        //     });
+        // }
     })
 
 
