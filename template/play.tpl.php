@@ -300,12 +300,12 @@
             }
             
         };
-        // if(!toplistObj){
-        //     common.fetch.authorize({}, function(data){ // 授权拉取排行榜
-        //         toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data);
-        //         toplistObj.init();
-        //     });
-        // }   
+        if(!toplistObj){
+            common.fetch.authorize({}, function(data){ // 授权拉取排行榜
+                toplistObj = new Toplist('.toplist-table ul', '.toplist-userinfo', data);
+                toplistObj.init();
+            });
+        }   
     }
     
 
